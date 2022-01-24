@@ -237,33 +237,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5994aef357b6fc24e8684c11ac4bb6f4, type: 3}
---- !u!1 &213958245 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4929038550582789026, guid: badb65ec4a1b59c458068825191503bd, type: 3}
-  m_PrefabInstance: {fileID: 1057195171}
-  m_PrefabAsset: {fileID: 0}
---- !u!68 &213958246
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 213958245}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.64, y: 0}
-  - {x: 0.64, y: 0}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!1001 &285134623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1256,34 +1229,6 @@ PrefabInstance:
     - target: {fileID: 4929038550582789026, guid: badb65ec4a1b59c458068825191503bd, type: 3}
       propertyPath: m_Name
       value: Sharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5046005157520453025, guid: badb65ec4a1b59c458068825191503bd, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5046005157520453025, guid: badb65ec4a1b59c458068825191503bd, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
-      value: -0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5046005157520453025, guid: badb65ec4a1b59c458068825191503bd, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5046005157520453025, guid: badb65ec4a1b59c458068825191503bd, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5046005157520453025, guid: badb65ec4a1b59c458068825191503bd, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5046005157520453025, guid: badb65ec4a1b59c458068825191503bd, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5046005157520453025, guid: badb65ec4a1b59c458068825191503bd, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].y
-      value: 1.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: badb65ec4a1b59c458068825191503bd, type: 3}
