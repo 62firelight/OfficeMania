@@ -237,12 +237,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 765423631}
   sentences:
-  - 'Boss: Well Well look who is it!'
-  - 'You:  I know your secret'
-  - 'Boss: I dont know what you''re talking about'
-  - 'You:  I know you''ve been scamming everyone!'
+  - Well Well look who is it!
+  - ' I know your secret'
+  - I dont know what you're talking about
+  - ' I know you''ve been scamming everyone!'
+  - IMPOSSIBLE! It's time to settle this once and for all!
   index: 0
   typingSpeed: 0.25
+  sentenceWaitTime: 0
+  speakers:
+  - {fileID: 1090655626}
+  - {fileID: 492723471}
+  speakerIndex: 0
 --- !u!4 &303344764
 Transform:
   m_ObjectHideFlags: 0
