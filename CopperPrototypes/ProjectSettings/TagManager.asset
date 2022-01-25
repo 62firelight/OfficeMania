@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Blunt
   - Sharp
+  - Door
   layers:
   - Default
   - TransparentFX

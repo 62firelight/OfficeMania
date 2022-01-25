@@ -22,7 +22,7 @@ public class Interactable : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        coll = GetComponent<Collider2D>() as BoxCollider2D;
+        coll = GetComponent<Collider2D>();
 
         DisablePhysics();
         CreatePrompt();
