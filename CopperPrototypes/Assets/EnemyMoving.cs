@@ -30,10 +30,24 @@ public class EnemyMoving : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Wall" && isColliding == false)
+        if (isColliding)
+        {
+            return;
+        }
+
+        if (other.tag == "Wall")
         {
             movement *= -1;
             isColliding = true;
+        }
+
+        if (other.tag == "Sharp")
+        {
+            movement *= 0.75f;
+
+            other.gameObject.GetComponent<Interactable>().DisablePhysics();
+            other.gameObject.transform.parent = transform;
+            other.gameObject.GetComponent<Interactable>().pickedUp = true;
         }
     }
 }
