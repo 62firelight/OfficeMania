@@ -5,6 +5,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
+    public int maxHealth = 1;
+
+    private int health;
+
     public float knockbackForce = 5f;
 
     public float knockbackTime = 0f;
@@ -12,10 +16,15 @@ public class Enemy : MonoBehaviour
     // Rigidbody2D component
     private Rigidbody2D rb;
 
+    private SpriteRenderer sr;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
+
+        health = maxHealth;
 
         DisableRagdoll();
     }
@@ -34,6 +43,12 @@ public class Enemy : MonoBehaviour
                 rb.velocity = Vector2.zero;
                 DisableRagdoll();
             }
+        }
+
+        if (health <= 0)
+        {
+            sr.color = new Color(0.5f, 0, 0);
+            GetComponent<Chase>().speed = 0;
         }
     }
 
@@ -70,9 +85,13 @@ public class Enemy : MonoBehaviour
             rb.AddForce(force, ForceMode2D.Impulse);
 
             knockbackTime = 0.4f;
+
+            health--;
         }
         else if (other.gameObject.tag == "Sharp")
         {
+            health--;
+
             other.gameObject.GetComponent<Interactable>().DisablePhysics();
             other.gameObject.transform.parent = transform;
             other.gameObject.GetComponent<Interactable>().pickedUp = true;
