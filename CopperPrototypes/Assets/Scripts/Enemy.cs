@@ -5,6 +5,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
+    public int maxHealth = 1;
+
+    public int health;
+
     public float knockbackForce = 5f;
 
     public float knockbackTime = 0f;
@@ -12,10 +16,15 @@ public class Enemy : MonoBehaviour
     // Rigidbody2D component
     private Rigidbody2D rb;
 
+    private SpriteRenderer sr;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
+
+        health = maxHealth;
 
         DisableRagdoll();
     }
@@ -35,6 +44,16 @@ public class Enemy : MonoBehaviour
                 DisableRagdoll();
             }
         }
+
+        // If enemy has no health
+        if (health <= 0)
+        {
+            // Darken sprite
+            sr.color = new Color(0.5f, 0, 0);
+
+            // Disable AI
+            GetComponent<Chase>().enabled = false;
+        }
     }
 
     // Let the rigidbody take control and detect collisions.
@@ -51,6 +70,8 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        Debug.Log(other.gameObject.tag);
+
         if (other.gameObject.tag == "Blunt")
         {
             // Do nothing if we are currently being knocked back
@@ -68,9 +89,14 @@ public class Enemy : MonoBehaviour
             rb.AddForce(force, ForceMode2D.Impulse);
 
             knockbackTime = 0.4f;
+
+            health--;
         }
-        else
+        else if (other.gameObject.tag == "Sharp")
         {
+            health--;
+            GetComponent<Chase>().speed *= 0.75f;
+
             other.gameObject.GetComponent<Interactable>().DisablePhysics();
             other.gameObject.transform.parent = transform;
             other.gameObject.GetComponent<Interactable>().pickedUp = true;
