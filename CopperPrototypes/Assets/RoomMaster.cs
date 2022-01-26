@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoomMaster : MonoBehaviour
 {
-    public Transform[] enemies;
+    public Enemy[] enemies;
 
     public GameObject door;
 
@@ -24,10 +24,10 @@ public class RoomMaster : MonoBehaviour
             // Check if room has no enemies conscious
             for (int i = 0; i < enemies.Length; i++)
             {
-                GameObject enemy = enemies[i].gameObject;
+                Enemy enemy = enemies[i];
 
                 // If one enemy is conscious, then room can't be clear
-                if (enemy.GetComponent<Enemy>().health > 0)
+                if (enemy.health > 0)
                 {
                     roomClear = false;
                     break;
