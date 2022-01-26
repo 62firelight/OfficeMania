@@ -14,6 +14,8 @@ public class Throw : MonoBehaviour
 
     public GameObject player;
 
+    GameObject mostRecentObject = null;
+
     float delay;
 
     // Start is called before the first frame update
@@ -36,11 +38,12 @@ public class Throw : MonoBehaviour
         {
             Debug.Log("Enemy threw object");
             carrying.GetComponent<Interactable>().EnemyThrow(transform, 20, gameObject);
+            mostRecentObject = carrying;
             carrying = null;
 
             delay = 2;
 
-            GameObject closestObject = GetClosestObject();
+            GameObject closestObject = GetClosestObject(mostRecentObject);
 
             if (closestObject != null)
             {
@@ -81,7 +84,7 @@ public class Throw : MonoBehaviour
         delay = 1;
     }
 
-    GameObject GetClosestObject()
+    GameObject GetClosestObject(GameObject ignoredObject)
     {
         GameObject[] objects = GameObject.FindGameObjectsWithTag("Blunt");
 
@@ -91,6 +94,11 @@ public class Throw : MonoBehaviour
 
         foreach (GameObject obj in objects)
         {
+            if (obj == ignoredObject)
+            {
+                continue;
+            }
+
             distance = Vector2.Distance(transform.position, obj.transform.position);
 
             if (distance < closestDistance)
