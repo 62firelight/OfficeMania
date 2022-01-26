@@ -45,10 +45,13 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        // If enemy has no health
         if (health <= 0)
         {
+            // Darken sprite
             sr.color = new Color(0.5f, 0, 0);
-            GetComponent<Chase>().speed = 0;
+
+            // Disable AI
             GetComponent<Chase>().enabled = false;
         }
     }
