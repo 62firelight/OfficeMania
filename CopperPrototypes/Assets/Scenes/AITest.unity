@@ -4928,8 +4928,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tilesize: 0.5
-  MapStartPosition: {x: -6.5, y: -6.5}
-  MapEndPosition: {x: 6.5, y: 6.5}
+  MapStartPosition: {x: -7, y: -6.5}
+  MapEndPosition: {x: 7, y: 6.5}
   DisallowedTags:
   - Wall
   DrawGridInEditor: 1
