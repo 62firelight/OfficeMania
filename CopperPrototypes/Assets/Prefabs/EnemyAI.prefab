@@ -114,6 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4309acbefcfe9b3459fb9f903ce0ff7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 1
+  health: 0
   knockbackForce: 6
   knockbackTime: 0
 --- !u!114 &1882021223002456387
@@ -145,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 4
+  speed: 8
 --- !u!50 &4958288219161743943
 Rigidbody2D:
   serializedVersion: 4

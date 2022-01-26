@@ -49,6 +49,7 @@ public class Enemy : MonoBehaviour
         {
             sr.color = new Color(0.5f, 0, 0);
             GetComponent<Chase>().speed = 0;
+            GetComponent<Chase>().enabled = false;
         }
     }
 

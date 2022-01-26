@@ -17,7 +17,7 @@ public class RoomMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (door.activeInHierarchy == true)
+        if (door != null)
         {
             bool roomClear = true;
 

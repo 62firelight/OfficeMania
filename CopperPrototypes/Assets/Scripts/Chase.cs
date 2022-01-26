@@ -20,6 +20,8 @@ public class Chase : MonoBehaviour {
 	// (initialise via the Inspector Panel)
 	public float speed;
 
+	public bool enabled = true;
+
 	// Chasing game object must have a AStarPathfinder component - 
 	// this is a reference to that component, which will get initialised
 	// in the Start() method
@@ -33,7 +35,7 @@ public class Chase : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (pathfinder != null) {
+		if (enabled && pathfinder != null) {
 			//Travel towards the target object at certain speed.
 			pathfinder.GoTowards(target, speed);
 		}
