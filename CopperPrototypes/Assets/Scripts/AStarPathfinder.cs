@@ -164,7 +164,8 @@ public class AStarPathfinder : MonoBehaviour {
 			Vector3 nextPosition = new Vector3(nextMove.x, nextMove.y, transform.position.z);
 
 			//Udate remaining distance to travel
-			transform.position = nextPosition;
+			//transform.position = nextPosition;
+			GetComponent<Rigidbody2D>().MovePosition(nextPosition);
 			distAllowed -= travelDist;
 			if(distAllowed <= 0f) {
 				break;
