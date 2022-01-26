@@ -166,6 +166,12 @@ public class AStarPathfinder : MonoBehaviour {
 			//Udate remaining distance to travel
 			//transform.position = nextPosition;
 			GetComponent<Rigidbody2D>().MovePosition(nextPosition);
+
+			Vector2 currentPosition = new Vector2(transform.position.x, transform.position.y);
+			Vector2 moveDirection = targetPosition - currentPosition;
+			float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg - 90;
+			transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
 			distAllowed -= travelDist;
 			if(distAllowed <= 0f) {
 				break;

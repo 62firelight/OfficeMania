@@ -41,6 +41,19 @@ public class Interactable : MonoBehaviour
         transform.parent = null;
     }
 
+    public void EnemyThrow(Transform firePoint, float force, GameObject enemy)
+    {
+        EnablePhysics();
+
+        pickedUp = false;
+
+        rb.AddForce(firePoint.up * force, ForceMode2D.Impulse);
+        Physics2D.IgnoreCollision(enemy.GetComponent<Collider2D>(), coll);
+
+        transform.Translate(0, 0, 1);
+        transform.parent = null;
+    }
+
     public void EnablePhysics()
     {
         rb.isKinematic = false;
@@ -63,7 +76,7 @@ public class Interactable : MonoBehaviour
         promptObj.gameObject.SetActive(false);
     }
 
-    void RegisterPickUp()
+    public void RegisterPickUp()
     {
         DisablePhysics();
 
