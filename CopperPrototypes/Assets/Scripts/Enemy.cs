@@ -51,6 +51,8 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        Debug.Log(other.gameObject.tag);
+
         if (other.gameObject.tag == "Blunt")
         {
             // Do nothing if we are currently being knocked back
@@ -69,7 +71,7 @@ public class Enemy : MonoBehaviour
 
             knockbackTime = 0.4f;
         }
-        else
+        else if (other.gameObject.tag == "Sharp")
         {
             other.gameObject.GetComponent<Interactable>().DisablePhysics();
             other.gameObject.transform.parent = transform;
