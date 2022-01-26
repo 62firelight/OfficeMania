@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 
     public int maxHealth = 1;
 
-    private int health;
+    public int health;
 
     public float knockbackForce = 5f;
 
