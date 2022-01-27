@@ -96,7 +96,7 @@ public class Interactable : MonoBehaviour
 
         if (pickedUp == false)
         {
-            distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+            distanceToPlayer = Vector2.Distance(player.transform.position, transform.position);
 
             if (distanceToPlayer < 0.5f && player.gameObject.GetComponent<Shooting>().carrying == null)
             {

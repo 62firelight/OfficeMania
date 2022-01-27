@@ -5466,10 +5466,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 202656236, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 432031597}
     - target: {fileID: 1172907430912255948, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 432031597}
+      objectReference: {fileID: 0}
     - target: {fileID: 3264640679040377156, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
       propertyPath: gridObject
       value: 

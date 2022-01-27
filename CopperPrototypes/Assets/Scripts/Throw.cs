@@ -22,6 +22,16 @@ public class Throw : MonoBehaviour
     void Start()
     {
         chase = GetComponent<Chase>();
+
+        if (chase.target == null)
+        {
+            GameObject closestObject = GetClosestObject(mostRecentObject);
+
+            if (closestObject != null)
+            {
+                chase.target = closestObject;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -61,7 +71,7 @@ public class Throw : MonoBehaviour
         float distance = Vector2.Distance(transform.position, target.transform.position);
         Debug.Log("Enemy is " + distance + " units away from " + target.name);
 
-        if (distance < 0.5 && delay <= 0)
+        if (distance < 1 && delay <= 0)
         {
             EnemyPickUp(chase.target.transform);
         }
@@ -87,6 +97,9 @@ public class Throw : MonoBehaviour
     GameObject GetClosestObject(GameObject ignoredObject)
     {
         GameObject[] objects = GameObject.FindGameObjectsWithTag("Blunt");
+        //Debug.Log(objects.Length);
+        //GameObject.FindGameObjectsWithTag("Sharp").CopyTo(objects, objects.Length - 1);
+        //Debug.Log(objects.Length);
 
         GameObject closestObject = null;
         float closestDistance = 1000000;
