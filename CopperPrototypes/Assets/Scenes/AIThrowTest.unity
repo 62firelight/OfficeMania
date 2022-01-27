@@ -5268,6 +5268,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: badb65ec4a1b59c458068825191503bd, type: 3}
+--- !u!1 &1939102071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1521433429867620509, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
+  m_PrefabInstance: {fileID: 1521433429040358914}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1951303243
 GameObject:
   m_ObjectHideFlags: 0
@@ -5554,6 +5559,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1521433430660576177, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
 --- !u!1001 &3985717771786660990
@@ -5571,6 +5580,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1183906130}
+    - target: {fileID: 1172907430912255948, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
+      propertyPath: roomMaster
+      value: 
+      objectReference: {fileID: 1939102071}
     - target: {fileID: 3264640679040377156, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
       propertyPath: gridObject
       value: 
