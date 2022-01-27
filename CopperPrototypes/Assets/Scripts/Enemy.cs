@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
             sr.color = new Color(0.5f, 0, 0);
 
             // Disable AI
-            GetComponent<Chase>().enabled = false;
+            GetComponent<Chase>().speed = 0;
         }
     }
 

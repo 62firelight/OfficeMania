@@ -8,20 +8,28 @@ public class RoomMaster : MonoBehaviour
 
     public GameObject door;
 
+    public GameObject[] entryDoors;
+
+    private bool roomClear = false;
+
     public bool aiEnabled = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        foreach (GameObject entryDoor in entryDoors)
+        {
+            entryDoor.SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (door != null)
+        if (aiEnabled && door != null)
         {
-            bool roomClear = true;
+            // Assume all enemies unless we know otherwise
+            bool enemiesClear = true;
 
             // Check if room has no enemies conscious
             for (int i = 0; i < enemies.Length; i++)
@@ -31,25 +39,52 @@ public class RoomMaster : MonoBehaviour
                 // If one enemy is conscious, then room can't be clear
                 if (enemy.health > 0)
                 {
-                    roomClear = false;
+                    enemiesClear = false;
                     break;
                 }
             }
 
+            // If enemies are clear, then room must be clear
+            if (enemiesClear)
+            {
+                roomClear = true;
+            }
+
+            // Open all doors to the room so the player can exit
             if (roomClear)
             {
                 Destroy(door);
+
+                foreach (GameObject entryDoor in entryDoors)
+                {
+                    entryDoor.SetActive(false);
+                }
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        aiEnabled = true;
+        if (roomClear == false && collision.tag == "Player")
+        {
+            aiEnabled = true;
+
+            foreach (GameObject entryDoor in entryDoors)
+            {
+                entryDoor.SetActive(true);
+            }
+
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        aiEnabled = false;
+        if (collision.tag == "Player")
+        {
+            aiEnabled = false;
+
+            transform.GetChild(0).gameObject.SetActive(false);
+        }
     }
 }
