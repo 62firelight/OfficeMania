@@ -9,11 +9,14 @@ public class pickup : MonoBehaviour
 
     public Vector3 Direction { get; set; }
     private GameObject itemHolding;
+    private Vector3 endpoint;
+
+    public GameObject destroyEffect;
 
     // Update is called once per frame
     void Update()
     {
-       if(Input.GetKeyDown(KeyCode.F))
+       if(Input.GetKeyDown(KeyCode.P))
         {
             if (itemHolding)
             {
@@ -36,6 +39,28 @@ public class pickup : MonoBehaviour
                         
                 }
             }
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (itemHolding)
+            {
+                StartCoroutine(ThrowItem(itemHolding));
+                itemHolding = null;
+            }
+        }
+        IEnumerator ThrowItem(GameObject item)
+        {
+            Vector3 startPoint = item.transform.position + Direction * 2;
+            item.transform.parent = null;
+            for (int i = 0; i < 25; i++)
+            {
+                item.transform.position = Vector3.Lerp(startPoint, endpoint, i * .04f);
+                yield return null;
+            }
+            if (item.GetComponent<Rigidbody2D>())
+                item.GetComponent<Rigidbody2D>().simulated = true;
+            Instantiate(destroyEffect, item.transform.position, Quaternion.identity);
+            Destroy(item);
         }
     }
 }
