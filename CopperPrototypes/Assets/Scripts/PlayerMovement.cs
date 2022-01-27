@@ -16,6 +16,14 @@ public class PlayerMovement : MonoBehaviour
 
     private pickup Pickup;
 
+    private void Start()
+    {
+        Pickup = gameObject.GetComponent<pickup>();
+        Pickup.Direction = new Vector2(0, -1); 
+    }
+       
+
+
     // Update is called once per frame
     void Update()
     {
