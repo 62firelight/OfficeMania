@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1521433429867620509}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.925, y: 0.70480347, z: 1}
+  m_LocalScale: {x: 1.3412501, y: 0.7312336, z: 1}
   m_Children:
   - {fileID: 1521433430660576183}
   m_Father: {fileID: 0}
@@ -47,11 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   door: {fileID: 0}
   entryDoors:
-  - {fileID: 0}
   - {fileID: 0}
   aiEnabled: 0
 --- !u!61 &37002470
@@ -67,7 +64,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.11892128, y: 0.7663832}
+  m_Offset: {x: -0.11892128, y: -5.573208}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -78,7 +75,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 15.170517, y: 14.405563}
+  m_Size: {x: 15.170517, y: 27.50341}
   m_EdgeRadius: 0
 --- !u!1 &1521433430660576177
 GameObject:
