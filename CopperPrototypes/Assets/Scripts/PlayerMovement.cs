@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movement;
     Vector2 mousePos;
 
+    private pickup Pickup;
+
     // Update is called once per frame
     void Update()
     {
