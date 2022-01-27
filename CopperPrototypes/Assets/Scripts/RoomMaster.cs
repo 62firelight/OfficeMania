@@ -8,6 +8,8 @@ public class RoomMaster : MonoBehaviour
 
     public GameObject door;
 
+    public bool aiEnabled = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,5 +41,15 @@ public class RoomMaster : MonoBehaviour
                 Destroy(door);
             }
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        aiEnabled = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        aiEnabled = false;
     }
 }

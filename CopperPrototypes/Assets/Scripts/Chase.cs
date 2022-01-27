@@ -22,6 +22,8 @@ public class Chase : MonoBehaviour {
 
 	public bool enabled = true;
 
+	public GameObject roomMaster = null;
+
 	// Chasing game object must have a AStarPathfinder component - 
 	// this is a reference to that component, which will get initialised
 	// in the Start() method
@@ -35,6 +37,14 @@ public class Chase : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (roomMaster == null)
+        {
+			Debug.Log("RoomMaster has not been set! AI may not function properly");
+			return;
+        }
+
+		enabled = roomMaster.GetComponent<RoomMaster>().aiEnabled;
+
 		if (enabled && pathfinder != null) {
 			//Travel towards the target object at certain speed.
 			pathfinder.GoTowards(target, speed);

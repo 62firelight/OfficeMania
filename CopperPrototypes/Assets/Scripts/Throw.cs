@@ -46,7 +46,6 @@ public class Throw : MonoBehaviour
 
         if (carrying != null && delay <= 0)
         {
-            Debug.Log("Enemy threw object");
             carrying.GetComponent<Interactable>().EnemyThrow(transform, 20, gameObject);
             mostRecentObject = carrying;
             carrying = null;
@@ -66,10 +65,7 @@ public class Throw : MonoBehaviour
             return;
         }
 
-        Debug.Log("Enemy is chasing " + target.name);
-
         float distance = Vector2.Distance(transform.position, target.transform.position);
-        Debug.Log("Enemy is " + distance + " units away from " + target.name);
 
         if (distance < 1 && delay <= 0)
         {
@@ -80,7 +76,6 @@ public class Throw : MonoBehaviour
 
     void EnemyPickUp(Transform item)
     {
-        Debug.Log("Enemy has picked up " + item);
         chase.target = player;
 
         carrying = item.gameObject;
@@ -97,9 +92,6 @@ public class Throw : MonoBehaviour
     GameObject GetClosestObject(GameObject ignoredObject)
     {
         GameObject[] objects = GameObject.FindGameObjectsWithTag("Blunt");
-        //Debug.Log(objects.Length);
-        //GameObject.FindGameObjectsWithTag("Sharp").CopyTo(objects, objects.Length - 1);
-        //Debug.Log(objects.Length);
 
         GameObject closestObject = null;
         float closestDistance = 1000000;
