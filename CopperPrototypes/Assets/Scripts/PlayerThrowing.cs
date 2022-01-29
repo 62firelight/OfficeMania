@@ -113,4 +113,11 @@ public class PlayerThrowing : MonoBehaviour
         obj.rotation = transform.rotation;
         obj.Translate(0, 0, -1);
     }
+
+    void OnGUI()
+    {
+        GUI.skin.label.fontSize = 72;
+
+        GUI.Label(new Rect(0, 0, Camera.main.pixelWidth, Camera.main.pixelHeight), sharpObjects.Count + " Sharp Object" + (sharpObjects.Count == 1 ? "" : "s"));
+    }
 }
