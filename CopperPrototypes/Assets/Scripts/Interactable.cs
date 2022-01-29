@@ -58,10 +58,10 @@ public class Interactable : MonoBehaviour
             // For a blunt object, just show a prompt
             else
             {
-                Interactable obj = player.gameObject.GetComponent<Shooting>().nearestObject;
+                Interactable obj = player.gameObject.GetComponent<PlayerThrowing>().nearestObject;
 
                 // If the player is near and they're not carrying anything
-                if (this == obj && player.gameObject.GetComponent<Shooting>().bluntObject == null)
+                if (this == obj && player.gameObject.GetComponent<PlayerThrowing>().bluntObject == null)
                 {
                     promptObj.gameObject.SetActive(true);
                 }
@@ -140,7 +140,7 @@ public class Interactable : MonoBehaviour
 
     public void RegisterPickUp()
     {
-        if (tag == "Blunt" && player.gameObject.GetComponent<Shooting>().bluntObject != null)
+        if (tag == "Blunt" && player.gameObject.GetComponent<PlayerThrowing>().bluntObject != null)
         {
             return;
         }
@@ -150,7 +150,7 @@ public class Interactable : MonoBehaviour
         pickedUp = true;
         promptObj.gameObject.SetActive(false);
 
-        player.gameObject.GetComponent<Shooting>().PickUp(transform);
+        player.gameObject.GetComponent<PlayerThrowing>().PickUp(transform);
 
         if (isHeavy)
         {

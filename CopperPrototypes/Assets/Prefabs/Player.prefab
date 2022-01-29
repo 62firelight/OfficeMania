@@ -143,9 +143,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5403261870387305026}
   - component: {fileID: 5403261870387305027}
-  - component: {fileID: 5403261870387305024}
   - component: {fileID: 5403261870387305025}
-  - component: {fileID: 5403261870387305031}
+  - component: {fileID: 2672348637521643022}
+  - component: {fileID: 5403261870387305024}
   - component: {fileID: 475628663}
   m_Layer: 0
   m_Name: Player
@@ -221,6 +221,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5403261870387305025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5403261870387305036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03233e4b93298e14ab116e26508b8fbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  rb: {fileID: 5403261870387305024}
+  cam: {fileID: 0}
+--- !u!114 &2672348637521643022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5403261870387305036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 341a131486c734c4592e77ff220c473f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 0}
+  bulletPrefab: {fileID: 0}
+  force: 20
+  nearestObject: {fileID: 0}
+  nearestSharp: {fileID: 0}
+  bluntObject: {fileID: 0}
+  currentObject: {fileID: 0}
 --- !u!50 &5403261870387305024
 Rigidbody2D:
   serializedVersion: 4
@@ -242,40 +276,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5403261870387305025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5403261870387305036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03233e4b93298e14ab116e26508b8fbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  rb: {fileID: 5403261870387305024}
-  cam: {fileID: 0}
---- !u!114 &5403261870387305031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5403261870387305036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b75fa7178006c3643a1f42b6ac2b8f7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoint: {fileID: 5403261870707454220}
-  bulletPrefab: {fileID: 69233513478850096, guid: 2003e3818c4d6c94cb9ce1e51fac46cb, type: 3}
-  force: 40
-  nearestObject: {fileID: 0}
-  nearestSharp: {fileID: 0}
-  bluntObject: {fileID: 0}
-  currentObject: {fileID: 0}
 --- !u!61 &475628663
 BoxCollider2D:
   m_ObjectHideFlags: 0

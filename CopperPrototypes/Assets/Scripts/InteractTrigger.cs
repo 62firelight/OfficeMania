@@ -9,7 +9,7 @@ public class InteractTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<Shooting>().nearestObject = GetComponentInParent<Interactable>();
+            other.GetComponent<PlayerThrowing>().nearestObject = GetComponentInParent<Interactable>();
         }
     }
 
@@ -17,9 +17,9 @@ public class InteractTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            if (other.GetComponent<Shooting>().nearestObject == null)
+            if (other.GetComponent<PlayerThrowing>().nearestObject == null)
             {
-                other.GetComponent<Shooting>().nearestObject = GetComponentInParent<Interactable>();
+                other.GetComponent<PlayerThrowing>().nearestObject = GetComponentInParent<Interactable>();
             }
         }
     }
@@ -28,7 +28,7 @@ public class InteractTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<Shooting>().nearestObject = null;
+            other.GetComponent<PlayerThrowing>().nearestObject = null;
         }
     }
 }

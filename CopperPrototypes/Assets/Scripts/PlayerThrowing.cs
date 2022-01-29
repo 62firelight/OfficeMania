@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shooting : MonoBehaviour
+public class PlayerThrowing : MonoBehaviour
 {
 
     public Transform firePoint;
-    public GameObject bulletPrefab;
 
-    public float force = 20f;
+    public float force = 40f;
 
     public Interactable nearestObject;
 
