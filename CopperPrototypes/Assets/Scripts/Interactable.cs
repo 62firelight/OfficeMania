@@ -11,9 +11,11 @@ public class Interactable : MonoBehaviour
 
     public float distanceToPlayer;
 
-    private Transform promptObj;
+    public bool isHeavy = false;
 
     public bool pickedUp = false;
+
+    private Transform promptObj;
 
     private Rigidbody2D rb;
 

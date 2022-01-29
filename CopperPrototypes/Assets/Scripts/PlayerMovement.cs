@@ -34,6 +34,24 @@ public class PlayerMovement : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        if (GetComponent<Shooting>().currentObject != null)
+        {
+            bool isHeavy = GetComponent<Shooting>().currentObject.GetComponent<Interactable>().isHeavy;
+
+            if (isHeavy)
+            {
+                moveSpeed = 2.5f;
+            }
+            else
+            {
+                moveSpeed = 5f;
+            }
+        }
+        else
+        {
+            moveSpeed = 5f;
+        }
     }
 
     void FixedUpdate()

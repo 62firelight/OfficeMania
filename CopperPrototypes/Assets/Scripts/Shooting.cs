@@ -85,8 +85,18 @@ public class Shooting : MonoBehaviour
         }
         
         item.parent = transform;
-        item.position = transform.position;
+
+        if (item.gameObject.GetComponent<Interactable>().isHeavy)
+        {
+            item.localPosition = firePoint.localPosition;
+        }
+        else
+        {
+            item.position = transform.position;
+        }
+
         item.rotation = transform.rotation;
+        
         item.Translate(0, 0, -1);
     }
 }
