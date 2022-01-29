@@ -110,7 +110,7 @@ public class Interactable : MonoBehaviour
 
     void CreatePrompt()
     {
-        promptObj = Instantiate(prompt, transform.position + new Vector3(0, 0.5f, -9), Quaternion.identity);
+        promptObj = Instantiate(prompt, transform.position + new Vector3(0, 0.65f, -9), Quaternion.identity);
         promptObj.parent = transform;
         promptObj.gameObject.SetActive(false);
     }
