@@ -83,7 +83,7 @@ public class Interactable : MonoBehaviour
             coll.sharedMaterial.bounciness = 0.5f * percent;
         }
 
-        Debug.Log(coll.bounciness);
+        Debug.Log("Object Bounciness: " + coll.bounciness);
 
         EnablePhysics();
 
@@ -122,6 +122,11 @@ public class Interactable : MonoBehaviour
 
         rb.isKinematic = true;
         coll.enabled = false;
+
+        if (coll.sharedMaterial != null)
+        {
+            coll.sharedMaterial.bounciness = 0.5f;
+        }
     }
 
     void CreatePrompt()
