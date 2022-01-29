@@ -2426,8 +2426,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blunt
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 796885677, guid: e2bf30b63fd98e34a9c8a842d2b02834, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2bf30b63fd98e34a9c8a842d2b02834, type: 3}
 --- !u!1001 &4958288218900123322
 PrefabInstance:
@@ -2662,7 +2661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7345610909008789723, guid: a0f2d49130be12741bd093a0501da196, type: 3}
       propertyPath: m_Mass
-      value: 1.5
+      value: 1.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0f2d49130be12741bd093a0501da196, type: 3}
