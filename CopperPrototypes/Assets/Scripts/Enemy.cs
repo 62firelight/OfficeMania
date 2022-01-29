@@ -52,7 +52,10 @@ public class Enemy : MonoBehaviour
             sr.color = new Color(0.5f, 0, 0);
 
             // Disable AI
-            GetComponent<Chase>().speed = 0;
+            if (GetComponent<Chase>() != null)
+            {
+                GetComponent<Chase>().speed = 0;
+            }
         }
     }
 
@@ -95,7 +98,11 @@ public class Enemy : MonoBehaviour
         else if (other.gameObject.tag == "Sharp")
         {
             health--;
-            GetComponent<Chase>().speed *= 0.75f;
+
+            if (GetComponent<Chase>() != null)
+            {
+                GetComponent<Chase>().speed *= 0.75f;
+            }
 
             other.gameObject.GetComponent<Interactable>().DisablePhysics();
             other.gameObject.transform.parent = transform;
