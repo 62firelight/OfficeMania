@@ -101,6 +101,7 @@ MonoBehaviour:
   prompt: {fileID: 7553500914775891739, guid: fa5d8ec7db7301a41bdb343cce177d7c, type: 3}
   player: {fileID: 5403261870387305036, guid: 9d84248adb44d2243b89e24c3efe7daf, type: 3}
   distanceToPlayer: 0
+  isHeavy: 0
   pickedUp: 0
 --- !u!50 &1554437775
 Rigidbody2D:
@@ -202,7 +203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4652087355083951433, guid: 804509c1addd39944829ca7a54f506bf, type: 3}
       propertyPath: m_Name
-      value: InteractTrigger
+      value: BluntTrigger
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4652087355083951438, guid: 804509c1addd39944829ca7a54f506bf, type: 3}

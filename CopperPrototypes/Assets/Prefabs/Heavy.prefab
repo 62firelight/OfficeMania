@@ -261,7 +261,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4652087355083951433, guid: 804509c1addd39944829ca7a54f506bf, type: 3}
       propertyPath: m_Name
-      value: InteractTrigger
+      value: HeavyTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652087355083951439, guid: 804509c1addd39944829ca7a54f506bf, type: 3}
+      propertyPath: m_Size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652087355083951439, guid: 804509c1addd39944829ca7a54f506bf, type: 3}
+      propertyPath: m_Size.y
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 804509c1addd39944829ca7a54f506bf, type: 3}
