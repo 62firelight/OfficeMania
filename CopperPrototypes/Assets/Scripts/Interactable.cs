@@ -19,10 +19,13 @@ public class Interactable : MonoBehaviour
 
     private Collider2D coll;
 
+    private InteractTrigger interactTrigger;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
+        interactTrigger = GetComponentInChildren<InteractTrigger>();
 
         DisablePhysics();
         CreatePrompt();
@@ -96,9 +99,9 @@ public class Interactable : MonoBehaviour
 
         if (pickedUp == false)
         {
-            distanceToPlayer = Vector2.Distance(player.transform.position, transform.position);
+            bool playerNear = interactTrigger.playerNear;
 
-            if (distanceToPlayer < 0.5f && player.gameObject.GetComponent<Shooting>().carrying == null)
+            if (playerNear && player.gameObject.GetComponent<Shooting>().carrying == null)
             {
                 if (tag == "Sharp" && rb.isKinematic == true)
                 {
