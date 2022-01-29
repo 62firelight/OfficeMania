@@ -64,7 +64,7 @@ public class PlayerThrowing : MonoBehaviour
                 if (bluntObject.GetComponent<Interactable>().isHeavy)
                 {
                     // Revert player movement speed back to normal
-                    GetComponent<PlayerMovement>().RevertSlow();
+                    // GetComponent<PlayerMovement>().RevertSlow();
 
                     // Re-enable collision between player and heavy object
                     Physics2D.IgnoreCollision(nearestObject.gameObject.transform.GetChild(1).GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
@@ -101,7 +101,7 @@ public class PlayerThrowing : MonoBehaviour
             obj.localPosition = firePoint.localPosition;
 
             // Slow down player movement by 50%
-            GetComponent<PlayerMovement>().ApplySlow();
+            // GetComponent<PlayerMovement>().ApplySlow();
 
             // Disable collision between player and heavy object while player is holding it
             Physics2D.IgnoreCollision(obj.GetChild(1).GetComponent<Collider2D>(), GetComponent<Collider2D>());

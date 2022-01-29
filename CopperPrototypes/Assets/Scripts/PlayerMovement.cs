@@ -29,6 +29,15 @@ public class PlayerMovement : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        if (GetComponent<PlayerThrowing>().bluntObject != null && GetComponent<PlayerThrowing>().bluntObject.GetComponent<Interactable>().isHeavy)
+        {
+            moveSpeed = 2.5f;
+        }
+        else
+        {
+            moveSpeed = 5f;
+        }
     }
 
     void FixedUpdate()
@@ -42,13 +51,13 @@ public class PlayerMovement : MonoBehaviour
         rb.rotation = angle;
     }
 
-    public void ApplySlow()
-    {
-        moveSpeed *= 0.5f;
-    }
+    // public void ApplySlow()
+    // {
+    //     moveSpeed *= 0.5f;
+    // }
 
-    public void RevertSlow()
-    {
-        moveSpeed *= 2f;
-    }
+    // public void RevertSlow()
+    // {
+    //     moveSpeed *= 2f;
+    // }
 }
