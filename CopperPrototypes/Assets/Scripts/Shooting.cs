@@ -16,22 +16,22 @@ public class Shooting : MonoBehaviour
 
     public GameObject carrying = null;
 
-    public int sharpCount = 0;
+    public GameObject currentObject = null;
+
+    public Queue<GameObject> sharpObjects = new Queue<GameObject>();
 
     float startTime = 0f;
 
     public void PickUp(Transform item)
     {
-        if (carrying != null)
-        {
-            return;
-        }
-
-        carrying = item.gameObject;
-
+    
         if (item.gameObject.tag == "Sharp")
         {
-            sharpCount++;
+            sharpObjects.Enqueue(item.gameObject);
+        }
+        else
+        {
+            carrying = item.gameObject;
         }
         
         item.parent = transform;
@@ -43,13 +43,29 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Determine currently held object
+        if (carrying != null)
+        {
+            currentObject = carrying;
+        }
+        else if (sharpObjects.Count > 0)
+        {
+            currentObject = sharpObjects.Peek();
+        }
+        else
+        {
+            currentObject = null;
+        }
+
+        Debug.Log(currentObject);
+
         if (Input.GetButtonDown("Fire1"))
         {
             startTime = Time.time;
         }
 
         // Throw an object
-        if (Input.GetButtonUp("Fire1") && carrying != null)
+        if (Input.GetButtonUp("Fire1") && currentObject != null)
         {
             float mag = Time.time - startTime;
 
@@ -57,14 +73,16 @@ public class Shooting : MonoBehaviour
 
             Debug.Log("Key held down for " + (Time.time - startTime).ToString("F2") + "s for " + force * mag + " force");
 
-            carrying.GetComponent<Interactable>().Throw(firePoint, force * mag);
+            currentObject.GetComponent<Interactable>().Throw(firePoint, force * mag);
 
-            if (carrying.tag == "Sharp")
+            if (currentObject.tag == "Sharp")
             {
-                sharpCount--;
+                sharpObjects.Dequeue();
             }
-
-            carrying = null;
+            else
+            {
+                carrying = null;
+            }
         }
 
         // Right-click near a blunt object to pick it up

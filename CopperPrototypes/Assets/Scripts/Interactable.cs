@@ -46,7 +46,7 @@ public class Interactable : MonoBehaviour
             // For a sharp object (that is still), let the player pick it up
             if (tag == "Sharp")
             {
-                if (rb.isKinematic == true && player.gameObject.GetComponent<Shooting>().carrying == null)
+                if (rb.isKinematic == true)
                 {
                     bool playerNear = GetComponentInChildren<SharpTrigger>().playerNear;
 
@@ -126,6 +126,11 @@ public class Interactable : MonoBehaviour
 
     public void RegisterPickUp()
     {
+        if (tag == "Blunt" && player.gameObject.GetComponent<Shooting>().carrying != null)
+        {
+            return;
+        }
+
         DisablePhysics();
 
         pickedUp = true;

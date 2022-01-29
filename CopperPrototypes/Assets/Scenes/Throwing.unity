@@ -1330,10 +1330,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4652087356215829169, guid: badb65ec4a1b59c458068825191503bd, type: 3}
-      propertyPath: m_Name
-      value: SharpTrigger
-      objectReference: {fileID: 0}
     - target: {fileID: 4929038550582789024, guid: badb65ec4a1b59c458068825191503bd, type: 3}
       propertyPath: m_RootOrder
       value: 7

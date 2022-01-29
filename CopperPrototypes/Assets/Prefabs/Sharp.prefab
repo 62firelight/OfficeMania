@@ -216,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4652087355083951433, guid: 804509c1addd39944829ca7a54f506bf, type: 3}
       propertyPath: m_Name
-      value: InteractTrigger
+      value: SharpTrigger
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2813528300892557455, guid: 804509c1addd39944829ca7a54f506bf, type: 3}
