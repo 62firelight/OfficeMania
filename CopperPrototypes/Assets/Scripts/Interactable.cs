@@ -92,6 +92,7 @@ public class Interactable : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
+        // Disable physics if the object is moving at a slow enough speed
         if (rb.velocity.magnitude <= 0.25f)
         {
             DisablePhysics();
@@ -101,14 +102,17 @@ public class Interactable : MonoBehaviour
         {
             bool playerNear = interactTrigger.playerNear;
 
+            // If the player is near and they're not carrying anything
             if (playerNear && player.gameObject.GetComponent<Shooting>().carrying == null)
             {
+                // For a sharp object, let the player pick it up
                 if (tag == "Sharp" && rb.isKinematic == true)
                 {
                     RegisterPickUp();
                     player.gameObject.GetComponent<Shooting>().PickUp(transform);
                     return;
                 }
+                // For a blunt object, show a prompt and let the player pick it up only they push a button
                 else if (tag == "Blunt")
                 {
                     promptObj.gameObject.SetActive(true);
