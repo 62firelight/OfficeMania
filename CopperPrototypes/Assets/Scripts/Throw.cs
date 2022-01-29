@@ -10,7 +10,7 @@ public class Throw : MonoBehaviour
 
     GameObject target;
 
-    GameObject carrying = null;
+    GameObject bluntObject = null;
 
     public GameObject player;
 
@@ -44,11 +44,11 @@ public class Throw : MonoBehaviour
             delay -= Time.deltaTime;
         }
 
-        if (carrying != null && delay <= 0)
+        if (bluntObject != null && delay <= 0)
         {
-            carrying.GetComponent<Interactable>().EnemyThrow(transform, 20, gameObject);
-            mostRecentObject = carrying;
-            carrying = null;
+            bluntObject.GetComponent<Interactable>().EnemyThrow(transform, 20, gameObject);
+            mostRecentObject = bluntObject;
+            bluntObject = null;
 
             delay = 2;
 
@@ -78,9 +78,9 @@ public class Throw : MonoBehaviour
     {
         chase.target = player;
 
-        carrying = item.gameObject;
+        bluntObject = item.gameObject;
 
-        item.gameObject.GetComponent<Interactable>().RegisterPickUp();
+        item.gameObject.GetComponent<Interactable>().RegisterEnemyPickUp();
         item.parent = transform;
         item.position = transform.position;
         item.rotation = transform.rotation;

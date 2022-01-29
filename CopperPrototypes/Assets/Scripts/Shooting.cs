@@ -14,7 +14,7 @@ public class Shooting : MonoBehaviour
 
     public Interactable nearestSharp;
 
-    public GameObject carrying = null;
+    public GameObject bluntObject = null;
 
     public GameObject currentObject = null;
 
@@ -22,31 +22,13 @@ public class Shooting : MonoBehaviour
 
     float startTime = 0f;
 
-    public void PickUp(Transform item)
-    {
-    
-        if (item.gameObject.tag == "Sharp")
-        {
-            sharpObjects.Enqueue(item.gameObject);
-        }
-        else
-        {
-            carrying = item.gameObject;
-        }
-        
-        item.parent = transform;
-        item.position = transform.position;
-        item.rotation = transform.rotation;
-        item.Translate(0, 0, -1);
-    }
-
     // Update is called once per frame
     void Update()
     {
         // Determine currently held object
-        if (carrying != null)
+        if (bluntObject != null)
         {
-            currentObject = carrying;
+            currentObject = bluntObject;
         }
         else if (sharpObjects.Count > 0)
         {
@@ -56,8 +38,6 @@ public class Shooting : MonoBehaviour
         {
             currentObject = null;
         }
-
-        Debug.Log(currentObject);
 
         if (Input.GetButtonDown("Fire1"))
         {
@@ -81,7 +61,7 @@ public class Shooting : MonoBehaviour
             }
             else
             {
-                carrying = null;
+                bluntObject = null;
             }
         }
 
@@ -90,5 +70,23 @@ public class Shooting : MonoBehaviour
         {
             nearestObject.RegisterPickUp();
         }
+    }
+
+    public void PickUp(Transform item)
+    {
+    
+        if (item.gameObject.tag == "Sharp")
+        {
+            sharpObjects.Enqueue(item.gameObject);
+        }
+        else
+        {
+            bluntObject = item.gameObject;
+        }
+        
+        item.parent = transform;
+        item.position = transform.position;
+        item.rotation = transform.rotation;
+        item.Translate(0, 0, -1);
     }
 }

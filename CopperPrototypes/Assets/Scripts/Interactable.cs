@@ -43,17 +43,14 @@ public class Interactable : MonoBehaviour
 
         if (pickedUp == false)
         {
-            // For a sharp object (that is still), let the player pick it up
-            if (tag == "Sharp")
+            // For a sharp object (that is still), let the player pick it up if they are near
+            if (tag == "Sharp" && rb.isKinematic == true)
             {
-                if (rb.isKinematic == true)
-                {
-                    bool playerNear = GetComponentInChildren<SharpTrigger>().playerNear;
+                bool playerNear = GetComponentInChildren<SharpTrigger>().playerNear;
 
-                    if (playerNear)
-                    {
-                        RegisterPickUp();
-                    }
+                if (playerNear)
+                {
+                    RegisterPickUp();
                 }
             }
             // For a blunt object, just show a prompt
@@ -62,7 +59,7 @@ public class Interactable : MonoBehaviour
                 Interactable obj = player.gameObject.GetComponent<Shooting>().nearestObject;
 
                 // If the player is near and they're not carrying anything
-                if (this == obj && player.gameObject.GetComponent<Shooting>().carrying == null)
+                if (this == obj && player.gameObject.GetComponent<Shooting>().bluntObject == null)
                 {
                     promptObj.gameObject.SetActive(true);
                 }
@@ -126,7 +123,7 @@ public class Interactable : MonoBehaviour
 
     public void RegisterPickUp()
     {
-        if (tag == "Blunt" && player.gameObject.GetComponent<Shooting>().carrying != null)
+        if (tag == "Blunt" && player.gameObject.GetComponent<Shooting>().bluntObject != null)
         {
             return;
         }
@@ -137,6 +134,14 @@ public class Interactable : MonoBehaviour
         promptObj.gameObject.SetActive(false);
 
         player.gameObject.GetComponent<Shooting>().PickUp(transform);
+    }
+
+    public void RegisterEnemyPickUp()
+    {
+        DisablePhysics();
+
+        pickedUp = true;
+        promptObj.gameObject.SetActive(false);
     }
 
     void OnCollisionEnter2D(Collision2D other)
