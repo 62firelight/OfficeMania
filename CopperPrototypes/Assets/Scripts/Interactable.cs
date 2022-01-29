@@ -151,6 +151,11 @@ public class Interactable : MonoBehaviour
         promptObj.gameObject.SetActive(false);
 
         player.gameObject.GetComponent<Shooting>().PickUp(transform);
+
+        if (isHeavy)
+        {
+            player.gameObject.GetComponent<PlayerMovement>().ApplySlow();
+        }
     }
 
     public void RegisterEnemyPickUp()

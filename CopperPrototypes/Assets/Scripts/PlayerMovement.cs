@@ -34,24 +34,6 @@ public class PlayerMovement : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-
-        if (GetComponent<Shooting>().currentObject != null)
-        {
-            bool isHeavy = GetComponent<Shooting>().currentObject.GetComponent<Interactable>().isHeavy;
-
-            if (isHeavy)
-            {
-                moveSpeed = 2.5f;
-            }
-            else
-            {
-                moveSpeed = 5f;
-            }
-        }
-        else
-        {
-            moveSpeed = 5f;
-        }
     }
 
     void FixedUpdate()
@@ -61,5 +43,15 @@ public class PlayerMovement : MonoBehaviour
         Vector2 lookDir = mousePos - rb.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = angle;
+    }
+
+    public void ApplySlow()
+    {
+        moveSpeed *= 0.5f;
+    }
+
+    public void RevertSlow()
+    {
+        moveSpeed *= 2f;
     }
 }

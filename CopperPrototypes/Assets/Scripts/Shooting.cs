@@ -61,6 +61,11 @@ public class Shooting : MonoBehaviour
             }
             else
             {
+                if (bluntObject.GetComponent<Interactable>().isHeavy)
+                {
+                    GetComponent<PlayerMovement>().RevertSlow();
+                }
+
                 bluntObject = null;
             }
         }
