@@ -64,5 +64,10 @@ public class Shooting : MonoBehaviour
 
             carrying = null;
         }
+
+        if (nearestObject != null && Input.GetButtonDown("Fire2"))
+        {
+            nearestObject.RegisterPickUp();
+        }
     }
 }

@@ -30,6 +30,42 @@ public class Interactable : MonoBehaviour
         DisablePhysics();
         CreatePrompt();
     }
+
+    void Update()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        // Disable physics if the object is moving at a slow enough speed
+        if (rb.velocity.magnitude <= 0.25f)
+        {
+            DisablePhysics();
+        }
+
+        if (pickedUp == false)
+        {
+            Interactable obj = player.gameObject.GetComponent<Shooting>().nearestObject;
+
+            // If the player is near and they're not carrying anything
+            if (this == obj && player.gameObject.GetComponent<Shooting>().carrying == null)
+            {
+                // For a sharp object, let the player pick it up
+                if (tag == "Sharp" && rb.isKinematic == true)
+                {
+                    RegisterPickUp();
+                }
+                // For a blunt object, just show a prompt
+                else if (tag == "Blunt")
+                {
+                    promptObj.gameObject.SetActive(true);
+                }
+            }
+            else
+            {
+                // Hide prompt if object has been picked up
+                promptObj.gameObject.SetActive(false);
+            }
+        }
+    }
     
     public void Throw(Transform firePoint, float force)
     {
@@ -85,50 +121,8 @@ public class Interactable : MonoBehaviour
 
         pickedUp = true;
         promptObj.gameObject.SetActive(false);
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-
-        // Disable physics if the object is moving at a slow enough speed
-        if (rb.velocity.magnitude <= 0.25f)
-        {
-            DisablePhysics();
-        }
-
-        if (pickedUp == false)
-        {
-            Interactable obj = player.gameObject.GetComponent<Shooting>().nearestObject;
-
-            // If the player is near and they're not carrying anything
-            if (this == obj && player.gameObject.GetComponent<Shooting>().carrying == null)
-            {
-                // For a sharp object, let the player pick it up
-                if (tag == "Sharp" && rb.isKinematic == true)
-                {
-                    RegisterPickUp();
-                    player.gameObject.GetComponent<Shooting>().PickUp(transform);
-                    return;
-                }
-                // For a blunt object, show a prompt and let the player pick it up only they push a button
-                else if (tag == "Blunt")
-                {
-                    promptObj.gameObject.SetActive(true);
-
-                    if (Input.GetButtonDown("Fire2"))
-                    {
-                        RegisterPickUp();
-                        player.gameObject.GetComponent<Shooting>().PickUp(transform);
-                    }
-                }
-            }
-            else
-            {
-                promptObj.gameObject.SetActive(false);
-            }
-        }
+        player.gameObject.GetComponent<Shooting>().PickUp(transform);
     }
 
     void OnCollisionEnter2D(Collision2D other)
