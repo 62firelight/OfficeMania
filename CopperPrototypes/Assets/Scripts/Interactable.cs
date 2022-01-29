@@ -75,6 +75,16 @@ public class Interactable : MonoBehaviour
     
     public void Throw(Transform firePoint, float force)
     {
+        // Alter bounciness depending on charge 
+        if (coll.sharedMaterial != null)
+        {
+            float percent = (force - 20f) / 40f;
+
+            coll.sharedMaterial.bounciness = 0.5f * percent;
+        }
+
+        Debug.Log(coll.bounciness);
+
         EnablePhysics();
 
         pickedUp = false;
