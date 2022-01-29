@@ -14,22 +14,17 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movement;
     Vector2 mousePos;
 
-    private pickup Pickup;
-
-    private void Start()
-    {
-        // Pickup = gameObject.GetComponent<pickup>();
-        // Pickup.Direction = new Vector2(0, -1); 
-    }
-
     // Update is called once per frame
     void Update()
     {
+        // Get movement vectors for moving the player
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
+        // Get mouse position for rotating the player
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
+        // Reload scene whenever R is pushed
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -38,8 +33,10 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Move the player
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
+        // Rotate the player
         Vector2 lookDir = mousePos - rb.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = angle;

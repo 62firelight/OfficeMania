@@ -71,7 +71,6 @@ public class Interactable : MonoBehaviour
                     promptObj.gameObject.SetActive(false);
                 }
             }
-            
         }
     }
     
@@ -88,7 +87,6 @@ public class Interactable : MonoBehaviour
         Debug.Log("Object Bounciness: " + coll.bounciness);
 
         EnablePhysics();
-
         pickedUp = false;
 
         rb.AddForce(firePoint.up * force, ForceMode2D.Impulse);
@@ -121,7 +119,6 @@ public class Interactable : MonoBehaviour
     {
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0;
-
         rb.isKinematic = true;
         coll.enabled = false;
 
@@ -146,17 +143,14 @@ public class Interactable : MonoBehaviour
         }
 
         DisablePhysics();
-
         pickedUp = true;
         promptObj.gameObject.SetActive(false);
-
         player.gameObject.GetComponent<PlayerThrowing>().PickUp(transform);
     }
 
     public void RegisterEnemyPickUp()
     {
         DisablePhysics();
-
         pickedUp = true;
         promptObj.gameObject.SetActive(false);
     }

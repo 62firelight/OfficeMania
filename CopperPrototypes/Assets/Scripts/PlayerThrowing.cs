@@ -46,14 +46,15 @@ public class PlayerThrowing : MonoBehaviour
         // Throw an object
         if (Input.GetButtonUp("Fire1") && currentObject != null)
         {
+            // Calculate magnitude of throw force
             float mag = Time.time - startTime;
-
             mag = Mathf.Clamp(mag, 0.5f, 1.5f);
-
             Debug.Log("Key held down for " + (Time.time - startTime).ToString("F2") + "s for " + force * mag + " force");
 
+            // Throw object using calculated force
             currentObject.GetComponent<Interactable>().Throw(firePoint, force * mag);
 
+            // Change the state of the player's currently held objects
             if (currentObject.tag == "Sharp")
             {
                 sharpObjects.Dequeue();
@@ -80,38 +81,36 @@ public class PlayerThrowing : MonoBehaviour
         }
     }
 
-    public void PickUp(Transform item)
+    public void PickUp(Transform obj)
     {
-    
-        if (item.gameObject.tag == "Sharp")
+        // Add object to player's inventory
+        if (obj.gameObject.tag == "Sharp")
         {
-            sharpObjects.Enqueue(item.gameObject);
+            sharpObjects.Enqueue(obj.gameObject);
         }
         else
         {
-            bluntObject = item.gameObject;
+            bluntObject = obj.gameObject;
         }
         
-        item.parent = transform;
-
-        if (item.gameObject.GetComponent<Interactable>().isHeavy)
+        // Change object position to show that the player is holding it
+        obj.parent = transform;
+        if (obj.gameObject.GetComponent<Interactable>().isHeavy)
         {
             
-            item.localPosition = firePoint.localPosition;
+            obj.localPosition = firePoint.localPosition;
 
             // Slow down player movement by 50%
             GetComponent<PlayerMovement>().ApplySlow();
 
             // Disable collision between player and heavy object while player is holding it
-            Physics2D.IgnoreCollision(item.GetChild(1).GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            Physics2D.IgnoreCollision(obj.GetChild(1).GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
         else
         {
-            item.position = transform.position;
+            obj.position = transform.position;
         }
-
-        item.rotation = transform.rotation;
-        
-        item.Translate(0, 0, -1);
+        obj.rotation = transform.rotation;
+        obj.Translate(0, 0, -1);
     }
 }
