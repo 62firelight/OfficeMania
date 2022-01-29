@@ -12,6 +12,8 @@ public class Shooting : MonoBehaviour
 
     public Interactable nearestObject;
 
+    public Interactable nearestSharp;
+
     public GameObject carrying = null;
 
     public int sharpCount = 0;
@@ -41,12 +43,12 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetButtonDown("Fire1"))
         {
             startTime = Time.time;
         }
 
+        // Throw an object
         if (Input.GetButtonUp("Fire1") && carrying != null)
         {
             float mag = Time.time - startTime;
@@ -65,7 +67,8 @@ public class Shooting : MonoBehaviour
             carrying = null;
         }
 
-        if (nearestObject != null && Input.GetButtonDown("Fire2"))
+        // Right-click near a blunt object to pick it up
+        if (Input.GetButtonDown("Fire2") && nearestObject != null && nearestObject.gameObject.tag == "Blunt")
         {
             nearestObject.RegisterPickUp();
         }
