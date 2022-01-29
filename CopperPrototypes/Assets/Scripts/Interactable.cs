@@ -100,10 +100,10 @@ public class Interactable : MonoBehaviour
 
         if (pickedUp == false)
         {
-            bool playerNear = interactTrigger.playerNear;
+            Interactable obj = player.gameObject.GetComponent<Shooting>().nearestObject;
 
             // If the player is near and they're not carrying anything
-            if (playerNear && player.gameObject.GetComponent<Shooting>().carrying == null)
+            if (this == obj && player.gameObject.GetComponent<Shooting>().carrying == null)
             {
                 // For a sharp object, let the player pick it up
                 if (tag == "Sharp" && rb.isKinematic == true)

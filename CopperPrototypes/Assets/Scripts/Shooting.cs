@@ -10,6 +10,8 @@ public class Shooting : MonoBehaviour
 
     public float force = 20f;
 
+    public Interactable nearestObject;
+
     public GameObject carrying = null;
 
     public int sharpCount = 0;
