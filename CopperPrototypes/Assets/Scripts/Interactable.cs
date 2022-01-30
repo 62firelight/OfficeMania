@@ -111,7 +111,6 @@ public class Interactable : MonoBehaviour
             Physics2D.IgnoreCollision(enemy.GetComponent<Collider2D>(), transform.GetChild(1).GetComponent<Collider2D>());
         }
 
-        Debug.Log("Enemy throw");
         rb.AddForce(firePoint.up * force, ForceMode2D.Impulse);
         
         transform.Translate(0, 0, 1);
