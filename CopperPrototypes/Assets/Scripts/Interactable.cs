@@ -15,7 +15,11 @@ public class Interactable : MonoBehaviour
 
     public bool pickedUp = false;
 
-    public int thrownByPlayer = 0;
+    // Flag to determine who the object was thrown by
+    // 0 - no one
+    // 1 - player
+    // 2 - enemy
+    public int thrownFlag = 0;
 
     private Transform promptObj;
 
@@ -97,7 +101,7 @@ public class Interactable : MonoBehaviour
         transform.Translate(0, 0, 1);
         transform.parent = null;
 
-        thrownByPlayer = 1;
+        thrownFlag = 1;
     }
 
     public void EnemyThrow(Transform firePoint, float force, GameObject enemy)
@@ -116,7 +120,7 @@ public class Interactable : MonoBehaviour
         transform.Translate(0, 0, 1);
         transform.parent = null;
 
-        thrownByPlayer = 2;
+        thrownFlag = 2;
     }
 
     public void EnablePhysics()
@@ -136,7 +140,7 @@ public class Interactable : MonoBehaviour
         {
             coll.sharedMaterial.bounciness = 0.5f;
         }
-        thrownByPlayer = 0;
+        thrownFlag = 0;
     }
 
     void CreatePrompt()
