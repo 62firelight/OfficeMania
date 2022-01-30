@@ -56,7 +56,7 @@ public class Throw : MonoBehaviour
         // Throw an object if we are holding it for at least 2 seconds
         if (bluntObject != null && delay <= 0)
         {
-            bluntObject.GetComponent<Interactable>().EnemyThrow(transform, Random.Range(20, 60), gameObject);
+            bluntObject.GetComponent<Interactable>().EnemyThrow(transform, 30, gameObject);
             mostRecentObject = bluntObject;
             bluntObject = null;
 
