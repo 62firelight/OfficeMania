@@ -99,12 +99,17 @@ public class Interactable : MonoBehaviour
     public void EnemyThrow(Transform firePoint, float force, GameObject enemy)
     {
         EnablePhysics();
-
         pickedUp = false;
 
-        rb.AddForce(firePoint.up * force, ForceMode2D.Impulse);
         Physics2D.IgnoreCollision(enemy.GetComponent<Collider2D>(), coll);
+        if (isHeavy)
+        {
+            Physics2D.IgnoreCollision(enemy.GetComponent<Collider2D>(), transform.GetChild(1).GetComponent<Collider2D>());
+        }
 
+        Debug.Log("Enemy throw");
+        rb.AddForce(firePoint.up * force, ForceMode2D.Impulse);
+        
         transform.Translate(0, 0, 1);
         transform.parent = null;
     }

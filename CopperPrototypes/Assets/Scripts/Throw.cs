@@ -14,7 +14,9 @@ public class Throw : MonoBehaviour
 
     public GameObject player;
 
-    GameObject mostRecentObject = null;
+    public Transform firePoint;
+
+    public GameObject mostRecentObject = null;
 
     float delay;
 
@@ -54,7 +56,7 @@ public class Throw : MonoBehaviour
         // Throw an object if we are holding it for at least 2 seconds
         if (bluntObject != null && delay <= 0)
         {
-            bluntObject.GetComponent<Interactable>().EnemyThrow(transform, 20, gameObject);
+            bluntObject.GetComponent<Interactable>().EnemyThrow(transform, Random.Range(20, 60), gameObject);
             mostRecentObject = bluntObject;
             bluntObject = null;
 
@@ -90,7 +92,16 @@ public class Throw : MonoBehaviour
 
         item.gameObject.GetComponent<Interactable>().RegisterEnemyPickUp();
         item.parent = transform;
-        item.position = transform.position;
+
+        if (item.gameObject.GetComponent<Interactable>().isHeavy)
+        {
+            item.position = firePoint.position;
+        }
+        else
+        {
+            item.position = transform.position;
+        }
+
         item.rotation = transform.rotation;
         item.Translate(0, 0, -1);
 
