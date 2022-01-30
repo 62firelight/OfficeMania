@@ -45,6 +45,12 @@ public class Throw : MonoBehaviour
             delay -= Time.deltaTime;
         }
 
+        if (mostRecentObject != null && delay <= 1)
+        {
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), mostRecentObject.GetComponent<Collider2D>(), false);
+            mostRecentObject = null;
+        }
+
         target = chase.target;
 
         // If the player got to the object I want first, find another object
@@ -79,6 +85,7 @@ public class Throw : MonoBehaviour
         float distance = Vector2.Distance(transform.position, target.transform.position);
         if (distance < 1.5f && delay <= 0)
         {
+            Debug.Log(gameObject.name + " picks up " + chase.target);
             EnemyPickUp(chase.target.transform);
         }
 
