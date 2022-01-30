@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 5403261870387305025}
   - component: {fileID: 2672348637521643022}
   - component: {fileID: 3782174989788927479}
+  - component: {fileID: 8169684749161302266}
   - component: {fileID: 5403261870387305024}
   - component: {fileID: 475628663}
   m_Layer: 0
@@ -237,6 +238,9 @@ MonoBehaviour:
   moveSpeed: 5
   rb: {fileID: 5403261870387305024}
   cam: {fileID: 0}
+  movement: {x: 0, y: 0}
+  knockback: 0
+  knockbackForce: {x: 0, y: 0}
 --- !u!114 &2672348637521643022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +271,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ad6a0602984be4bad36d2fed550e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMaxHealth: 3
+  playerHealth: 0
+--- !u!114 &8169684749161302266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5403261870387305036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f417ca46b2b652448c74da1e6921633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: fb3e9f643e894d249a98ff53b32bf31e, type: 2}
+  duration: 1
 --- !u!50 &5403261870387305024
 Rigidbody2D:
   serializedVersion: 4

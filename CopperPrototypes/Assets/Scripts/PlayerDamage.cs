@@ -40,6 +40,8 @@ public class PlayerDamage : MonoBehaviour
 
     void RegisterDamage(Collision2D other)
     {
+        gameObject.GetComponent<BarthaSzabolcs.Tutorial_SpriteFlash.ColoredFlash>().Flash(Color.white);
+
         // Decrement health
         Debug.Log("Player damaged");
         playerHealth--;
