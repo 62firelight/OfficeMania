@@ -73,8 +73,6 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log(other.gameObject.tag);
-
         if (other.gameObject.tag == "Blunt")
         {
             // Do nothing if we are currently being knocked back

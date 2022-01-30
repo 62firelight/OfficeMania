@@ -23,6 +23,7 @@ public class Throw : MonoBehaviour
     {
         chase = GetComponent<Chase>();
 
+        // Find the closest object to pick up
         if (chase.target == null)
         {
             GameObject closestObject = GetClosestObject(mostRecentObject);
@@ -37,13 +38,20 @@ public class Throw : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        target = chase.target;
-
         if (delay >= 0)
         {
             delay -= Time.deltaTime;
         }
 
+        target = chase.target;
+
+        // If the player got to the object I want first, find another object
+        if (chase.target == player.GetComponent<PlayerThrowing>().bluntObject)
+        {
+            chase.target = GetClosestObject(mostRecentObject);
+        }
+
+        // Throw an object if we are holding it for at least 2 seconds
         if (bluntObject != null && delay <= 0)
         {
             bluntObject.GetComponent<Interactable>().EnemyThrow(transform, 20, gameObject);
@@ -65,9 +73,9 @@ public class Throw : MonoBehaviour
             return;
         }
 
+        // Pick up object if it's close enough
         float distance = Vector2.Distance(transform.position, target.transform.position);
-
-        if (distance < 1 && delay <= 0)
+        if (distance < 1.5f && delay <= 0)
         {
             EnemyPickUp(chase.target.transform);
         }
@@ -104,8 +112,17 @@ public class Throw : MonoBehaviour
                 continue;
             }
 
+            // Ignore player held objects
+            if (obj == player.GetComponent<PlayerThrowing>().bluntObject)
+            {
+                continue;
+            }
+
+            // Find distance to object
             distance = Vector2.Distance(transform.position, obj.transform.position);
 
+            // If the distance to the object is closer than the known closest distance, 
+            // then this object must be closest
             if (distance < closestDistance)
             {
                 closestDistance = distance;

@@ -22,8 +22,6 @@ public class FlipTable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(uprightCollider);
-
         if (isInteractable)
         {
             if (Input.GetKeyDown(KeyCode.LeftShift))
