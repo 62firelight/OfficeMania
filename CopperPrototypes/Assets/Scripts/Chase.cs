@@ -47,6 +47,11 @@ public class Chase : MonoBehaviour {
 			return;
         }
 
+		if (GetComponent<Enemy>().health <= 0)
+		{
+			return;
+		}
+
 		enabled = roomMaster.GetComponent<RoomMaster>().aiEnabled;
 
 		if (enabled && rb.isKinematic == true && pathfinder != null) {

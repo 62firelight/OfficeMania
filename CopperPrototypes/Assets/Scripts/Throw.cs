@@ -45,6 +45,11 @@ public class Throw : MonoBehaviour
             delay -= Time.deltaTime;
         }
 
+        if (GetComponent<Enemy>().health <= 0)
+		{
+			return;
+		}
+
         if (mostRecentObject != null && delay <= 1)
         {
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), mostRecentObject.GetComponent<Collider2D>(), false);
