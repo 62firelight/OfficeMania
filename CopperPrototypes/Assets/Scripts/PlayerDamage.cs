@@ -32,16 +32,16 @@ public class PlayerDamage : MonoBehaviour
         {
             RegisterDamage();
         }
+    }
 
-        void RegisterDamage()
+    void RegisterDamage()
+    {
+        Debug.Log("Player damaged");
+        playerHealth--;
+
+        if (playerHealth <= 0)
         {
-            Debug.Log("Player damaged");
-            playerHealth--;
-
-            if (playerHealth <= 0)
-            {
-                Debug.Log("Player dead");
-            }
+            Debug.Log("Player dead");
         }
     }
 }
