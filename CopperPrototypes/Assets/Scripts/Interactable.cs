@@ -85,9 +85,12 @@ public class Interactable : MonoBehaviour
         // Alter bounciness depending on charge 
         if (coll.sharedMaterial != null)
         {
-            float percent = (force - 20f) / 40f;
+            float percent = (force - 20f) / 40f * 100;
 
-            coll.sharedMaterial.bounciness = 0.5f * percent;
+            if (percent > 25)
+            {
+                coll.sharedMaterial.bounciness = 0.5f;
+            }
         }
 
         Debug.Log("Object Bounciness: " + coll.bounciness);
