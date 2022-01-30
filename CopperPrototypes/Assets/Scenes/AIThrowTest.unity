@@ -5615,6 +5615,10 @@ PrefabInstance:
       propertyPath: gridObject
       value: 
       objectReference: {fileID: 1622644147}
+    - target: {fileID: 8331516302662365763, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
+      propertyPath: knockbackForce
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8331516302662365765, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
       propertyPath: m_Name
       value: EnemyToughAI
