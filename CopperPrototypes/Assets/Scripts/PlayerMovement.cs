@@ -11,8 +11,12 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Camera cam;
 
-    Vector2 movement;
+    public Vector2 movement;
     Vector2 mousePos;
+
+    public bool knockback = false;
+
+    public Vector2 knockbackForce;
 
     // Update is called once per frame
     void Update()
@@ -42,22 +46,21 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Move the player
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        if (knockback)
+        {
+            rb.AddForce(knockbackForce, ForceMode2D.Impulse);
+            knockback = false;
+        }
+        else
+        {
+            // Move the player
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+            // rb.AddForce(movement * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
+        }
 
         // Rotate the player
         Vector2 lookDir = mousePos - rb.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = angle;
     }
-
-    // public void ApplySlow()
-    // {
-    //     moveSpeed *= 0.5f;
-    // }
-
-    // public void RevertSlow()
-    // {
-    //     moveSpeed *= 2f;
-    // }
 }
