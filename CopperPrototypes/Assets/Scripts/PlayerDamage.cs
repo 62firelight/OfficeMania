@@ -17,20 +17,25 @@ public class PlayerDamage : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        // Check if the player collided with an enemy
+        if (other.gameObject.tag == "Enemy")
+        {
+            RegisterDamage();
+        }
+
         // Check if the player collided with a thrown object
         Interactable obj = other.gameObject.GetComponent<Interactable>();
 
-        if (obj == null)
-        {
-            return;
-        }
-
         // If the player has collided, and the object was thrown by an enemy,
         // let the player take damage
-        if (obj.thrownFlag == 2)
+        if (obj != null && obj.thrownFlag == 2)
+        {
+            RegisterDamage();
+        }
+
+        void RegisterDamage()
         {
             Debug.Log("Player damaged");
-
             playerHealth--;
 
             if (playerHealth <= 0)
