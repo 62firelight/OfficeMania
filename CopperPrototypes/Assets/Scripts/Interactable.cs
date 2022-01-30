@@ -105,6 +105,8 @@ public class Interactable : MonoBehaviour
         transform.parent = null;
 
         thrownFlag = 1;
+
+        AIMaster.takenObjects.Remove(gameObject);
     }
 
     public void EnemyThrow(Transform firePoint, float force, GameObject enemy)
@@ -124,6 +126,8 @@ public class Interactable : MonoBehaviour
         transform.parent = null;
 
         thrownFlag = 2;
+
+        AIMaster.takenObjects.Remove(gameObject);
     }
 
     public void EnablePhysics()
@@ -164,6 +168,7 @@ public class Interactable : MonoBehaviour
         pickedUp = true;
         promptObj.gameObject.SetActive(false);
         player.gameObject.GetComponent<PlayerThrowing>().PickUp(transform);
+        AIMaster.takenObjects.Add(gameObject);
     }
 
     public void RegisterEnemyPickUp()
@@ -171,6 +176,7 @@ public class Interactable : MonoBehaviour
         DisablePhysics();
         pickedUp = true;
         promptObj.gameObject.SetActive(false);
+        AIMaster.takenObjects.Add(gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D other)

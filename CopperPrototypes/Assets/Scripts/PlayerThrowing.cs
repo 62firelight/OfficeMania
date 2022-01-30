@@ -75,7 +75,7 @@ public class PlayerThrowing : MonoBehaviour
         }
 
         // Right-click near a blunt object to pick it up
-        if (Input.GetButtonDown("Fire2") && nearestObject != null && nearestObject.gameObject.tag == "Blunt")
+        if (Input.GetButtonDown("Fire2") && nearestObject != null && nearestObject.gameObject.tag == "Blunt" && AIMaster.takenObjects.Contains(nearestObject.gameObject) == false) 
         {
             nearestObject.RegisterPickUp();
         }
