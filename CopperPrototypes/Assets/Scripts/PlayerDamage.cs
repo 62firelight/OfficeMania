@@ -9,6 +9,8 @@ public class PlayerDamage : MonoBehaviour
 
     public int playerHealth;
 
+    public float invulnerableCooldown = 0f;
+
     private Rigidbody2D rb;
 
     void Start()
@@ -18,9 +20,33 @@ public class PlayerDamage : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
     }
+    
+    void Update()
+    {
+        if (invulnerableCooldown > 0)
+        {
+            invulnerableCooldown -= Time.deltaTime;
+
+            // Flash the player sprite to indicate invulnerable cooldown is still active
+            if (invulnerableCooldown > 0)
+            {
+                GetComponent<Renderer>().enabled = !GetComponent<Renderer>().enabled;
+            }
+            else
+            {
+                GetComponent<Renderer>().enabled = true;
+            }
+        }
+    }
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        // Don't register damage if player is invulnerable
+        if (invulnerableCooldown > 0)
+        {
+            return;
+        }
+
         // Check if the player collided with an enemy
         if (other.gameObject.tag == "Enemy")
         {
@@ -50,6 +76,8 @@ public class PlayerDamage : MonoBehaviour
         {
             Debug.Log("Player dead");
         }
+        
+        invulnerableCooldown = 1f;
 
         // Knock the player back
         // Vector2 diff = (transform.position - other.gameObject.transform.position).normalized;
