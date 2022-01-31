@@ -1728,9 +1728,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4882c2f64cf044db95a439f6f3d7136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullHeart: {fileID: 0}
-  halfHeart: {fileID: 0}
-  emtpyHeart: {fileID: 0}
+  fullHeart: {fileID: 4606908045521496030, guid: b71931b76f135403d89f9529711397d7, type: 3}
+  halfHeart: {fileID: -4195582761621981391, guid: b71931b76f135403d89f9529711397d7, type: 3}
+  emtpyHeart: {fileID: 516283494600122218, guid: b71931b76f135403d89f9529711397d7, type: 3}
 --- !u!1001 &501739457
 PrefabInstance:
   m_ObjectHideFlags: 0
