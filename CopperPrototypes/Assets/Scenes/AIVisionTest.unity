@@ -202,6 +202,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyAI (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4958288219161743938, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4958288219161743943, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
       propertyPath: m_CollisionDetection
       value: 0
@@ -5530,10 +5534,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 432031597}
     - target: {fileID: 1172907430912255948, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172907430912255948, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
       propertyPath: roomMaster
       value: 
       objectReference: {fileID: 183765692}
@@ -5544,10 +5544,6 @@ PrefabInstance:
     - target: {fileID: 8331516302662365765, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
       propertyPath: m_Name
       value: EnemyToughAI
-      objectReference: {fileID: 0}
-    - target: {fileID: 8331516302662365765, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8331516302662365767, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
       propertyPath: m_RootOrder
