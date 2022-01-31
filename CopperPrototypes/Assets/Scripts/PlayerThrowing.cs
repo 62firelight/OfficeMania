@@ -117,6 +117,7 @@ public class PlayerThrowing : MonoBehaviour
     void OnGUI()
     {
         GUI.skin.label.fontSize = 72;
+        GUI.skin.label.alignment = TextAnchor.UpperLeft;
 
         GUI.Label(new Rect(0, 0, Camera.main.pixelWidth, Camera.main.pixelHeight), GetComponent<PlayerDamage>().playerHealth + " Health, " + sharpObjects.Count + " Sharp Object" + (sharpObjects.Count == 1 ? "" : "s"));
     }
