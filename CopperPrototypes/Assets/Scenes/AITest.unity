@@ -5530,10 +5530,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 432031597}
     - target: {fileID: 1172907430912255948, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172907430912255948, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
       propertyPath: roomMaster
       value: 
       objectReference: {fileID: 183765692}
