@@ -1627,6 +1627,7 @@ GameObject:
   - component: {fileID: 501393956}
   - component: {fileID: 501393955}
   - component: {fileID: 501393954}
+  - component: {fileID: 501393958}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1715,6 +1716,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &501393958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501393953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4882c2f64cf044db95a439f6f3d7136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fullHeart: {fileID: 0}
+  halfHeart: {fileID: 0}
+  emtpyHeart: {fileID: 0}
 --- !u!1001 &501739457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29441,6 +29457,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3782174989788927479, guid: 9d84248adb44d2243b89e24c3efe7daf, type: 3}
+      propertyPath: playerHealth
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782174989788927479, guid: 9d84248adb44d2243b89e24c3efe7daf, type: 3}
+      propertyPath: playerMaxHealth
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5403261870387305025, guid: 9d84248adb44d2243b89e24c3efe7daf, type: 3}
       propertyPath: cam
       value: 
