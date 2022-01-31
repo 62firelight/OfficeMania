@@ -14,6 +14,8 @@ public class RoomMaster : MonoBehaviour
 
     public bool aiEnabled = false;
 
+    public bool seePlayer = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +30,7 @@ public class RoomMaster : MonoBehaviour
     {
         if (aiEnabled && door != null)
         {
-            // Assume all enemies unless we know otherwise
+            // Assume all enemies are clear unless we know otherwise
             bool enemiesClear = true;
 
             // Check if room has no enemies conscious
@@ -86,5 +88,10 @@ public class RoomMaster : MonoBehaviour
 
             transform.GetChild(0).gameObject.SetActive(false);
         }
+    }
+
+    public void SetSeePlayer(bool status)
+    {
+        seePlayer = status;
     }
 }

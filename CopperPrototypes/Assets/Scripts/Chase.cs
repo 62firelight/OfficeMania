@@ -56,6 +56,8 @@ public class Chase : MonoBehaviour {
 
 		enabled = roomMaster.GetComponent<RoomMaster>().aiEnabled;
 
+		seePlayer = roomMaster.GetComponent<RoomMaster>().seePlayer;
+
 		if (enabled && seePlayer && rb.isKinematic == true && pathfinder != null) {
 			//Travel towards the target object at certain speed.
 			pathfinder.GoTowards(target, speed);

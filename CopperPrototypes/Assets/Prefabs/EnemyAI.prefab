@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 58651285b0e249842a3cf1aec6cadbdd, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -150,6 +150,7 @@ MonoBehaviour:
   target: {fileID: 0}
   speed: 8
   enabled: 1
+  seePlayer: 0
   rb: {fileID: 0}
   roomMaster: {fileID: 0}
 --- !u!50 &4958288219161743943
