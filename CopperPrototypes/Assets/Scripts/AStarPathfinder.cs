@@ -52,6 +52,11 @@ public class AStarPathfinder : MonoBehaviour {
 		timeKeeper = Time.time;
 	}
 
+	public void ResetTimeKeeper()
+    {
+		timeKeeper = Time.time;
+    }
+
 	/* Moves game object at certain speed by changing its transform postion to follow
 	 * shortest path along the grid towards target game object
 	 * 

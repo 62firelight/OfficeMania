@@ -22,6 +22,8 @@ public class Chase : MonoBehaviour {
 
 	public bool enabled = true;
 
+	public bool seePlayer = false;
+
 	public Rigidbody2D rb;
 
 	public GameObject roomMaster = null;
@@ -54,9 +56,14 @@ public class Chase : MonoBehaviour {
 
 		enabled = roomMaster.GetComponent<RoomMaster>().aiEnabled;
 
-		if (enabled && rb.isKinematic == true && pathfinder != null) {
+		if (enabled && seePlayer && rb.isKinematic == true && pathfinder != null) {
 			//Travel towards the target object at certain speed.
 			pathfinder.GoTowards(target, speed);
+		}
+		else
+        {
+			// Reset AI timeKeeper if nothing happens
+			pathfinder.ResetTimeKeeper();
 		}
 	}
 }

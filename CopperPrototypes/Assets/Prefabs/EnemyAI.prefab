@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1
   health: 0
-  knockbackForce: 6
+  knockbackForce: 50
   knockbackTime: 0
 --- !u!114 &1882021223002456387
 MonoBehaviour:
@@ -150,6 +150,8 @@ MonoBehaviour:
   target: {fileID: 0}
   speed: 8
   enabled: 1
+  rb: {fileID: 0}
+  roomMaster: {fileID: 0}
 --- !u!50 &4958288219161743943
 Rigidbody2D:
   serializedVersion: 4
