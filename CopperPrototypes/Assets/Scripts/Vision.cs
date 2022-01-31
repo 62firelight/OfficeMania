@@ -22,7 +22,7 @@ public class Vision : MonoBehaviour
         if (other.tag == "Player" && roomMaster.seePlayer == false)
         {
             roomMaster.SetSeePlayer(true);
-            dialogue.DisplayDialogue("I see them!");
+            dialogue.DisplayDialogue("It's the guy from the email!");
         }
     }
 }
