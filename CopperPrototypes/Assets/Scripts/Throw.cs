@@ -59,7 +59,7 @@ public class Throw : MonoBehaviour
         target = chase.target;
 
         // If the player got to the object I want first, find another object
-        if (chase.target == player.GetComponent<PlayerThrowing>().bluntObject || AIMaster.takenObjects.Contains(chase.target) == false)
+        if (chase.target == player.GetComponent<PlayerThrowing>().bluntObject || AIMaster.takenObjects.Contains(chase.target) == true)
         {
             chase.target = GetClosestObject(mostRecentObject);
         }
