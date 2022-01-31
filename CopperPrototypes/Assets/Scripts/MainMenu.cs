@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class MainMenu : MonoBehaviour {
+
+    // This is the start button on the main menu
+    public void StartGame() {
+        // This will take you to the starting scene
+        SceneManager.LoadScene("LevelDesign1");
+    }
+
+    // This is the controls button on the main menu
+    public void ShowControls() {
+        // This will show the user the controls
+        SceneManager.LoadScene("Controls");
+    }
+
+    //This is the quit button on the main menu
+    public void QuitGame() {
+        // This will quit the application
+        Application.Quit();
+    }
+}
