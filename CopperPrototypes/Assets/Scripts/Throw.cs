@@ -10,11 +10,13 @@ public class Throw : MonoBehaviour
 
     GameObject target;
 
-    GameObject carrying = null;
+    GameObject bluntObject = null;
 
     public GameObject player;
 
-    GameObject mostRecentObject = null;
+    public Transform firePoint;
+
+    public GameObject mostRecentObject = null;
 
     float delay;
 
@@ -22,24 +24,52 @@ public class Throw : MonoBehaviour
     void Start()
     {
         chase = GetComponent<Chase>();
+
+        // Find the closest object to pick up
+        if (chase.target == null)
+        {
+            GameObject closestObject = GetClosestObject(mostRecentObject);
+
+            if (closestObject != null)
+            {
+                chase.target = closestObject;
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        target = chase.target;
-
         if (delay >= 0)
         {
             delay -= Time.deltaTime;
         }
 
-        if (carrying != null && delay <= 0)
+        if (GetComponent<Enemy>().health <= 0)
+		{
+			return;
+		}
+
+        if (mostRecentObject != null && delay <= 1)
         {
-            Debug.Log("Enemy threw object");
-            carrying.GetComponent<Interactable>().EnemyThrow(transform, 20, gameObject);
-            mostRecentObject = carrying;
-            carrying = null;
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), mostRecentObject.GetComponent<Collider2D>(), false);
+            mostRecentObject = null;
+        }
+
+        target = chase.target;
+
+        // If the player got to the object I want first, find another object
+        if (chase.target == player.GetComponent<PlayerThrowing>().bluntObject || AIMaster.takenObjects.Contains(chase.target) == false)
+        {
+            chase.target = GetClosestObject(mostRecentObject);
+        }
+
+        // Throw an object if we are holding it for at least 2 seconds
+        if (bluntObject != null && delay <= 0)
+        {
+            bluntObject.GetComponent<Interactable>().EnemyThrow(transform, 30, gameObject);
+            mostRecentObject = bluntObject;
+            bluntObject = null;
 
             delay = 2;
 
@@ -56,13 +86,11 @@ public class Throw : MonoBehaviour
             return;
         }
 
-        Debug.Log("Enemy is chasing " + target.name);
-
+        // Pick up object if it's close enough
         float distance = Vector2.Distance(transform.position, target.transform.position);
-        Debug.Log("Enemy is " + distance + " units away from " + target.name);
-
-        if (distance < 0.5 && delay <= 0)
+        if (distance < 1.5f && delay <= 0)
         {
+            Debug.Log(gameObject.name + " picks up " + chase.target);
             EnemyPickUp(chase.target.transform);
         }
 
@@ -70,14 +98,22 @@ public class Throw : MonoBehaviour
 
     void EnemyPickUp(Transform item)
     {
-        Debug.Log("Enemy has picked up " + item);
         chase.target = player;
 
-        carrying = item.gameObject;
+        bluntObject = item.gameObject;
 
-        item.gameObject.GetComponent<Interactable>().RegisterPickUp();
+        item.gameObject.GetComponent<Interactable>().RegisterEnemyPickUp();
         item.parent = transform;
-        item.position = transform.position;
+
+        if (item.gameObject.GetComponent<Interactable>().isHeavy)
+        {
+            item.position = firePoint.position;
+        }
+        else
+        {
+            item.position = transform.position;
+        }
+
         item.rotation = transform.rotation;
         item.Translate(0, 0, -1);
 
@@ -99,8 +135,17 @@ public class Throw : MonoBehaviour
                 continue;
             }
 
+            // Ignore player held objects
+            if (obj == player.GetComponent<PlayerThrowing>().bluntObject)
+            {
+                continue;
+            }
+
+            // Find distance to object
             distance = Vector2.Distance(transform.position, obj.transform.position);
 
+            // If the distance to the object is closer than the known closest distance, 
+            // then this object must be closest
             if (distance < closestDistance)
             {
                 closestDistance = distance;

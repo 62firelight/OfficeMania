@@ -52,7 +52,10 @@ public class Enemy : MonoBehaviour
             sr.color = new Color(0.5f, 0, 0);
 
             // Disable AI
-            GetComponent<Chase>().enabled = false;
+            if (GetComponent<Chase>() != null)
+            {
+                GetComponent<Chase>().speed = 0;
+            }
         }
     }
 
@@ -70,8 +73,6 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log(other.gameObject.tag);
-
         if (other.gameObject.tag == "Blunt")
         {
             // Do nothing if we are currently being knocked back
@@ -95,7 +96,11 @@ public class Enemy : MonoBehaviour
         else if (other.gameObject.tag == "Sharp")
         {
             health--;
-            GetComponent<Chase>().speed *= 0.75f;
+
+            if (GetComponent<Chase>() != null)
+            {
+                GetComponent<Chase>().speed *= 0.75f;
+            }
 
             other.gameObject.GetComponent<Interactable>().DisablePhysics();
             other.gameObject.transform.parent = transform;
