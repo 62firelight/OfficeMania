@@ -73,8 +73,11 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        GetComponent<Chase>().roomMaster.GetComponent<RoomMaster>().seePlayer = true;
-
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Blunt" || other.gameObject.tag == "Sharp")
+        {
+            GetComponent<Chase>().roomMaster.GetComponent<RoomMaster>().seePlayer = true;
+        }
+        
         if (other.gameObject.tag == "Blunt")
         {
             // Do nothing if we are currently being knocked back
