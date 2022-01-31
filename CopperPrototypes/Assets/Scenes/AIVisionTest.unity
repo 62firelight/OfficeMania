@@ -5537,6 +5537,14 @@ PrefabInstance:
       propertyPath: roomMaster
       value: 
       objectReference: {fileID: 183765692}
+    - target: {fileID: 1378450184106089164, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1378450184106089164, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3264640679040377156, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
       propertyPath: gridObject
       value: 
