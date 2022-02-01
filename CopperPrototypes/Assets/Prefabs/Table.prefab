@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1586664255}
   - component: {fileID: 1586664254}
   - component: {fileID: 1586664253}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: RightLeg
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 1.54}
+  m_Size: {x: 0.25, y: 1.3}
   m_EdgeRadius: 0
 --- !u!50 &1586664253
 Rigidbody2D:
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 2141548797}
   - component: {fileID: 2141548798}
   - component: {fileID: 2141548799}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: LeftLeg
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 1.54}
+  m_Size: {x: 0.25, y: 1.3}
   m_EdgeRadius: 0
 --- !u!50 &2141548799
 Rigidbody2D:
@@ -272,7 +272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8888606639842982960}
   - component: {fileID: 8888606639842982963}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FlippedCollisionBox
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -331,9 +331,9 @@ GameObject:
   - component: {fileID: 8888606640835144330}
   - component: {fileID: 8888606640835144564}
   - component: {fileID: 8888606640835144565}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Table
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -465,7 +465,7 @@ GameObject:
   - component: {fileID: 8888606641070385454}
   - component: {fileID: 8888606641070385448}
   - component: {fileID: 8888606641070385449}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: InteractionBox
   m_TagString: Wall
   m_Icon: {fileID: 0}
