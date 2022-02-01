@@ -56,13 +56,13 @@ public class Chase : MonoBehaviour {
 			return;
         }
 
+		enabled = roomMaster.GetComponent<RoomMaster>().aiEnabled;
+		seePlayer = roomMaster.GetComponent<RoomMaster>().seePlayer;
+
 		if (GetComponent<Enemy>().health <= 0)
 		{
 			return;
 		}
-
-		enabled = roomMaster.GetComponent<RoomMaster>().aiEnabled;
-		seePlayer = roomMaster.GetComponent<RoomMaster>().seePlayer;
 
 		if (enabled && seePlayer && rb.isKinematic == true && pathfinder != null) {
 			//Travel towards the target object at certain speed.

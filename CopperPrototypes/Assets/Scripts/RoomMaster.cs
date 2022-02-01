@@ -48,7 +48,7 @@ public class RoomMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (aiEnabled && door != null)
+        if (aiEnabled && roomClear == false && door != null)
         {
             // Assume all enemies are clear unless we know otherwise
             bool enemiesClear = true;
@@ -102,8 +102,9 @@ public class RoomMaster : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (roomClear == true && collision.tag == "Player")
         {
+            Debug.Log("Disabling AI...");
             aiEnabled = false;
 
             // transform.GetChild(0).gameObject.SetActive(false);
