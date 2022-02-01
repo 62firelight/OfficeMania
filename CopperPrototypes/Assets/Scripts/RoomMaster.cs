@@ -17,12 +17,22 @@ public class RoomMaster : MonoBehaviour
 
     public bool seePlayer = false;
 
+    public Transform bottomLeftCorner;
+
+    public Transform topRightCorner;
+
     private AStarGrid grid;
 
     void Awake()
     {
         grid = GetComponent<AStarGrid>();
         // grid.enabled = false;
+
+        bottomLeftCorner = transform.GetChild(0);
+        topRightCorner = transform.GetChild(1);
+
+        grid.MapStartPosition = bottomLeftCorner.position;
+        grid.MapEndPosition = topRightCorner.position;
 
         foreach (Enemy enemy in enemies)
         {
