@@ -46,7 +46,6 @@ public class PlayerHealth : MonoBehaviour
                 heartDisplay[i].sprite = emptyHeart;
             }
         }
-        Debug.Log(playerhealth/2);
     }
 
 }
