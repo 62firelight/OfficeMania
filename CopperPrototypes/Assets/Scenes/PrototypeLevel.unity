@@ -282,6 +282,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1521433429867620509, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
   m_PrefabInstance: {fileID: 803936073}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &37002473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37002469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e7424057daf544fe92b3816f76d3f90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tilesize: 0.5
+  MapStartPosition: {x: -7, y: -5.8}
+  MapEndPosition: {x: 7, y: 5.8}
+  DisallowedTags:
+  - Wall
+  DrawGridInEditor: 1
 --- !u!1001 &46884982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -539,18 +557,32 @@ PrefabInstance:
       propertyPath: MapStartPosition.y
       value: 8.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2982501953171034547, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
---- !u!1 &89643667 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1521433430660576177, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
-  m_PrefabInstance: {fileID: 89643666}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &89643668 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1521433429867620509, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
   m_PrefabInstance: {fileID: 89643666}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &89643669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89643668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e7424057daf544fe92b3816f76d3f90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tilesize: 2
+  MapStartPosition: {x: -9, y: 10}
+  MapEndPosition: {x: 9, y: 30}
+  DisallowedTags:
+  - Wall
+  DrawGridInEditor: 1
 --- !u!1 &95979540
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,10 +610,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 102656182}
   - {fileID: 1635511818}
   - {fileID: 1672445096}
   - {fileID: 120493603}
+  - {fileID: 102656182}
   - {fileID: 12966042}
   - {fileID: 1884862120}
   m_Father: {fileID: 0}
@@ -870,11 +902,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: badb65ec4a1b59c458068825191503bd, type: 3}
---- !u!1 &163609746 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1521433430660576177, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
-  m_PrefabInstance: {fileID: 803936073}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &170804227 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4929038550582789024, guid: badb65ec4a1b59c458068825191503bd, type: 3}
@@ -1995,18 +2022,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 95979541}
     m_Modifications:
-    - target: {fileID: 1882021223002456387, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
-      propertyPath: gridObject
-      value: 
-      objectReference: {fileID: 89643667}
-    - target: {fileID: 2816751059534596043, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 528865912}
-    - target: {fileID: 2816751059534596043, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
-      propertyPath: roomMaster
-      value: 
-      objectReference: {fileID: 89643668}
     - target: {fileID: 4958288219161743936, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2943,21 +2958,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 95979541}
     m_Modifications:
-    - target: {fileID: 1882021223002456387, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
-      propertyPath: gridObject
-      value: 
-      objectReference: {fileID: 163609746}
-    - target: {fileID: 2816751059534596043, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 528865912}
-    - target: {fileID: 2816751059534596043, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
-      propertyPath: roomMaster
-      value: 
-      objectReference: {fileID: 37002469}
     - target: {fileID: 4958288219161743936, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4958288219161743936, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3229,25 +3232,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 95979541}
     m_Modifications:
-    - target: {fileID: 202656236, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 528865912}
-    - target: {fileID: 1172907430912255948, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
-      propertyPath: roomMaster
-      value: 
-      objectReference: {fileID: 89643668}
-    - target: {fileID: 3264640679040377156, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
-      propertyPath: gridObject
-      value: 
-      objectReference: {fileID: 89643667}
     - target: {fileID: 8331516302662365765, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
       propertyPath: m_Name
       value: EnemyToughAI
       objectReference: {fileID: 0}
+    - target: {fileID: 8331516302662365765, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8331516302662365767, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8331516302662365767, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3537,7 +3532,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2982501953171034547, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
 --- !u!4 &809663171 stripped
 Transform:
@@ -20034,18 +20030,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 95979541}
     m_Modifications:
-    - target: {fileID: 1882021223002456387, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
-      propertyPath: gridObject
-      value: 
-      objectReference: {fileID: 89643667}
-    - target: {fileID: 2816751059534596043, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 528865912}
-    - target: {fileID: 2816751059534596043, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
-      propertyPath: roomMaster
-      value: 
-      objectReference: {fileID: 89643668}
     - target: {fileID: 4958288219161743936, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -21817,7 +21801,7 @@ PrefabInstance:
     - target: {fileID: 1882021223002456387, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
       propertyPath: gridObject
       value: 
-      objectReference: {fileID: 163609746}
+      objectReference: {fileID: 0}
     - target: {fileID: 2816751059534596043, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
       propertyPath: target
       value: 
@@ -21828,7 +21812,7 @@ PrefabInstance:
       objectReference: {fileID: 37002469}
     - target: {fileID: 4958288219161743936, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4958288219161743936, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -28657,21 +28641,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 95979541}
     m_Modifications:
-    - target: {fileID: 1882021223002456387, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
-      propertyPath: gridObject
-      value: 
-      objectReference: {fileID: 163609746}
-    - target: {fileID: 2816751059534596043, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 528865912}
-    - target: {fileID: 2816751059534596043, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
-      propertyPath: roomMaster
-      value: 
-      objectReference: {fileID: 37002469}
     - target: {fileID: 4958288219161743936, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4958288219161743936, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
       propertyPath: m_LocalPosition.x

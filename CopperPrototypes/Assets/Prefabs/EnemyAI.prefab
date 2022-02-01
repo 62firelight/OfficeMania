@@ -152,6 +152,7 @@ MonoBehaviour:
   speed: 8
   enabled: 1
   seePlayer: 0
+  meleeOnly: 1
   rb: {fileID: 0}
   roomMaster: {fileID: 0}
 --- !u!50 &4958288219161743943

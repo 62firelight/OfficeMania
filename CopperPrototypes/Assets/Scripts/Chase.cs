@@ -24,6 +24,8 @@ public class Chase : MonoBehaviour {
 
 	public bool seePlayer = false;
 
+	public bool meleeOnly = false;
+
 	public Rigidbody2D rb;
 
 	public GameObject roomMaster = null;
@@ -39,6 +41,11 @@ public class Chase : MonoBehaviour {
 		pathfinder = transform.GetComponent<AStarPathfinder> ();
 
 		rb = GetComponent<Rigidbody2D>();
+
+		if (meleeOnly)
+		{
+			target = GameObject.FindGameObjectWithTag("Player");
+		}
 	}
 	
 	// Update is called once per frame

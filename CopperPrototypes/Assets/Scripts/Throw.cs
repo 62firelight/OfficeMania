@@ -24,6 +24,7 @@ public class Throw : MonoBehaviour
     void Start()
     {
         chase = GetComponent<Chase>();
+        player = GameObject.FindGameObjectWithTag("Player");
 
         // Find the closest object to pick up
         if (chase.target == null)
