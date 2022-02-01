@@ -9,8 +9,8 @@ public class PlayerHealth : MonoBehaviour
     int maxHealth;
     int playerhealth;
 
-    private Image heartPrefab;
-    private Transform heartContainer;
+    [SerializeField] private Image heartPrefab;
+    [SerializeField] private Transform heartContainer;
 
     public Sprite fullHeart;
     public Sprite halfHeart;
