@@ -465,6 +465,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1521433430660576182, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
+      propertyPath: Tilesize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521433430660576182, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
       propertyPath: MapEndPosition.x
       value: 12
       objectReference: {fileID: 0}

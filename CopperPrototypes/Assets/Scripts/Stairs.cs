@@ -7,6 +7,10 @@ public class Stairs : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (collision.tag == "Player")
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 }
