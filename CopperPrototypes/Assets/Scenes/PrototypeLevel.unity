@@ -28669,6 +28669,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 95979541}
     m_Modifications:
+    - target: {fileID: 1446044496, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 5fa2453bc0af9a348894afc0dd618c8e, type: 2}
+    - target: {fileID: 1446044496, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 9163949716547407039, guid: 5fa2453bc0af9a348894afc0dd618c8e, type: 2}
+    - target: {fileID: 1446044497, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 9163949716547407039, guid: 5fa2453bc0af9a348894afc0dd618c8e, type: 2}
     - target: {fileID: 1882021223002456387, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
       propertyPath: gridObject
       value: 
