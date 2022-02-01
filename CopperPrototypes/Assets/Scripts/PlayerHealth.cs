@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
 
     public Sprite fullHeart;
     public Sprite halfHeart;
-    public Sprite emtpyHeart;
+    public Sprite emptyHeart;
 
     private List<Image> heartDisplay = new List<Image>();
     // Start is called before the first frame update
@@ -44,7 +44,7 @@ public class PlayerHealth : MonoBehaviour
             switch (remainingHealth)
             {
                 case 0:
-                    heartDisplay[i].sprite = emtpyHeart;
+                    heartDisplay[i].sprite = emptyHeart;
                     break;
                 case 1:
                     heartDisplay[i].sprite = halfHeart;
