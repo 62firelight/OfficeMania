@@ -7,16 +7,16 @@ public class PlayerHealth : MonoBehaviour
 {
     int hearts;
     int maxHealth;
-    int playerhealth;
+    float playerhealth;
 
-    [SerializeField] private Image heartPrefab;
-    [SerializeField] private Transform heartContainer;
+    private Image heartPrefab;
+    private Transform heartContainer;
 
     public Sprite fullHeart;
     public Sprite halfHeart;
     public Sprite emptyHeart;
 
-    private List<Image> heartDisplay = new List<Image>();
+    public Image[] heartDisplay;
     // Start is called before the first frame update
     void Awake()
     {
@@ -24,36 +24,29 @@ public class PlayerHealth : MonoBehaviour
         hearts = GameObject.Find("Player").GetComponent<PlayerDamage>().playerMaxHealth / 2;
         maxHealth = hearts * 2;
 
-        for (int i = 0; i < hearts; i++) {
-            heartDisplay.Add(Instantiate(heartPrefab.gameObject, heartContainer).GetComponent<Image>());
-        }
-
-        setHealthBarHealth();
 
     }
 
     // Update is called once per frame
-    public void setHealthBarHealth()
+    void Update()
     {
         playerhealth = GameObject.Find("Player").GetComponent<PlayerDamage>().playerHealth;
 
-        for (int i = 0; i < maxHealth; i++) {
+        for(int i = 0; i < heartDisplay.Length; i++) {
 
-            int remainingHealth = Mathf.Clamp(playerhealth - (i * 2), 0, 2);
-
-            switch (remainingHealth)
-            {
-                case 0:
-                    heartDisplay[i].sprite = emptyHeart;
-                    break;
-                case 1:
+            if(i < playerhealth/2) {
+                if(i + 0.5 == playerhealth/2) {
                     heartDisplay[i].sprite = halfHeart;
-                    break;
-                case 2:
+                }
+                else {
                     heartDisplay[i].sprite = fullHeart;
-                    break;
+                }
+            }
+            else {
+                heartDisplay[i].sprite = emptyHeart;
             }
         }
+        Debug.Log(playerhealth/2);
     }
 
 }
