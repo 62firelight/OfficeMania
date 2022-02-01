@@ -10,6 +10,8 @@ TagManager:
   - Blunt
   - Sharp
   - Door
+  - RotationConstraint
+  - ScaleConstraint
   layers:
   - Default
   - TransparentFX
