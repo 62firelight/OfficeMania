@@ -25,17 +25,24 @@ public class PlayerThrowing : MonoBehaviour
     void Update()
     {
         // Determine currently held object
-        if (bluntObject != null)
-        {
-            currentObject = bluntObject;
-        }
-        else if (sharpObjects.Count > 0)
-        {
-            currentObject = sharpObjects.Peek();
-        }
-        else
-        {
-            currentObject = null;
+        // if (bluntObject != null)
+        // {
+        //     currentObject = bluntObject;
+        // }
+        // else if (sharpObjects.Count > 0)
+        // {
+        //     currentObject = sharpObjects.Peek();
+        // }
+        // else
+        // {
+        //     currentObject = null;
+        // }
+
+        Debug.Log(nearestObject);
+
+        if (nearestObject != null && currentObject == null && nearestObject.thrownFlag != 2 && nearestObject.rb.isKinematic == true && nearestObject.pickedUp == false)
+        {   
+            nearestObject.RegisterPickUp();
         }
 
         if (Input.GetButtonDown("Fire1"))
@@ -52,26 +59,28 @@ public class PlayerThrowing : MonoBehaviour
             Debug.Log("Key held down for " + (Time.time - startTime).ToString("F2") + "s for " + force * mag + " force");
 
             // Change the state of the player's currently held objects
-            if (currentObject.tag == "Sharp")
-            {
-                sharpObjects.Dequeue();
-            }
-            else
-            {
-                if (bluntObject.GetComponent<Interactable>().isHeavy)
-                {
-                    // Revert player movement speed back to normal
-                    // GetComponent<PlayerMovement>().RevertSlow();
+            // if (currentObject.tag == "Sharp")
+            // {
+            //     sharpObjects.Dequeue();
+            // }
+            // else
+            // {
+            //     if (bluntObject.GetComponent<Interactable>().isHeavy)
+            //     {
+            //         // Revert player movement speed back to normal
+            //         // GetComponent<PlayerMovement>().RevertSlow();
 
-                    // Re-enable collision between player and heavy object
-                    Physics2D.IgnoreCollision(nearestObject.gameObject.transform.GetChild(1).GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
-                }
+            //         // Re-enable collision between player and heavy object
+            //         Physics2D.IgnoreCollision(nearestObject.gameObject.transform.GetChild(1).GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
+            //     }
 
-                bluntObject = null;
-            }
-
+            //     bluntObject = null;
+            // }
+            
             // Throw object using calculated force
             currentObject.GetComponent<Interactable>().Throw(firePoint, force * mag);
+
+            currentObject = null;
         }
 
         // Right-click near a blunt object to pick it up
@@ -84,14 +93,16 @@ public class PlayerThrowing : MonoBehaviour
     public void PickUp(Transform obj)
     {
         // Add object to player's inventory
-        if (obj.gameObject.tag == "Sharp")
-        {
-            sharpObjects.Enqueue(obj.gameObject);
-        }
-        else
-        {
-            bluntObject = obj.gameObject;
-        }
+        // if (obj.gameObject.tag == "Sharp")
+        // {
+        //     sharpObjects.Enqueue(obj.gameObject);
+        // }
+        // else
+        // {
+        //     bluntObject = obj.gameObject;
+        // }
+
+        currentObject = obj.gameObject;
         
         // Change object position to show that the player is holding it
         obj.parent = transform;

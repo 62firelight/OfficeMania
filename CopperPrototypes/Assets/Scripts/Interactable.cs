@@ -23,7 +23,7 @@ public class Interactable : MonoBehaviour
 
     private Transform promptObj;
 
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     private Collider2D coll;
 
@@ -51,32 +51,44 @@ public class Interactable : MonoBehaviour
 
         if (pickedUp == false)
         {
-            // For a sharp object (that is still), let the player pick it up if they are near
-            if (tag == "Sharp" && rb.isKinematic == true)
-            {
-                bool playerNear = GetComponentInChildren<SharpTrigger>().playerNear;
+            Interactable obj = player.gameObject.GetComponent<PlayerThrowing>().nearestObject;
 
-                if (playerNear)
-                {
-                    RegisterPickUp();
-                }
+            // If the player is near and they're not carrying anything
+            if (this == obj && player.gameObject.GetComponent<PlayerThrowing>().bluntObject == null)
+            {
+                // promptObj.gameObject.SetActive(true);
             }
-            // For a blunt object, just show a prompt
             else
             {
-                Interactable obj = player.gameObject.GetComponent<PlayerThrowing>().nearestObject;
-
-                // If the player is near and they're not carrying anything
-                if (this == obj && player.gameObject.GetComponent<PlayerThrowing>().bluntObject == null)
-                {
-                    promptObj.gameObject.SetActive(true);
-                }
-                else
-                {
-                    // Hide prompt if object has been picked up
-                    promptObj.gameObject.SetActive(false);
-                }
+                // Hide prompt if object has been picked up
+                // promptObj.gameObject.SetActive(false);
             }
+            // // For a sharp object (that is still), let the player pick it up if they are near
+            // if (tag == "Sharp" && rb.isKinematic == true)
+            // {
+            //     bool playerNear = GetComponentInChildren<SharpTrigger>().playerNear;
+
+            //     if (playerNear)
+            //     {
+            //         RegisterPickUp();
+            //     }
+            // }
+            // // For a blunt object, just show a prompt
+            // else
+            // {
+            //     Interactable obj = player.gameObject.GetComponent<PlayerThrowing>().nearestObject;
+
+            //     // If the player is near and they're not carrying anything
+            //     if (this == obj && player.gameObject.GetComponent<PlayerThrowing>().bluntObject == null)
+            //     {
+            //         promptObj.gameObject.SetActive(true);
+            //     }
+            //     else
+            //     {
+            //         // Hide prompt if object has been picked up
+            //         promptObj.gameObject.SetActive(false);
+            //     }
+            // }
         }
     }
     
@@ -159,10 +171,10 @@ public class Interactable : MonoBehaviour
 
     public void RegisterPickUp()
     {
-        if (tag == "Blunt" && player.gameObject.GetComponent<PlayerThrowing>().bluntObject != null)
-        {
-            return;
-        }
+        // if (tag == "Blunt" && player.gameObject.GetComponent<PlayerThrowing>().bluntObject != null)
+        // {
+        //     return;
+        // }
 
         DisablePhysics();
         pickedUp = true;

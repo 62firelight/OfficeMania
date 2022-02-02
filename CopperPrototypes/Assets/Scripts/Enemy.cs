@@ -75,7 +75,15 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Blunt" || other.gameObject.tag == "Sharp")
         {
-            GetComponent<Chase>().roomMaster.GetComponent<RoomMaster>().seePlayer = true;
+            if (GetComponent<Chase>() == null)
+            {
+                
+            }
+            else
+            {
+                GetComponent<Chase>().roomMaster.GetComponent<RoomMaster>().seePlayer = true;
+            }
+            
         }
         
         if (other.gameObject.tag == "Blunt")
