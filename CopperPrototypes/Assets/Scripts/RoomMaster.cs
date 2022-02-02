@@ -36,6 +36,7 @@ public class RoomMaster : MonoBehaviour
 
         foreach (Enemy enemy in enemies)
         {
+            Debug.Log(enemy);
             GameObject enemyObj = enemy.gameObject;
 
             AStarPathfinder enemyPathfinder = enemyObj.GetComponent<AStarPathfinder>();
