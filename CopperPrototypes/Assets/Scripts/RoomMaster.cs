@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AStarGrid))]
 public class RoomMaster : MonoBehaviour
 {
     public Enemy[] enemies;
@@ -16,6 +17,35 @@ public class RoomMaster : MonoBehaviour
 
     public bool seePlayer = false;
 
+    public Transform bottomLeftCorner;
+
+    public Transform topRightCorner;
+
+    private AStarGrid grid;
+
+    void Awake()
+    {
+        grid = GetComponent<AStarGrid>();
+        // grid.enabled = false;
+
+        bottomLeftCorner = transform.GetChild(0);
+        topRightCorner = transform.GetChild(1);
+
+        grid.MapStartPosition = bottomLeftCorner.position;
+        grid.MapEndPosition = topRightCorner.position;
+
+        foreach (Enemy enemy in enemies)
+        {
+            GameObject enemyObj = enemy.gameObject;
+
+            AStarPathfinder enemyPathfinder = enemyObj.GetComponent<AStarPathfinder>();
+            enemyPathfinder.gridObject = gameObject;
+
+            Chase enemyChase = enemyObj.GetComponent<Chase>();
+            enemyChase.roomMaster = gameObject;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +58,7 @@ public class RoomMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (aiEnabled && door != null)
+        if (aiEnabled && roomClear == false && door != null)
         {
             // Assume all enemies are clear unless we know otherwise
             bool enemiesClear = true;
@@ -76,17 +106,18 @@ public class RoomMaster : MonoBehaviour
                 entryDoor.SetActive(true);
             }
 
-            transform.GetChild(0).gameObject.SetActive(true);
+            // transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (roomClear == true && collision.tag == "Player")
         {
+            Debug.Log("Disabling AI...");
             aiEnabled = false;
 
-            transform.GetChild(0).gameObject.SetActive(false);
+            // transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 
