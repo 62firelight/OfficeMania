@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635046454210021134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.87, y: 14.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1521433429867620515}
@@ -84,8 +84,8 @@ MonoBehaviour:
   - {fileID: 0}
   aiEnabled: 0
   seePlayer: 0
-  bottomLeftCorner: {fileID: 0}
-  topRightCorner: {fileID: 0}
+  bottomLeftCorner: {fileID: 1148661910134625730}
+  topRightCorner: {fileID: 681706766380168130}
 --- !u!61 &37002470
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1714127572650946725}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.79, y: -15.9, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1521433429867620515}
