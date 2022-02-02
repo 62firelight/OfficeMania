@@ -38,6 +38,11 @@ public class RoomMaster : MonoBehaviour
             // Set components for each enemy
             foreach (Enemy enemy in enemies)
             {
+                if (enemy == null)
+                {
+                    break;
+                }
+
                 GameObject enemyObj = enemy.gameObject;
 
                 // Set grid object for enemy pathfinder
@@ -54,9 +59,20 @@ public class RoomMaster : MonoBehaviour
 
     void Start()
     {
-        foreach (GameObject entryDoor in entryDoors)
+        if (entryDoors != null && entryDoors.Length > 0)
         {
-            entryDoor.SetActive(false);
+            foreach (GameObject entryDoor in entryDoors)
+            {
+                entryDoor.SetActive(false);
+            }
+        }
+        
+        if (exitDoors != null && exitDoors.Length > 0)
+        {
+            foreach (GameObject exitDoor in exitDoors)
+            {
+                exitDoor.SetActive(false);
+            }
         }
     }
 
@@ -114,12 +130,20 @@ public class RoomMaster : MonoBehaviour
         {
             aiEnabled = true;
 
-            if (entryDoors.Length > 0)
+            if (entryDoors != null && entryDoors.Length > 0)
             {
                 // Seal all entry doors so the player can't exit the room
                 foreach (GameObject entryDoor in entryDoors)
                 {
                     entryDoor.SetActive(true);
+                }
+            }
+
+            if (exitDoors != null && exitDoors.Length > 0)
+            {
+                foreach (GameObject exitDoor in exitDoors)
+                {
+                    exitDoor.SetActive(true);
                 }
             }
         }

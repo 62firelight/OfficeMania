@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7424057daf544fe92b3816f76d3f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tilesize: 0.5
+  Tilesize: 0.64
   MapStartPosition: {x: -7, y: -5.8}
   MapEndPosition: {x: 7, y: 5.8}
   DisallowedTags:
