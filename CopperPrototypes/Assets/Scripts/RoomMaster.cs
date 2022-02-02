@@ -9,7 +9,7 @@ public class RoomMaster : MonoBehaviour
 
     public GameObject[] entryDoors;
 
-    public GameObject exitDoor;
+    public GameObject[] exitDoors;
 
     private bool roomClear = false;
 
@@ -26,28 +26,32 @@ public class RoomMaster : MonoBehaviour
     void Awake()
     {
         grid = GetComponent<AStarGrid>();
-        // grid.enabled = false;
 
+        // Set grid position
         bottomLeftCorner = transform.GetChild(0);
         topRightCorner = transform.GetChild(1);
-
         grid.MapStartPosition = bottomLeftCorner.position;
         grid.MapEndPosition = topRightCorner.position;
 
-        foreach (Enemy enemy in enemies)
+        if (enemies != null && enemies.Length > 0)
         {
-            Debug.Log(enemy);
-            GameObject enemyObj = enemy.gameObject;
+            // Set components for each enemy
+            foreach (Enemy enemy in enemies)
+            {
+                GameObject enemyObj = enemy.gameObject;
 
-            AStarPathfinder enemyPathfinder = enemyObj.GetComponent<AStarPathfinder>();
-            enemyPathfinder.gridObject = gameObject;
+                // Set grid object for enemy pathfinder
+                AStarPathfinder enemyPathfinder = enemyObj.GetComponent<AStarPathfinder>();
+                enemyPathfinder.gridObject = gameObject;
 
-            Chase enemyChase = enemyObj.GetComponent<Chase>();
-            enemyChase.roomMaster = gameObject;
+                // Set room master for enemy chase component
+                Chase enemyChase = enemyObj.GetComponent<Chase>();
+                enemyChase.roomMaster = gameObject;
+            }
         }
+        
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         foreach (GameObject entryDoor in entryDoors)
@@ -56,10 +60,9 @@ public class RoomMaster : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (aiEnabled && roomClear == false && exitDoor != null)
+        if (aiEnabled && roomClear == false)
         {
             // Assume all enemies are clear unless we know otherwise
             bool enemiesClear = true;
@@ -86,12 +89,20 @@ public class RoomMaster : MonoBehaviour
             // Open all doors to the room so the player can exit
             if (roomClear)
             {
-                //Destroy(exitDoor);
-                exitDoor.SetActive(false);
-
-                foreach (GameObject entryDoor in entryDoors)
+                if (exitDoors != null && exitDoors.Length > 0)
                 {
-                    entryDoor.SetActive(false);
+                    foreach(GameObject exitDoor in exitDoors)
+                    {
+                        exitDoor.SetActive(false);
+                    }
+                }
+
+                if (entryDoors != null && entryDoors.Length > 0)
+                {
+                    foreach (GameObject entryDoor in entryDoors)
+                    {
+                        entryDoor.SetActive(false);
+                    }
                 }
             }
         }
@@ -103,12 +114,14 @@ public class RoomMaster : MonoBehaviour
         {
             aiEnabled = true;
 
-            foreach (GameObject entryDoor in entryDoors)
+            if (entryDoors.Length > 0)
             {
-                entryDoor.SetActive(true);
+                // Seal all entry doors so the player can't exit the room
+                foreach (GameObject entryDoor in entryDoors)
+                {
+                    entryDoor.SetActive(true);
+                }
             }
-
-            // transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 
@@ -116,10 +129,7 @@ public class RoomMaster : MonoBehaviour
     {
         if (roomClear == true && collision.tag == "Player")
         {
-            Debug.Log("Disabling AI...");
             aiEnabled = false;
-
-            // transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 
