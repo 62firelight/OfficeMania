@@ -7,9 +7,9 @@ public class RoomMaster : MonoBehaviour
 {
     public Enemy[] enemies;
 
-    public GameObject door;
-
     public GameObject[] entryDoors;
+
+    public GameObject exitDoor;
 
     private bool roomClear = false;
 
@@ -58,7 +58,7 @@ public class RoomMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (aiEnabled && roomClear == false && door != null)
+        if (aiEnabled && roomClear == false && exitDoor != null)
         {
             // Assume all enemies are clear unless we know otherwise
             bool enemiesClear = true;
@@ -85,7 +85,8 @@ public class RoomMaster : MonoBehaviour
             // Open all doors to the room so the player can exit
             if (roomClear)
             {
-                Destroy(door);
+                //Destroy(exitDoor);
+                exitDoor.SetActive(false);
 
                 foreach (GameObject entryDoor in entryDoors)
                 {
