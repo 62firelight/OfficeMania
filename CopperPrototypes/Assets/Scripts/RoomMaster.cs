@@ -52,6 +52,13 @@ public class RoomMaster : MonoBehaviour
                 // Set room master for enemy chase component
                 Chase enemyChase = enemyObj.GetComponent<Chase>();
                 enemyChase.roomMaster = gameObject;
+
+                // If enemy can throw, set its player variable
+                Throw enemyThrow = enemyObj.GetComponent<Throw>();
+                if (enemyThrow != null)
+                {
+                    enemyThrow.player = GameObject.FindGameObjectWithTag("Player");
+                }
             }
         }
         
