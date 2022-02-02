@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18, y: 79}
-  m_SizeDelta: {x: 321.6062, y: 27.4749}
+  m_AnchoredPosition: {x: 14.0454, y: -31.3822}
+  m_SizeDelta: {x: 313.697, y: 248.2425}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &450990759
 MonoBehaviour:
@@ -193,7 +193,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Try to get to the top floor and defeat the boss!
+  m_Text: "Try to get to the top floor to defeat the boss and expose the company!\n\nUse
+    the mouse to look around the office and the keys WASD to move around. \n\nAttack
+    a employee by picking up objects and throwing them by using the right click button
+    of your mouse."
 --- !u!222 &450990760
 CanvasRenderer:
   m_ObjectHideFlags: 0
