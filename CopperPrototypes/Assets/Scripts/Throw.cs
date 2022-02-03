@@ -10,7 +10,7 @@ public class Throw : MonoBehaviour
 
     GameObject target;
 
-    GameObject bluntObject = null;
+    GameObject currentObject = null;
 
     public GameObject player;
 
@@ -59,18 +59,20 @@ public class Throw : MonoBehaviour
 
         target = chase.target;
 
+        Debug.Log("I think the player is holding " + player.GetComponent<PlayerThrowing>().heldObject);
+
         // If the player got to the object I want first, find another object
-        if (chase.target == player.GetComponent<PlayerThrowing>().bluntObject || AIMaster.takenObjects.Contains(chase.target) == true)
+        if (chase.target == player.GetComponent<PlayerThrowing>().heldObject || AIMaster.takenObjects.Contains(chase.target) == true)
         {
             chase.target = GetClosestObject(mostRecentObject);
         }
 
         // Throw an object if we are holding it for at least 2 seconds
-        if (bluntObject != null && delay <= 0)
+        if (currentObject != null && delay <= 0)
         {
-            bluntObject.GetComponent<Interactable>().EnemyThrow(transform, 30, gameObject);
-            mostRecentObject = bluntObject;
-            bluntObject = null;
+            currentObject.GetComponent<Interactable>().EnemyThrow(transform, 30, gameObject);
+            mostRecentObject = currentObject;
+            currentObject = null;
 
             delay = 2;
 
@@ -89,7 +91,7 @@ public class Throw : MonoBehaviour
 
         // Pick up object if it's close enough
         float distance = Vector2.Distance(transform.position, target.transform.position);
-        if (distance < 1.5f && delay <= 0)
+        if (distance < 1f && delay <= 0)
         {
             Debug.Log(gameObject.name + " picks up " + chase.target);
             EnemyPickUp(chase.target.transform);
@@ -101,7 +103,7 @@ public class Throw : MonoBehaviour
     {
         chase.target = player;
 
-        bluntObject = item.gameObject;
+        currentObject = item.gameObject;
 
         item.gameObject.GetComponent<Interactable>().RegisterEnemyPickUp();
         item.parent = transform;
@@ -137,7 +139,7 @@ public class Throw : MonoBehaviour
             }
 
             // Ignore player held objects
-            if (obj == player.GetComponent<PlayerThrowing>().bluntObject)
+            if (obj == player.GetComponent<PlayerThrowing>().heldObject)
             {
                 continue;
             }

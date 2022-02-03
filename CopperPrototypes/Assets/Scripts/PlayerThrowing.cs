@@ -15,9 +15,9 @@ public class PlayerThrowing : MonoBehaviour
 
     public GameObject bluntObject = null;
 
-    public GameObject currentObject = null;
+    public GameObject heldObject = null;
 
-    public Queue<GameObject> sharpObjects = new Queue<GameObject>();
+    public GameObject currentObject = null;
 
     float startTime = 0f;
 
@@ -25,24 +25,21 @@ public class PlayerThrowing : MonoBehaviour
     void Update()
     {
         // Determine currently held object
-        // if (bluntObject != null)
-        // {
-        //     currentObject = bluntObject;
-        // }
-        // else if (sharpObjects.Count > 0)
-        // {
-        //     currentObject = sharpObjects.Peek();
-        // }
-        // else
-        // {
-        //     currentObject = null;
-        // }
-
-        Debug.Log(nearestObject);
+        if (bluntObject != null)
+        {
+            currentObject = bluntObject;
+        }
+        else
+        {
+            currentObject = heldObject;
+        }
 
         if (nearestObject != null && currentObject == null && nearestObject.thrownFlag != 2 && nearestObject.rb.isKinematic == true && nearestObject.pickedUp == false)
-        {   
-            nearestObject.RegisterPickUp();
+        {
+            if (nearestObject.isHeavy == false)
+            {
+                nearestObject.RegisterPickUp();
+            }
         }
 
         if (Input.GetButtonDown("Fire1"))
@@ -59,23 +56,17 @@ public class PlayerThrowing : MonoBehaviour
             Debug.Log("Key held down for " + (Time.time - startTime).ToString("F2") + "s for " + force * mag + " force");
 
             // Change the state of the player's currently held objects
-            // if (currentObject.tag == "Sharp")
-            // {
-            //     sharpObjects.Dequeue();
-            // }
-            // else
-            // {
-            //     if (bluntObject.GetComponent<Interactable>().isHeavy)
-            //     {
-            //         // Revert player movement speed back to normal
-            //         // GetComponent<PlayerMovement>().RevertSlow();
+            if (currentObject.GetComponent<Interactable>().isHeavy == true)
+            {
+                bluntObject = null;
 
-            //         // Re-enable collision between player and heavy object
-            //         Physics2D.IgnoreCollision(nearestObject.gameObject.transform.GetChild(1).GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
-            //     }
-
-            //     bluntObject = null;
-            // }
+                // Re-enable collision between player and heavy object
+                Physics2D.IgnoreCollision(nearestObject.gameObject.transform.GetChild(1).GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
+            }
+            else
+            {
+                heldObject = null;
+            }
             
             // Throw object using calculated force
             currentObject.GetComponent<Interactable>().Throw(firePoint, force * mag);
@@ -92,27 +83,14 @@ public class PlayerThrowing : MonoBehaviour
 
     public void PickUp(Transform obj)
     {
-        // Add object to player's inventory
-        // if (obj.gameObject.tag == "Sharp")
-        // {
-        //     sharpObjects.Enqueue(obj.gameObject);
-        // }
-        // else
-        // {
-        //     bluntObject = obj.gameObject;
-        // }
-
-        currentObject = obj.gameObject;
-        
-        // Change object position to show that the player is holding it
+        // Add object to player's inventory, then 
+        // change object position to show that the player is holding it
         obj.parent = transform;
-        if (obj.gameObject.GetComponent<Interactable>().isHeavy)
+        if (obj.gameObject.GetComponent<Interactable>().isHeavy == true)
         {
+            bluntObject = obj.gameObject;
             
             obj.localPosition = firePoint.localPosition;
-
-            // Slow down player movement by 50%
-            // GetComponent<PlayerMovement>().ApplySlow();
 
             // Disable collision between player and heavy object while player is holding it
             Physics2D.IgnoreCollision(obj.GetChild(1).GetComponent<Collider2D>(), GetComponent<Collider2D>());
@@ -120,6 +98,8 @@ public class PlayerThrowing : MonoBehaviour
         else
         {
             obj.position = transform.position;
+
+            heldObject = obj.gameObject;
         }
         obj.rotation = transform.rotation;
         obj.Translate(0, 0, -1);
@@ -130,6 +110,6 @@ public class PlayerThrowing : MonoBehaviour
         GUI.skin.label.fontSize = 72;
         GUI.skin.label.alignment = TextAnchor.UpperLeft;
 
-        GUI.Label(new Rect(0, 0, Camera.main.pixelWidth, Camera.main.pixelHeight), GetComponent<PlayerDamage>().playerHealth + " Health, " + sharpObjects.Count + " Sharp Object" + (sharpObjects.Count == 1 ? "" : "s"));
+        GUI.Label(new Rect(0, 0, Camera.main.pixelWidth, Camera.main.pixelHeight), GetComponent<PlayerDamage>().playerHealth + " Health);
     }**/
 }
