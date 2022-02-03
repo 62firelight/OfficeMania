@@ -124,14 +124,14 @@ public class Enemy : MonoBehaviour
         {
             health--;
 
+            obj.DisablePhysics();
+            other.gameObject.transform.parent = transform;
+            obj.pickedUp = true;
+
             if (GetComponent<Chase>() != null)
             {
                 GetComponent<Chase>().speed *= 0.75f;
             }
-
-            obj.DisablePhysics();
-            other.gameObject.transform.parent = transform;
-            obj.pickedUp = true;
         }
 
         gameObject.GetComponent<BarthaSzabolcs.Tutorial_SpriteFlash.ColoredFlash>().Flash(Color.white);
