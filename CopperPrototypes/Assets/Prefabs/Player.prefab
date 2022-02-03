@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 2672348637521643022}
   - component: {fileID: 3782174989788927479}
   - component: {fileID: 8169684749161302266}
+  - component: {fileID: 4341054356764517725}
   - component: {fileID: 5403261870387305024}
   - component: {fileID: 475628663}
   m_Layer: 0
@@ -273,6 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMaxHealth: 3
   playerHealth: 0
+  invulnerableCooldown: 0
 --- !u!114 &8169684749161302266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +289,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: fb3e9f643e894d249a98ff53b32bf31e, type: 2}
   duration: 1
+--- !u!114 &4341054356764517725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5403261870387305036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4511ab7bef6da404eac1bfcacb5e3701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &5403261870387305024
 Rigidbody2D:
   serializedVersion: 4

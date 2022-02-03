@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 1521433429867620509}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3412501, y: 0.7312336, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1148661910134625730}
   - {fileID: 681706766380168130}
@@ -79,8 +79,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - {fileID: 0}
-  door: {fileID: 0}
   entryDoors:
+  - {fileID: 0}
+  exitDoors:
   - {fileID: 0}
   aiEnabled: 0
   seePlayer: 0
@@ -124,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7424057daf544fe92b3816f76d3f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tilesize: 0.5
+  Tilesize: 0.64
   MapStartPosition: {x: -7, y: -5.8}
   MapEndPosition: {x: 7, y: 5.8}
   DisallowedTags:
