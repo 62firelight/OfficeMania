@@ -62,7 +62,8 @@ public class Throw : MonoBehaviour
         Debug.Log("I think the player is holding " + player.GetComponent<PlayerThrowing>().heldObject);
 
         // If the player got to the object I want first, find another object
-        if (chase.target == player.GetComponent<PlayerThrowing>().heldObject || AIMaster.takenObjects.Contains(chase.target) == true)
+        if (chase.target == player.GetComponent<PlayerThrowing>().currentObject ||
+            AIMaster.takenObjects.Contains(chase.target) == true)
         {
             chase.target = GetClosestObject(mostRecentObject);
         }
@@ -139,7 +140,7 @@ public class Throw : MonoBehaviour
             }
 
             // Ignore player held objects
-            if (obj == player.GetComponent<PlayerThrowing>().heldObject)
+            if (obj == player.GetComponent<PlayerThrowing>().currentObject)
             {
                 continue;
             }

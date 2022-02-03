@@ -87,6 +87,18 @@ public class Enemy : MonoBehaviour
             }
             
         }
+
+        Interactable obj = other.gameObject.GetComponent<Interactable>();
+        if (obj == null)
+        {
+            return;
+        }
+
+        if (obj.knownVelocity.magnitude < 1.5f)
+        {
+            Debug.Log(other.gameObject.GetComponent<Interactable>().knownVelocity.magnitude);
+            return;
+        }
         
         if (other.gameObject.tag == "Blunt")
         {
@@ -117,9 +129,9 @@ public class Enemy : MonoBehaviour
                 GetComponent<Chase>().speed *= 0.75f;
             }
 
-            other.gameObject.GetComponent<Interactable>().DisablePhysics();
+            obj.DisablePhysics();
             other.gameObject.transform.parent = transform;
-            other.gameObject.GetComponent<Interactable>().pickedUp = true;
+            obj.pickedUp = true;
         }
 
         gameObject.GetComponent<BarthaSzabolcs.Tutorial_SpriteFlash.ColoredFlash>().Flash(Color.white);

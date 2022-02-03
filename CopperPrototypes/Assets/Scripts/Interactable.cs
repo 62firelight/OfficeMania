@@ -15,6 +15,10 @@ public class Interactable : MonoBehaviour
 
     public bool pickedUp = false;
 
+    public bool damageable = false;
+
+    public Vector3 knownVelocity;
+
     // Flag to determine who the object was thrown by
     // 0 - no one
     // 1 - player
@@ -66,7 +70,17 @@ public class Interactable : MonoBehaviour
             }
         }
     }
-    
+
+    void FixedUpdate()
+    {
+        knownVelocity = rb.velocity;
+
+        if (knownVelocity.magnitude <= 3f)
+        {
+            damageable = false;
+        }
+    }
+
     public void Throw(Transform firePoint, float force)
     {
         // Alter bounciness depending on charge 
@@ -92,6 +106,7 @@ public class Interactable : MonoBehaviour
         transform.parent = null;
 
         thrownFlag = 1;
+        damageable = true;
 
         AIMaster.takenObjects.Remove(gameObject);
     }
@@ -113,6 +128,7 @@ public class Interactable : MonoBehaviour
         transform.parent = null;
 
         thrownFlag = 2;
+        damageable = true;
 
         AIMaster.takenObjects.Remove(gameObject);
     }
