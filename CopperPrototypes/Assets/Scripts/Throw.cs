@@ -59,8 +59,6 @@ public class Throw : MonoBehaviour
 
         target = chase.target;
 
-        Debug.Log("I think the player is holding " + player.GetComponent<PlayerThrowing>().heldObject);
-
         // If the player got to the object I want first, find another object
         if (chase.target == player.GetComponent<PlayerThrowing>().currentObject || chase.target == player.GetComponent<PlayerThrowing>().heldObject ||
             AIMaster.takenObjects.Contains(chase.target) == true)
