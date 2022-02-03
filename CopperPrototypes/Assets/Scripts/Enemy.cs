@@ -56,6 +56,8 @@ public class Enemy : MonoBehaviour
             {
                 GetComponent<Chase>().speed = 0;
             }
+
+            rb.simulated = false;
         }
     }
 
