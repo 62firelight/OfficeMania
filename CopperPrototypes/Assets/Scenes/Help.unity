@@ -194,7 +194,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Try to get to the top floor to defeat the boss and expose the company!\n\nUse
-    the mouse to look around the office and the keys WASD to move around. \n\nAttack
+    the mouse to look around the office and use the keys WASD to move around. \n\nAttack
     a employee by picking up objects and throwing them by using the right click button
     of your mouse."
 --- !u!222 &450990760
