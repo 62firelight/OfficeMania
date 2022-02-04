@@ -181,9 +181,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 6
+  speed: 4
   enabled: 1
   seePlayer: 0
+  meleeOnly: 0
   rb: {fileID: 0}
   roomMaster: {fileID: 0}
 --- !u!114 &202656236
