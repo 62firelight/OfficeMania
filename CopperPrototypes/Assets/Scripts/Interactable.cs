@@ -15,6 +15,10 @@ public class Interactable : MonoBehaviour
 
     public bool pickedUp = false;
 
+    public bool damageable = false;
+
+    public Vector3 knownVelocity;
+
     // Flag to determine who the object was thrown by
     // 0 - no one
     // 1 - player
@@ -23,7 +27,7 @@ public class Interactable : MonoBehaviour
 
     private Transform promptObj;
 
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     private Collider2D coll;
 
@@ -49,37 +53,34 @@ public class Interactable : MonoBehaviour
             DisablePhysics();
         }
 
-        if (pickedUp == false)
+        // If the player is near a heavy object
+        if (isHeavy == true && pickedUp == false)
         {
-            // For a sharp object (that is still), let the player pick it up if they are near
-            if (tag == "Sharp" && rb.isKinematic == true)
+            Interactable obj = player.gameObject.GetComponent<PlayerThrowing>().nearestObject;
+            
+            if (this == obj && player.gameObject.GetComponent<PlayerThrowing>().bluntObject == null)
             {
-                bool playerNear = GetComponentInChildren<SharpTrigger>().playerNear;
-
-                if (playerNear)
-                {
-                    RegisterPickUp();
-                }
+                // Display prompt if player is near
+                promptObj.gameObject.SetActive(true);
             }
-            // For a blunt object, just show a prompt
             else
             {
-                Interactable obj = player.gameObject.GetComponent<PlayerThrowing>().nearestObject;
-
-                // If the player is near and they're not carrying anything
-                if (this == obj && player.gameObject.GetComponent<PlayerThrowing>().bluntObject == null)
-                {
-                    promptObj.gameObject.SetActive(true);
-                }
-                else
-                {
-                    // Hide prompt if object has been picked up
-                    promptObj.gameObject.SetActive(false);
-                }
+                // Hide prompt if object has been picked up or player is not near
+                promptObj.gameObject.SetActive(false);
             }
         }
     }
-    
+
+    void FixedUpdate()
+    {
+        knownVelocity = rb.velocity;
+
+        if (knownVelocity.magnitude <= 3f)
+        {
+            damageable = false;
+        }
+    }
+
     public void Throw(Transform firePoint, float force)
     {
         // Alter bounciness depending on charge 
@@ -105,6 +106,7 @@ public class Interactable : MonoBehaviour
         transform.parent = null;
 
         thrownFlag = 1;
+        damageable = true;
 
         AIMaster.takenObjects.Remove(gameObject);
     }
@@ -126,6 +128,7 @@ public class Interactable : MonoBehaviour
         transform.parent = null;
 
         thrownFlag = 2;
+        damageable = true;
 
         AIMaster.takenObjects.Remove(gameObject);
     }
@@ -159,10 +162,10 @@ public class Interactable : MonoBehaviour
 
     public void RegisterPickUp()
     {
-        if (tag == "Blunt" && player.gameObject.GetComponent<PlayerThrowing>().bluntObject != null)
-        {
-            return;
-        }
+        // if (tag == "Blunt" && player.gameObject.GetComponent<PlayerThrowing>().bluntObject != null)
+        // {
+        //     return;
+        // }
 
         DisablePhysics();
         pickedUp = true;

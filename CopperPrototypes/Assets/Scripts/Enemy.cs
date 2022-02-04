@@ -56,6 +56,8 @@ public class Enemy : MonoBehaviour
             {
                 GetComponent<Chase>().speed = 0;
             }
+
+            rb.simulated = false;
         }
     }
 
@@ -75,7 +77,27 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Blunt" || other.gameObject.tag == "Sharp")
         {
-            GetComponent<Chase>().roomMaster.GetComponent<RoomMaster>().seePlayer = true;
+            if (GetComponent<Chase>() == null)
+            {
+                
+            }
+            else
+            {
+                GetComponent<Chase>().roomMaster.GetComponent<RoomMaster>().seePlayer = true;
+            }
+            
+        }
+
+        Interactable obj = other.gameObject.GetComponent<Interactable>();
+        if (obj == null)
+        {
+            return;
+        }
+
+        if (obj.knownVelocity.magnitude < 1.5f)
+        {
+            Debug.Log(other.gameObject.GetComponent<Interactable>().knownVelocity.magnitude);
+            return;
         }
         
         if (other.gameObject.tag == "Blunt")
@@ -102,14 +124,14 @@ public class Enemy : MonoBehaviour
         {
             health--;
 
+            obj.DisablePhysics();
+            other.gameObject.transform.parent = transform;
+            obj.pickedUp = true;
+
             if (GetComponent<Chase>() != null)
             {
                 GetComponent<Chase>().speed *= 0.75f;
             }
-
-            other.gameObject.GetComponent<Interactable>().DisablePhysics();
-            other.gameObject.transform.parent = transform;
-            other.gameObject.GetComponent<Interactable>().pickedUp = true;
         }
 
         gameObject.GetComponent<BarthaSzabolcs.Tutorial_SpriteFlash.ColoredFlash>().Flash(Color.white);

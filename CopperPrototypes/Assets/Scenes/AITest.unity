@@ -133,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 1882021223002456387, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
       propertyPath: gridObject
       value: 
-      objectReference: {fileID: 183765691}
+      objectReference: {fileID: 0}
     - target: {fileID: 2816751059534596043, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
       propertyPath: target
       value: 
@@ -406,8 +406,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.25, y: 2.25}
-    newSize: {x: 2.25, y: 2.25}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -444,6 +444,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 681706766380168130, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 681706766380168130, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148661910134625730, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148661910134625730, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.38
+      objectReference: {fileID: 0}
     - target: {fileID: 1521433429867620509, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
       propertyPath: m_Name
       value: RoomMaster
@@ -468,6 +484,10 @@ PrefabInstance:
       propertyPath: enemies.Array.data[2]
       value: 
       objectReference: {fileID: 4958288218788126269}
+    - target: {fileID: 1521433429867620514, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
+      propertyPath: exitDoors.Array.data[0]
+      value: 
+      objectReference: {fileID: 152535730}
     - target: {fileID: 1521433429867620514, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
       propertyPath: entryDoors.Array.data[0]
       value: 
@@ -518,11 +538,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
---- !u!1 &183765691 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1521433430660576177, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
-  m_PrefabInstance: {fileID: 183765690}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &183765692 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1521433429867620509, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
@@ -719,7 +734,7 @@ PrefabInstance:
     - target: {fileID: 1882021223002456387, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
       propertyPath: gridObject
       value: 
-      objectReference: {fileID: 183765691}
+      objectReference: {fileID: 0}
     - target: {fileID: 2816751059534596043, guid: b58b5df877e5e4e8f86862a10dfd83b0, type: 3}
       propertyPath: target
       value: 
@@ -5536,7 +5551,7 @@ PrefabInstance:
     - target: {fileID: 3264640679040377156, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
       propertyPath: gridObject
       value: 
-      objectReference: {fileID: 183765691}
+      objectReference: {fileID: 0}
     - target: {fileID: 8331516302662365765, guid: a9c84c7ed5314417ba90cc00678a0193, type: 3}
       propertyPath: m_Name
       value: EnemyToughAI
