@@ -51,6 +51,9 @@ public class FlipTable : MonoBehaviour
                 leftLeg.SetActive(true);
                 rightLeg.SetActive(true);
 
+                gameObject.layer = 0;
+                flippedCollider.gameObject.layer = 0;
+
                 rb.MovePosition(rb.position + new Vector2(0, 0.45f));
 
                 Debug.Log("(┛◉Д◉)┛彡┻━┻");
