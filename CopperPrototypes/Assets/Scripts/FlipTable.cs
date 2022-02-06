@@ -6,6 +6,12 @@ public class FlipTable : MonoBehaviour
 {
     public Sprite flippedSprite;
 
+    public bool isInteractable = false;
+
+    public bool backwards = false;
+
+    public AudioClip tableFlipSound;
+
     private bool flipped = false;
 
     private SpriteRenderer sr;
@@ -20,9 +26,7 @@ public class FlipTable : MonoBehaviour
 
     private GameObject rightLeg;
 
-    public bool isInteractable = false;
-
-    public bool backwards = false;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +50,10 @@ public class FlipTable : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
+                if (tableFlipSound != null)
+                {
+                    AudioSource.PlayClipAtPoint(tableFlipSound, Camera.main.transform.position);
+                }
                 flipped = true;
 
                 sr.sprite = flippedSprite;

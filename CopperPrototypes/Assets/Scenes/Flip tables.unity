@@ -536,6 +536,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 944290218, guid: 1e75ba0e008de40beaf194b6af5b4b3f, type: 3}
+      propertyPath: tableFlipSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 02341c735934ba544abf2685f9773373, type: 3}
     - target: {fileID: 8888606640835144328, guid: 1e75ba0e008de40beaf194b6af5b4b3f, type: 3}
       propertyPath: m_Name
       value: Table
@@ -584,5 +588,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8888606641070385449, guid: 1e75ba0e008de40beaf194b6af5b4b3f, type: 3}
+      propertyPath: tableFlipSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 02341c735934ba544abf2685f9773373, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e75ba0e008de40beaf194b6af5b4b3f, type: 3}
