@@ -272,7 +272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8888606639842982960}
   - component: {fileID: 8888606639842982963}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FlippedCollisionBox
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -331,9 +331,9 @@ GameObject:
   - component: {fileID: 8888606640835144330}
   - component: {fileID: 8888606640835144564}
   - component: {fileID: 8888606640835144565}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Table
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
