@@ -76,13 +76,12 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Blunt" || other.gameObject.tag == "Sharp")
+        if (other.gameObject.tag == "Player")
         {
-            if(! (GetComponent<Chase>() == null || SceneManager.GetActiveScene().name == "Level2"))
+            if (!(GetComponent<Chase>() == null || SceneManager.GetActiveScene().name == "Level2"))
             {
                 GetComponent<Chase>().roomMaster.GetComponent<RoomMaster>().seePlayer = true;
             }
-            
         }
 
         Interactable obj = other.gameObject.GetComponent<Interactable>();
@@ -128,6 +127,17 @@ public class Enemy : MonoBehaviour
             if (GetComponent<Chase>() != null)
             {
                 GetComponent<Chase>().speed *= 0.75f;
+            }
+        }
+
+        if (health > 0)
+        {
+            if (other.gameObject.tag == "Blunt" || other.gameObject.tag == "Sharp")
+            {
+                if (GetComponent<Chase>() != null && GetComponent<Chase>().seePlayer == false)
+                {
+                    GetComponent<Chase>().roomMaster.GetComponent<RoomMaster>().SetSeePlayer(true);
+                }
             }
         }
 
