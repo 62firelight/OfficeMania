@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -77,11 +78,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Blunt" || other.gameObject.tag == "Sharp")
         {
-            if (GetComponent<Chase>() == null)
-            {
-                
-            }
-            else
+            if(! (GetComponent<Chase>() == null || SceneManager.GetActiveScene().name == "Level2"))
             {
                 GetComponent<Chase>().roomMaster.GetComponent<RoomMaster>().seePlayer = true;
             }
