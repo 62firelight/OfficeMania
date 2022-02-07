@@ -38,23 +38,64 @@ public class LevelMaster : MonoBehaviour
     {
         musicSource.clip = lightsOffMusic;
         musicSource.Play();
+
+        // StartCoroutine(FadeIntoTrack(lightsOffMusic));
     }
 
     public void TriggerLightsOnMusic()
     {
-        musicSource.clip = lightsOnMusic;
-        musicSource.Play();
+        // musicSource.clip = lightsOnMusic;
+        // musicSource.Play();
+
+        StartCoroutine(FadeIntoTrack(lightsOnMusic));
+    }
+
+    public void TriggerLightsOffMusicMid()
+    {
+        // musicSource.clip = lightsOffMusic;
+        // musicSource.time = 70;
+        // musicSource.Play();
+
+        StartCoroutine(FadeIntoTrack(lightsOffMusic, 70));
     }
 
     public void TriggerBattleMusic()
     {
-        musicSource.clip = battleMusic;
-        musicSource.Play();
+        // musicSource.clip = battleMusic;
+        // musicSource.Play();
+
+        StartCoroutine(FadeIntoTrack(battleMusic));
     }
 
     public void TriggerBigBattleMusic()
     {
-        musicSource.clip = bigBattleMusic;
-        musicSource.Play();
+        // musicSource.clip = bigBattleMusic;
+        // musicSource.Play();
+
+        StartCoroutine(FadeIntoTrack(bigBattleMusic));
+    }
+
+    IEnumerator FadeIntoTrack(AudioClip clip, int time = 0)
+    {
+        while (musicSource.volume > 0)
+        {
+            musicSource.volume -= 2f * Time.deltaTime;
+            yield return null;
+        }
+
+        if (musicSource.volume <= 0)
+        {
+            musicSource.clip = clip;
+            musicSource.time = time;
+            musicSource.Play();
+            yield return null;
+        }
+
+        while (musicSource.volume < 1)
+        {
+            musicSource.volume += 2f * Time.deltaTime;
+            yield return null;
+        }
+            
     }
 }
