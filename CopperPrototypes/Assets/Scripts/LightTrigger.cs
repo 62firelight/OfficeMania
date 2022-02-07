@@ -4,24 +4,33 @@ using UnityEngine;
 
 public class LightTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private LevelMaster levelMaster;
+
     void Start()
     {
-        
-    }
+        GameObject levelMasterObj = GameObject.FindGameObjectWithTag("LevelMaster");
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (levelMasterObj == null)
+        {
+            Debug.Log(gameObject.name + " can't find LevelMaster!");
+        }
+
+        levelMaster = levelMasterObj.GetComponent<LevelMaster>();
+
+        if (levelMaster == null)
+        {
+            Debug.Log(gameObject.name + " can't find LevelMaster component on LevelMaster game object!");
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Turn off lights");
 
-        // Darken area and 
+        // Darken area and set self to inactive
         Camera.main.backgroundColor /= 2f;
         gameObject.SetActive(false);
+
+        levelMaster.TriggerLightsOffMusic();
     }
 }

@@ -12,6 +12,7 @@ TagManager:
   - Door
   - RotationConstraint
   - ScaleConstraint
+  - LevelMaster
   layers:
   - Default
   - TransparentFX
