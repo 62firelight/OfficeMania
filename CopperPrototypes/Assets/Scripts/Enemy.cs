@@ -95,38 +95,57 @@ public class Enemy : MonoBehaviour
             Debug.Log(other.gameObject.GetComponent<Interactable>().knownVelocity.magnitude);
             return;
         }
-        
-        if (other.gameObject.tag == "Blunt")
+
+        if (other.gameObject.tag == "Blunt" || other.gameObject.tag == "Sharp")
         {
-            // Do nothing if we are currently being knocked back
-            if (knockbackTime > 0)
+            Debug.Log(gameObject.name + " flag: " + obj.thrownFlag);
+            // Deduct health if thrown by player
+            if (obj.thrownFlag < 2)
             {
-                return;
+                gameObject.GetComponent<BarthaSzabolcs.Tutorial_SpriteFlash.ColoredFlash>().Flash(Color.white);
+                health--;
             }
-
-            Rigidbody2D otherRb = other.gameObject.GetComponent<Rigidbody2D>();
-
-            Vector2 diff = (transform.position - other.gameObject.transform.position).normalized;
-            Vector2 force = diff * knockbackForce;
-
-            EnableRagdoll();
-            rb.AddForce(force, ForceMode2D.Impulse);
-
-            knockbackTime = 0.4f;
-
-            health--;
-        }
-        else if (other.gameObject.tag == "Sharp")
-        {
-            health--;
-
-            obj.DisablePhysics();
-            other.gameObject.transform.parent = transform;
-            obj.pickedUp = true;
-
-            if (GetComponent<Chase>() != null)
+            else
             {
-                GetComponent<Chase>().speed *= 0.75f;
+                // Deduct health randomly if thrown by another enemy
+                int roll = Random.Range(1, 6);
+
+                if (roll == 1)
+                {
+                    gameObject.GetComponent<BarthaSzabolcs.Tutorial_SpriteFlash.ColoredFlash>().Flash(Color.white);
+                    health--;
+                }
+            }
+            
+
+            if (other.gameObject.tag == "Blunt")
+            {
+                // Do nothing if we are currently being knocked back
+                if (knockbackTime > 0)
+                {
+                    return;
+                }
+
+                Rigidbody2D otherRb = other.gameObject.GetComponent<Rigidbody2D>();
+
+                Vector2 diff = (transform.position - other.gameObject.transform.position).normalized;
+                Vector2 force = diff * knockbackForce;
+
+                EnableRagdoll();
+                rb.AddForce(force, ForceMode2D.Impulse);
+
+                knockbackTime = 0.4f;
+            }
+            else if (other.gameObject.tag == "Sharp")
+            {
+                obj.DisablePhysics();
+                other.gameObject.transform.parent = transform;
+                obj.pickedUp = true;
+
+                if (GetComponent<Chase>() != null)
+                {
+                    GetComponent<Chase>().speed *= 0.75f;
+                }
             }
         }
 
@@ -141,6 +160,6 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        gameObject.GetComponent<BarthaSzabolcs.Tutorial_SpriteFlash.ColoredFlash>().Flash(Color.white);
+        
     }
 }

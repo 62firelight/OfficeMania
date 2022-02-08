@@ -96,6 +96,9 @@ public class Interactable : MonoBehaviour
 
         Debug.Log("Object Bounciness: " + coll.bounciness);
 
+        thrownFlag = 1;
+        damageable = true;
+
         EnablePhysics();
         pickedUp = false;
 
@@ -105,14 +108,14 @@ public class Interactable : MonoBehaviour
         transform.Translate(0, 0, 1);
         transform.parent = null;
 
-        thrownFlag = 1;
-        damageable = true;
-
         AIMaster.takenObjects.Remove(gameObject);
     }
 
     public void EnemyThrow(Transform firePoint, float force, GameObject enemy)
     {
+        thrownFlag = 2;
+        damageable = true;
+
         EnablePhysics();
         pickedUp = false;
 
@@ -126,9 +129,6 @@ public class Interactable : MonoBehaviour
         
         transform.Translate(0, 0, 1);
         transform.parent = null;
-
-        thrownFlag = 2;
-        damageable = true;
 
         AIMaster.takenObjects.Remove(gameObject);
     }
