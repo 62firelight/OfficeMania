@@ -34,7 +34,7 @@ public class PlayerThrowing : MonoBehaviour
             currentObject = heldObject;
         }
 
-        if (nearestObject != null && currentObject == null && nearestObject.thrownFlag != 2 && nearestObject.damageable == false)// && nearestObject.rb.isKinematic == true && nearestObject.pickedUp == false)
+        if (nearestObject != null && bluntObject == null && currentObject == null && nearestObject.thrownFlag != 2 && nearestObject.damageable == false)// && nearestObject.rb.isKinematic == true && nearestObject.pickedUp == false)
         {
             if (nearestObject.isHeavy == false)
             {

@@ -12,7 +12,10 @@ public static class DialogueMaster
         "Watch out!",
         "Take him down!",
         "He's right there!",
-        "There he is!"
+        "There he is!",
+        "Stop right there!",
+        "Stop!",
+        "Halt!"
     };
 
     public static string GetPlayerSeenLine()

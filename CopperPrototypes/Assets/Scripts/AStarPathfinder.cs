@@ -172,7 +172,7 @@ public class AStarPathfinder : MonoBehaviour {
 
 			//Udate remaining distance to travel
 			//transform.position = nextPosition;
-			GetComponent<Rigidbody2D>().MovePosition(GetComponent<Rigidbody2D>().position + deltaPosition * atSpeed * 25 * Time.fixedDeltaTime);
+			GetComponent<Rigidbody2D>().MovePosition(GetComponent<Rigidbody2D>().position + deltaPosition * atSpeed * 10 * Time.fixedDeltaTime);
 
 			Vector2 currentPosition = new Vector2(transform.position.x, transform.position.y);
 			Vector2 moveDirection = targetPosition - currentPosition;

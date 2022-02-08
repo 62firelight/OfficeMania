@@ -138,7 +138,7 @@ public class Throw : MonoBehaviour
             }
 
             // Ignore player held objects
-            if (obj == player.GetComponent<PlayerThrowing>().currentObject || obj == player.GetComponent<PlayerThrowing>().heldObject)
+            if (obj.GetComponent<Interactable>().isHeavy || obj == player.GetComponent<PlayerThrowing>().currentObject || obj == player.GetComponent<PlayerThrowing>().heldObject)
             {
                 continue;
             }
