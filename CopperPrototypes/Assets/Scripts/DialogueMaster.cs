@@ -18,11 +18,23 @@ public static class DialogueMaster
         "Halt!"
     };
 
+    public static List<string> enemyStuckLines = new List<string>(){
+        "I can't move!",
+        "I'm stuck!"
+    };
+
     public static string GetPlayerSeenLine()
     {
         int index = RandomIndex(0, playerSeenLines.Count - 1);
 
         return playerSeenLines.ElementAt(index);
+    }
+
+    public static string GetEnemyStuckLine()
+    {
+        int index = RandomIndex(0, enemyStuckLines.Count - 1);
+
+        return enemyStuckLines.ElementAt(index);
     }
 
     public static int RandomIndex(int min, int max)
