@@ -49,7 +49,7 @@ public class Chase : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate() {
 		if (roomMaster == null)
         {
 			Debug.Log("RoomMaster has not been set! AI may not function properly");
