@@ -10,9 +10,13 @@ public class Enemy : MonoBehaviour
 
     public int health;
 
-    public float knockbackForce = 5f;
+    public float knockbackForce = 50f;
 
     public float knockbackTime = 0f;
+
+    public bool isBoss = false;
+
+    public int bossHealth = 3;
 
     // Rigidbody2D component
     private Rigidbody2D rb;
@@ -46,20 +50,56 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        // If enemy has no health
-        if (health <= 0)
+        if (isBoss == false)
         {
-            // Darken sprite
-            sr.color = new Color(0.5f, 0, 0);
-
-            // Disable AI
-            if (GetComponent<Chase>() != null)
+            // If enemy has no health
+            if (health <= 0)
             {
-                GetComponent<Chase>().speed = 0;
-            }
+                // Darken sprite
+                sr.color = new Color(0.5f, 0, 0);
 
-            rb.simulated = false;
+                // Disable AI
+                if (GetComponent<Chase>() != null)
+                {
+                    GetComponent<Chase>().speed = 0;
+                }
+
+                rb.simulated = false;
+            }
         }
+        else
+        {
+            if (health <= 0 && bossHealth > 0)
+            {
+                bossHealth--;
+                health = maxHealth;
+
+                DynamicMusic music = GetComponent<DynamicMusic>();
+
+                if (music == null)
+                {
+                    Debug.Log("Could not find DynamicMusic component for " + gameObject.name + "!");
+                    Time.timeScale = 0;
+                }
+
+                music.TriggerFadeOut();
+
+                if (bossHealth <= 0)
+                {
+                    // Darken sprite
+                    sr.color = new Color(0.5f, 0, 0);
+
+                    // Disable AI
+                    if (GetComponent<Chase>() != null)
+                    {
+                        GetComponent<Chase>().speed = 0;
+                    }
+
+                    rb.simulated = false;
+                }
+            }
+        }
+        
     }
 
     // Let the rigidbody take control and detect collisions.
@@ -144,7 +184,14 @@ public class Enemy : MonoBehaviour
 
                 if (GetComponent<Chase>() != null)
                 {
-                    GetComponent<Chase>().speed *= 0.75f;
+                    if (isBoss == false)
+                    {
+                        GetComponent<Chase>().speed *= 0.75f;
+                    }
+                    else
+                    {
+                        GetComponent<Chase>().speed *= 0.9f;
+                    }
                 }
             }
         }

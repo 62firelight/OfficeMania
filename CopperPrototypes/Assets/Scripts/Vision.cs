@@ -9,6 +9,8 @@ public class Vision : MonoBehaviour
     RoomMaster roomMaster;
     Dialogue dialogue;
 
+    public bool isBoss = false;
+
     // Use this for initialization
     void Start()
     {
@@ -22,7 +24,23 @@ public class Vision : MonoBehaviour
         if (other.tag == "Player" && roomMaster.seePlayer == false)
         {
             roomMaster.SetSeePlayer(true);
-            dialogue.DisplayDialogue(DialogueMaster.GetPlayerSeenLine());
+
+            if (isBoss == false)
+            {
+                dialogue.DisplayDialogue(DialogueMaster.GetPlayerSeenLine());
+            }
+            else
+            {
+                DynamicMusic music = transform.parent.gameObject.GetComponent<DynamicMusic>();
+
+                if (music == null)
+                {
+                    Debug.Log("Could not find DynamicMusic component for " + gameObject.name + "!");
+                    return;
+                }
+
+                music.PlayBossMusic();
+            }
         }
     }
 }
