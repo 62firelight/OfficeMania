@@ -14,12 +14,17 @@ public class MainMenu : MonoBehaviour {
     // This is the controls button on the main menu
     public void ShowControls() {
         // This will show the user the controls
-        SceneManager.LoadScene("Controls");
+        SceneManager.LoadScene("Help");
     }
 
     //This is the quit button on the main menu
     public void QuitGame() {
         // This will quit the application
         Application.Quit();
+    }
+
+    public void MenuScreen() {
+        //This will return to the main menu
+        SceneManager.LoadScene("MainMenu");
     }
 }
