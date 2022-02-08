@@ -16,6 +16,8 @@ public class DynamicMusic : MonoBehaviour
 
     public float fadeInSpeed = 1f;
 
+    public bool play = false;
+
     private int index;
 
     private bool fadeOut = false;
@@ -33,7 +35,7 @@ public class DynamicMusic : MonoBehaviour
         {
             audioSource.clip = musicPhases[0];
             audioSource.volume = maxVolume;
-            audioSource.loop = true;
+            // audioSource.loop = true;
 
             // audioSource.Play();
         }
@@ -42,6 +44,13 @@ public class DynamicMusic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (play == true && index == 0 && audioSource.isPlaying == false)
+        {
+            audioSource.clip = musicPhases[++index];
+            audioSource.Play();
+            audioSource.loop = true;
+        }
+
         // Fade out music
         if (fadeOut)
         {
@@ -103,6 +112,7 @@ public class DynamicMusic : MonoBehaviour
     public void PlayBossMusic()
     {
         audioSource.Play();
+        play = true;
     }
 
     void OnGUI()

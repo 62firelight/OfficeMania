@@ -2972,17 +2972,41 @@ PrefabInstance:
       propertyPath: speed
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1827321387692742602, guid: feb192c8660cf4548b295909f13d9cb5, type: 3}
+      propertyPath: musicPhases.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1827321387692742602, guid: feb192c8660cf4548b295909f13d9cb5, type: 3}
+      propertyPath: musicPhases.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: ceb5ba049cc04194696941fbf71ba766, type: 3}
+    - target: {fileID: 1827321387692742602, guid: feb192c8660cf4548b295909f13d9cb5, type: 3}
+      propertyPath: musicPhases.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3f6feebce4af78d4285288adf05a25b7, type: 3}
+    - target: {fileID: 1827321387692742602, guid: feb192c8660cf4548b295909f13d9cb5, type: 3}
+      propertyPath: musicPhases.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: c41bce628e45b204686e73e7ed234909, type: 3}
+    - target: {fileID: 1827321387692742602, guid: feb192c8660cf4548b295909f13d9cb5, type: 3}
+      propertyPath: musicPhases.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: c144df922165e4940b562e4db52aa7c7, type: 3}
+    - target: {fileID: 1827321387692742602, guid: feb192c8660cf4548b295909f13d9cb5, type: 3}
+      propertyPath: musicPhases.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: de7ec884a390b7244b23ae0b3d3a5d9d, type: 3}
     - target: {fileID: 3795697973237243924, guid: feb192c8660cf4548b295909f13d9cb5, type: 3}
       propertyPath: isBoss
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5187391210336144939, guid: feb192c8660cf4548b295909f13d9cb5, type: 3}
       propertyPath: m_Radius
-      value: 6.1431503
+      value: 4.798249
       objectReference: {fileID: 0}
     - target: {fileID: 5187391210336144939, guid: feb192c8660cf4548b295909f13d9cb5, type: 3}
       propertyPath: m_Offset.y
-      value: 5.668735
+      value: 4.3238416
       objectReference: {fileID: 0}
     - target: {fileID: 8331516302662365763, guid: feb192c8660cf4548b295909f13d9cb5, type: 3}
       propertyPath: isBoss
@@ -3010,11 +3034,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8331516302662365767, guid: feb192c8660cf4548b295909f13d9cb5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.20941532
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8331516302662365767, guid: feb192c8660cf4548b295909f13d9cb5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5057402
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: 8331516302662365767, guid: feb192c8660cf4548b295909f13d9cb5, type: 3}
       propertyPath: m_LocalPosition.z
