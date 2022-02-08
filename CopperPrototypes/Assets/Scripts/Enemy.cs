@@ -175,6 +175,11 @@ public class Enemy : MonoBehaviour
                 rb.AddForce(force, ForceMode2D.Impulse);
 
                 knockbackTime = 0.4f;
+
+                if (health <= 0)
+                {
+                    GetComponentInChildren<Dialogue>().DisplayDialogue(DialogueMaster.GetEnemyKOLine());
+                }
             }
             else if (other.gameObject.tag == "Sharp")
             {
@@ -192,6 +197,11 @@ public class Enemy : MonoBehaviour
                     {
                         GetComponent<Chase>().speed *= 0.9f;
                     }
+                }
+
+                if (health <= 0)
+                {
+                    GetComponentInChildren<Dialogue>().DisplayDialogue(DialogueMaster.GetEnemyStuckLine());
                 }
             }
         }
