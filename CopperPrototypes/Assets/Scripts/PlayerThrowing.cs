@@ -34,14 +34,6 @@ public class PlayerThrowing : MonoBehaviour
             currentObject = heldObject;
         }
 
-        if (nearestObject != null && bluntObject == null && currentObject == null && nearestObject.thrownFlag != 2 && nearestObject.damageable == false)// && nearestObject.rb.isKinematic == true && nearestObject.pickedUp == false)
-        {
-            if (nearestObject.isHeavy == false)
-            {
-                nearestObject.RegisterPickUp();
-            }
-        }
-
         if (Input.GetButtonDown("Fire1"))
         {
             startTime = Time.time;
@@ -61,7 +53,7 @@ public class PlayerThrowing : MonoBehaviour
                 bluntObject = null;
 
                 // Re-enable collision between player and heavy object
-                Physics2D.IgnoreCollision(nearestObject.gameObject.transform.GetChild(1).GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
+                Physics2D.IgnoreCollision(currentObject.gameObject.transform.GetChild(1).GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
             }
             else
             {
@@ -78,6 +70,14 @@ public class PlayerThrowing : MonoBehaviour
         if (Input.GetButtonDown("Fire2") && nearestObject != null && nearestObject.gameObject.tag == "Blunt" && AIMaster.takenObjects.Contains(nearestObject.gameObject) == false) 
         {
             nearestObject.RegisterPickUp();
+        }
+
+        if (nearestObject != null && bluntObject == null && currentObject == null && nearestObject.thrownFlag != 2 && nearestObject.damageable == false)// && nearestObject.rb.isKinematic == true && nearestObject.pickedUp == false)
+        {
+            if (nearestObject.isHeavy == false && nearestObject.pickedUp == false)
+            {
+                nearestObject.RegisterPickUp();
+            }
         }
     }
 
