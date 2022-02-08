@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridObject: {fileID: 0}
-  updateFrequency: 5
+  updateFrequency: 1
   DrawPathInEditor: 0
   PathColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!114 &2816751059534596043

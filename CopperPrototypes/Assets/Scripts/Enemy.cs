@@ -76,9 +76,9 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Blunt" || other.gameObject.tag == "Sharp")
         {
-            if (!(GetComponent<Chase>() == null || SceneManager.GetActiveScene().name == "Level2"))
+            if (!(GetComponent<Chase>() == null) && SceneManager.GetActiveScene().name != "Level2")
             {
                 GetComponent<Chase>().roomMaster.GetComponent<RoomMaster>().seePlayer = true;
             }
