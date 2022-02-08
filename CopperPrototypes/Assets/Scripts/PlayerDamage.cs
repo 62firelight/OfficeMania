@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDamage : MonoBehaviour
 {
@@ -85,6 +86,7 @@ public class PlayerDamage : MonoBehaviour
         if (playerHealth <= 0)
         {
             Debug.Log("Player dead");
+            SceneManager.LoadScene("GameOver");
         }
         
         invulnerableCooldown = 1f;

@@ -27,4 +27,10 @@ public class MainMenu : MonoBehaviour {
         //This will return to the main menu
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void RestartLevel() {
+        int sceneIndex = AIMaster.currentLevel;
+        SceneManager.LoadScene(sceneIndex);
+        Debug.Log(sceneIndex);
+    }
 }
