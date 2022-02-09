@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 202656236}
   - component: {fileID: 8331516302662365760}
   - component: {fileID: 3985717772477951955}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EliteGuard
   m_TagString: Enemy
   m_Icon: {fileID: 0}
