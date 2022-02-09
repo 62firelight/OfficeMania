@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4929038550582789031}
   - component: {fileID: 1554437775}
   - component: {fileID: 1554437778}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Blunt
   m_TagString: Blunt
   m_Icon: {fileID: 0}
@@ -103,6 +103,10 @@ MonoBehaviour:
   distanceToPlayer: 0
   isHeavy: 0
   pickedUp: 0
+  damageable: 0
+  knownVelocity: {x: 0, y: 0, z: 0}
+  thrownFlag: 0
+  rb: {fileID: 0}
 --- !u!50 &1554437775
 Rigidbody2D:
   serializedVersion: 4

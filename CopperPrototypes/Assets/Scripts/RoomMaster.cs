@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AStarGrid))]
 public class RoomMaster : MonoBehaviour
@@ -16,6 +17,8 @@ public class RoomMaster : MonoBehaviour
     public bool aiEnabled = false;
 
     public bool seePlayer = false;
+
+    public bool levelTwoBigBattle = false;
 
     public Transform bottomLeftCorner;
 
@@ -127,7 +130,18 @@ public class RoomMaster : MonoBehaviour
                         entryDoor.SetActive(false);
                     }
                 }
+
+                if (seePlayer == true && SceneManager.GetActiveScene().name == "Level2")
+                {
+                    GameObject levelMasterObj = GameObject.FindGameObjectWithTag("LevelMaster");
+
+                    LevelMaster levelMaster = levelMasterObj.GetComponent<LevelMaster>();
+
+                    levelMaster.TriggerLightsOffMusicMid();
+                }
             }
+
+            
         }
     }
 
@@ -167,5 +181,22 @@ public class RoomMaster : MonoBehaviour
     public void SetSeePlayer(bool status)
     {
         seePlayer = status;
+
+        if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            GameObject levelMasterObj = GameObject.FindGameObjectWithTag("LevelMaster");
+
+            LevelMaster levelMaster = levelMasterObj.GetComponent<LevelMaster>();
+
+            if (levelTwoBigBattle)
+            {
+                levelMaster.TriggerBigBattleMusic();
+            }
+            else
+            {
+                levelMaster.TriggerBattleMusic();
+            }
+            
+        }
     }
 }

@@ -6,6 +6,12 @@ public class FlipTable : MonoBehaviour
 {
     public Sprite flippedSprite;
 
+    public bool isInteractable = false;
+
+    public bool backwards = false;
+
+    public AudioClip tableFlipSound;
+
     private bool flipped = false;
 
     private SpriteRenderer sr;
@@ -20,7 +26,7 @@ public class FlipTable : MonoBehaviour
 
     private GameObject rightLeg;
 
-    private bool isInteractable = false;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +50,10 @@ public class FlipTable : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
+                if (tableFlipSound != null)
+                {
+                    AudioSource.PlayClipAtPoint(tableFlipSound, Camera.main.transform.position);
+                }
                 flipped = true;
 
                 sr.sprite = flippedSprite;
@@ -51,7 +61,18 @@ public class FlipTable : MonoBehaviour
                 leftLeg.SetActive(true);
                 rightLeg.SetActive(true);
 
-                rb.MovePosition(rb.position + new Vector2(0, 0.45f));
+                gameObject.layer = 0;
+                flippedCollider.gameObject.layer = 0;
+
+                if (backwards)
+                {
+                    transform.parent.Rotate(new Vector3(0, 0, 180));
+                    rb.MovePosition(rb.position + new Vector2(0, -0.45f));
+                }
+                else
+                {
+                    rb.MovePosition(rb.position + new Vector2(0, 0.45f));
+                }
 
                 Debug.Log("(┛◉Д◉)┛彡┻━┻");
             }
@@ -60,11 +81,11 @@ public class FlipTable : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        isInteractable = true;
+        if (other.tag == "Player") isInteractable = true;
     }
 
-    void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerExit2D(Collider2D other)
     {
-        isInteractable = false;
+        if (other.tag == "Player") isInteractable = false;
     }
 }

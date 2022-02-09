@@ -16,6 +16,8 @@ public class DynamicMusic : MonoBehaviour
 
     public float fadeInSpeed = 1f;
 
+    public bool play = false;
+
     private int index;
 
     private bool fadeOut = false;
@@ -33,15 +35,22 @@ public class DynamicMusic : MonoBehaviour
         {
             audioSource.clip = musicPhases[0];
             audioSource.volume = maxVolume;
-            audioSource.loop = true;
+            // audioSource.loop = true;
 
-            audioSource.Play();
+            // audioSource.Play();
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (play == true && index == 0 && audioSource.isPlaying == false)
+        {
+            audioSource.clip = musicPhases[++index];
+            audioSource.Play();
+            audioSource.loop = true;
+        }
+
         // Fade out music
         if (fadeOut)
         {
@@ -93,15 +102,26 @@ public class DynamicMusic : MonoBehaviour
     {
         // fade out music track
         fadeOut = true;
+
+        if (index + 1 == musicPhases.Length - 1)
+        {
+            audioSource.loop = false;
+        }
+    }
+
+    public void PlayBossMusic()
+    {
+        audioSource.Play();
+        play = true;
     }
 
     void OnGUI()
     {
-        GUI.skin.label.fontSize = 72;
+        // GUI.skin.label.fontSize = 72;
 
-        TextAnchor originalAlignment = GUI.skin.label.alignment;
-        GUI.skin.label.alignment = TextAnchor.LowerCenter;
-        GUI.Label(new Rect(0, 0, Camera.main.pixelWidth, Camera.main.pixelHeight), "Press N to change to next song");
-        GUI.skin.label.alignment = originalAlignment;
+        // TextAnchor originalAlignment = GUI.skin.label.alignment;
+        // GUI.skin.label.alignment = TextAnchor.LowerCenter;
+        // GUI.Label(new Rect(0, 0, Camera.main.pixelWidth, Camera.main.pixelHeight), "Press N to change to next song");
+        // GUI.skin.label.alignment = originalAlignment;
     }
 }

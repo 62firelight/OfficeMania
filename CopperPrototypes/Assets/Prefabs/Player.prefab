@@ -165,7 +165,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5403261870387305036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.04, z: 0}
+  m_LocalPosition: {x: -0, y: 0.04, z: -6}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 5403261870707454220}
@@ -259,6 +259,7 @@ MonoBehaviour:
   nearestObject: {fileID: 0}
   nearestSharp: {fileID: 0}
   bluntObject: {fileID: 0}
+  heldObject: {fileID: 0}
   currentObject: {fileID: 0}
 --- !u!114 &3782174989788927479
 MonoBehaviour:
@@ -301,6 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4511ab7bef6da404eac1bfcacb5e3701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasKeycard: 0
 --- !u!50 &5403261870387305024
 Rigidbody2D:
   serializedVersion: 4

@@ -12,7 +12,22 @@ public static class DialogueMaster
         "Watch out!",
         "Take him down!",
         "He's right there!",
-        "There he is!"
+        "There he is!",
+        "Stop right there!",
+        "Stop!",
+        "Halt!"
+    };
+
+    public static List<string> enemyKOLines = new List<string>(){
+        "Oof!",
+        "Ow!",
+        "Ah!",
+        "Ouch!"
+    };
+
+    public static List<string> enemyStuckLines = new List<string>(){
+        "I can't move!",
+        "I'm stuck!"
     };
 
     public static string GetPlayerSeenLine()
@@ -20,6 +35,20 @@ public static class DialogueMaster
         int index = RandomIndex(0, playerSeenLines.Count - 1);
 
         return playerSeenLines.ElementAt(index);
+    }
+
+    public static string GetEnemyKOLine()
+    {
+        int index = RandomIndex(0, enemyKOLines.Count - 1);
+
+        return enemyKOLines.ElementAt(index);
+    }
+
+    public static string GetEnemyStuckLine()
+    {
+        int index = RandomIndex(0, enemyStuckLines.Count - 1);
+
+        return enemyStuckLines.ElementAt(index);
     }
 
     public static int RandomIndex(int min, int max)

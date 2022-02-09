@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDamage : MonoBehaviour
 {
@@ -55,11 +56,21 @@ public class PlayerDamage : MonoBehaviour
 
         // Check if the player collided with a thrown object
         Interactable obj = other.gameObject.GetComponent<Interactable>();
+        if (obj == null)
+        {
+            return;
+        }
+
+        if (obj.knownVelocity.magnitude < 2.5f)
+        {
+            return;
+        }
 
         // If the player has collided, and the object was thrown by an enemy,
         // let the player take damage
         if (obj != null && obj.thrownFlag == 2)
         {
+            Debug.Log(obj + " had " + obj.rb.velocity.magnitude + " velocity");
             RegisterDamage(other);
         }
     }
@@ -75,6 +86,7 @@ public class PlayerDamage : MonoBehaviour
         if (playerHealth <= 0)
         {
             Debug.Log("Player dead");
+            SceneManager.LoadScene("GameOver");
         }
         
         invulnerableCooldown = 1f;

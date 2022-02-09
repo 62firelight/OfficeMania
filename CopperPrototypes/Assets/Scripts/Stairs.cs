@@ -10,7 +10,13 @@ public class Stairs : MonoBehaviour
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         if (collision.tag == "Player")
         {
-            SceneManager.LoadScene("MainMenu");
+            // SceneManager.LoadScene("MainMenu");
+
+            AIMaster.currentLevel++;
+
+            int currentLevel = AIMaster.currentLevel;
+            Debug.Log(currentLevel);
+            SceneManager.LoadScene(currentLevel);
         }
     }
 }
