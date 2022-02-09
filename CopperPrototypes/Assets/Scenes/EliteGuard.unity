@@ -430,6 +430,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 202656236, guid: 55a2a8076a95449c788b6ae07b642809, type: 3}
+      propertyPath: isElite
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8331516302662365765, guid: 55a2a8076a95449c788b6ae07b642809, type: 3}
       propertyPath: m_Name
       value: EliteGuard
