@@ -18,6 +18,8 @@ public class Throw : MonoBehaviour
 
     public GameObject mostRecentObject = null;
 
+    public bool isElite = false;
+
     float delay;
 
     // Start is called before the first frame update
@@ -69,7 +71,28 @@ public class Throw : MonoBehaviour
         // Throw an object if we are holding it for at least 2 seconds
         if (currentObject != null && delay <= 0)
         {
-            currentObject.GetComponent<Interactable>().EnemyThrow(transform, 30, gameObject);
+            Interactable obj = currentObject.GetComponent<Interactable>();
+
+            // If I'm an elite guard with a heavy object
+            if (obj.isHeavy == true && isElite == true)
+            {
+                // Delay the throw until we are close enough to the player
+                // (act as if we are blocking the player's thrown objects)
+                float distanceToPlayer = Vector2.Distance(transform.position, target.transform.position);
+                if (distanceToPlayer < 3f)
+                {
+                    currentObject.GetComponent<Interactable>().EnemyThrow(transform, 30, gameObject);
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                currentObject.GetComponent<Interactable>().EnemyThrow(transform, 30, gameObject);
+            }
+           
             mostRecentObject = currentObject;
             currentObject = null;
 
@@ -127,7 +150,7 @@ public class Throw : MonoBehaviour
         GameObject[] objects = GameObject.FindGameObjectsWithTag("Blunt");
 
         GameObject closestObject = null;
-        float closestDistance = 1000000;
+        float closestDistance = Mathf.Infinity;
         float distance;
 
         foreach (GameObject obj in objects)
@@ -137,8 +160,11 @@ public class Throw : MonoBehaviour
                 continue;
             }
 
+            Interactable objInteract = obj.GetComponent<Interactable>();
+            PlayerThrowing playerThrowing = player.GetComponent<PlayerThrowing>();
+
             // Ignore player held objects
-            if (obj.GetComponent<Interactable>().isHeavy || obj == player.GetComponent<PlayerThrowing>().currentObject || obj == player.GetComponent<PlayerThrowing>().heldObject)
+            if ((isElite == false && objInteract.isHeavy) || obj == playerThrowing.currentObject || obj == playerThrowing.heldObject)
             {
                 continue;
             }
