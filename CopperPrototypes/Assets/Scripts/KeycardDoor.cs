@@ -30,16 +30,16 @@ public class KeycardDoor : MonoBehaviour
 
             if (playerKeycard.hasKeycard)
             {
-                Debug.Log("Access granted");
+                Debug.Log("Unlocked");
                 transform.parent.gameObject.SetActive(false);
 
-                if (tmp != null) tmp.text = "Access granted";
+                if (tmp != null) tmp.text = "Unlocked";
             }
             else
             {
-                Debug.Log("Access denied");
+                Debug.Log("Key required");
 
-                if (tmp != null) tmp.text = "Access denied";
+                if (tmp != null) tmp.text = "Key required";
             }
         }
     }
