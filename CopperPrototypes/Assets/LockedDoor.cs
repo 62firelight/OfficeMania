@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class KeycardDoor : MonoBehaviour
+public class LockedDoor : MonoBehaviour
 {
 
     private SpriteRenderer sr;
@@ -19,28 +19,14 @@ public class KeycardDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            PlayerKeycard playerKeycard = other.GetComponent<PlayerKeycard>();
-
-            if (playerKeycard.hasKeycard)
-            {
-                Debug.Log("Unlocked");
-                transform.parent.gameObject.SetActive(false);
-
-                if (tmp != null) tmp.text = "Unlocked";
-            }
-            else
-            {
-                Debug.Log("Key required");
-
-                if (tmp != null) tmp.text = "Key required";
-            }
+            if (tmp != null) tmp.text = "Inaccessible";
         }
     }
 
