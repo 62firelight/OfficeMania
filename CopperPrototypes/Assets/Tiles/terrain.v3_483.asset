@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: roguelikeCity_magenta.v3_8
+  m_Name: terrain.v3_483
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 6156373652793572902, guid: 65f78bb52aaa448ec9e75f1e22da5505, type: 3}
+  m_Sprite: {fileID: -8293510923869648788, guid: 5f54460b95b634288b773bbadaf04e0a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

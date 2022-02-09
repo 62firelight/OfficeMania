@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: terrain_479
+  m_Name: offie-space-tileset.v3_30
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -17482364881378464, guid: 6347b696f58bb44c39cf405b82a046cd, type: 3}
+  m_Sprite: {fileID: 3627960174801860344, guid: bb90e088cf42c4fe0869896421d81439, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
