@@ -5,10 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
 
+    private void Start()
+    {
+        AIMaster.currentLevel = 0;
+}
+
     // This is the start button on the main menu
-    public void StartGame() {
+    public void StartGame() { 
         // This will take you to the starting scene
         SceneManager.LoadScene("PrototypeLevel");
+
     }
 
     // This is the controls button on the main menu
