@@ -18,6 +18,8 @@ public class RoomMaster : MonoBehaviour
 
     public bool seePlayer = false;
 
+    public bool levelTwoBattle = false;
+
     public bool levelTwoBigBattle = false;
 
     public Transform bottomLeftCorner;
@@ -137,7 +139,7 @@ public class RoomMaster : MonoBehaviour
 
                     LevelMaster levelMaster = levelMasterObj.GetComponent<LevelMaster>();
 
-                    levelMaster.TriggerLightsOffMusicMid();
+                    if (levelTwoBattle || levelTwoBigBattle) levelMaster.TriggerLightsOffMusicMid();
                 }
             }
 
@@ -192,7 +194,7 @@ public class RoomMaster : MonoBehaviour
             {
                 levelMaster.TriggerBigBattleMusic();
             }
-            else
+            else if (levelTwoBattle)
             {
                 levelMaster.TriggerBattleMusic();
             }

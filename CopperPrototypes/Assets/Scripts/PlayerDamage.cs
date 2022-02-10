@@ -20,6 +20,8 @@ public class PlayerDamage : MonoBehaviour
         playerHealth = playerMaxHealth;
 
         rb = GetComponent<Rigidbody2D>();
+
+        Physics2D.IgnoreLayerCollision(6, 8, false);
     }
     
     void Update()
@@ -36,6 +38,7 @@ public class PlayerDamage : MonoBehaviour
             else
             {
                 GetComponent<Renderer>().enabled = true;
+                Physics2D.IgnoreLayerCollision(6, 8, false);
             }
         }
     }
@@ -89,7 +92,8 @@ public class PlayerDamage : MonoBehaviour
             SceneManager.LoadScene("GameOver");
         }
         
-        invulnerableCooldown = 1f;
+        invulnerableCooldown = 1.5f;
+        Physics2D.IgnoreLayerCollision(6, 8, true);
 
         // Knock the player back
         // Vector2 diff = (transform.position - other.gameObject.transform.position).normalized;

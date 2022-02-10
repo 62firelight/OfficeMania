@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 1827321387692742602}
   - component: {fileID: 3985717772477951955}
   - component: {fileID: 5304784910536427088}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -154,6 +154,8 @@ MonoBehaviour:
   health: 0
   knockbackForce: 50
   knockbackTime: 0
+  isBoss: 0
+  bossHealth: 3
 --- !u!114 &3264640679040377156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,6 +206,7 @@ MonoBehaviour:
   player: {fileID: 0}
   firePoint: {fileID: 239791091}
   mostRecentObject: {fileID: 0}
+  isElite: 0
 --- !u!50 &8331516302662365760
 Rigidbody2D:
   serializedVersion: 4
@@ -246,6 +249,7 @@ MonoBehaviour:
   maxVolume: 0.25
   fadeOutSpeed: 0.6
   fadeInSpeed: 1
+  play: 0
 --- !u!61 &3985717772477951955
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -412,6 +416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae2515c137ac41aebd12ca7a45e5a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBoss: 0
 --- !u!58 &5187391210336144939
 CircleCollider2D:
   m_ObjectHideFlags: 0
