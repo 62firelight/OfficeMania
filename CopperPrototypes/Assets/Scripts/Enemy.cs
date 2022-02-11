@@ -75,7 +75,6 @@ public class Enemy : MonoBehaviour
                 health = maxHealth;
 
                 DynamicMusic music = GetComponent<DynamicMusic>();
-
                 if (music == null)
                 {
                     Debug.Log("Could not find DynamicMusic component for " + gameObject.name + "!");
@@ -83,6 +82,26 @@ public class Enemy : MonoBehaviour
                 }
 
                 music.TriggerFadeOut();
+
+                GameObject bossMinionMaster = GameObject.FindGameObjectWithTag("BossMinionMaster");
+                if (bossMinionMaster == null)
+                {
+                    Debug.Log("Could not find BossMinionMaster for " + gameObject.name + "!");
+                    Time.timeScale = 0;
+                }
+
+                BossMinionMaster bossPhases = bossMinionMaster.GetComponent<BossMinionMaster>();
+                if (bossPhases == null)
+                {
+                    Debug.Log("Could not find BossMinionMaster component for " + gameObject.name + "!");
+                    Time.timeScale = 0;
+                }
+
+                // Trigger phase two
+                if (bossHealth == 2)
+                {
+                    bossPhases.InitiatePhaseTwo();
+                }
 
                 if (bossHealth <= 0)
                 {

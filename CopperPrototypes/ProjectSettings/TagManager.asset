@@ -13,6 +13,7 @@ TagManager:
   - RotationConstraint
   - ScaleConstraint
   - LevelMaster
+  - BossMinionMaster
   layers:
   - Default
   - TransparentFX
