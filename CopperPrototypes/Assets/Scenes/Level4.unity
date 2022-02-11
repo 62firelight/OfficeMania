@@ -328,6 +328,10 @@ PrefabInstance:
       value: RoomMaster
       objectReference: {fileID: 0}
     - target: {fileID: 1521433429867620514, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
+      propertyPath: bossBattle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521433429867620514, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
       propertyPath: enemies.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -7675,11 +7679,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2420592724045682164, guid: a0f2d49130be12741bd093a0501da196, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.219999
+      value: -10.27
       objectReference: {fileID: 0}
     - target: {fileID: 2420592724045682164, guid: a0f2d49130be12741bd093a0501da196, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.9300003
+      value: 8.97
       objectReference: {fileID: 0}
     - target: {fileID: 2420592724045682164, guid: a0f2d49130be12741bd093a0501da196, type: 3}
       propertyPath: m_LocalPosition.z
