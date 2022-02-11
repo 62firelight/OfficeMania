@@ -69,8 +69,12 @@ public class Enemy : MonoBehaviour
             {
                 // Handle boss phase transitions
                 bossHealth--;
-                health = maxHealth;
 
+                if (bossHealth > 0)
+                {
+                    health = maxHealth;
+                }
+                
                 // Get dynamic music component 
                 DynamicMusic music = GetComponent<DynamicMusic>();
                 if (music == null)
