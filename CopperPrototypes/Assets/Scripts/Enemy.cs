@@ -50,10 +50,8 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        if (isBoss == false)
-        {
             // If enemy has no health
-            if (health <= 0)
+            if ((isBoss == false && health <= 0) || (isBoss == true && bossHealth <= 0))
             {
                 // Darken sprite
                 sr.color = new Color(0.5f, 0, 0);
@@ -61,19 +59,19 @@ public class Enemy : MonoBehaviour
                 // Disable AI
                 if (GetComponent<Chase>() != null)
                 {
-                    GetComponent<Chase>().speed = 0;
+                    GetComponent<Chase>().enabled = false;
+                    // GetComponent<Chase>().speed = 0;
                 }
 
                 rb.simulated = false;
             }
-        }
-        else
-        {
-            if (health <= 0 && bossHealth > 0)
+            else if (health <= 0 && bossHealth > 0) 
             {
+                // Handle boss phase transitions
                 bossHealth--;
                 health = maxHealth;
 
+                // Get dynamic music component 
                 DynamicMusic music = GetComponent<DynamicMusic>();
                 if (music == null)
                 {
@@ -81,15 +79,16 @@ public class Enemy : MonoBehaviour
                     Time.timeScale = 0;
                 }
 
+                // Change to music for next phase
                 music.TriggerFadeOut();
 
+                // Handle enemy spawning for the different phases
                 GameObject bossMinionMaster = GameObject.FindGameObjectWithTag("BossMinionMaster");
                 if (bossMinionMaster == null)
                 {
                     Debug.Log("Could not find BossMinionMaster for " + gameObject.name + "!");
                     Time.timeScale = 0;
                 }
-
                 BossMinionMaster bossPhases = bossMinionMaster.GetComponent<BossMinionMaster>();
                 if (bossPhases == null)
                 {
@@ -102,27 +101,27 @@ public class Enemy : MonoBehaviour
                 {
                     bossPhases.InitiatePhaseTwo();
                 }
-                // Trigger
+                // Trigger phase three
                 else if (bossHealth == 1)
                 {
                     bossPhases.InitiatePhaseThree();
                 }
 
-                if (bossHealth <= 0)
-                {
-                    // Darken sprite
-                    sr.color = new Color(0.5f, 0, 0);
+                // if (bossHealth <= 0)
+                // {
+                //     // Darken sprite
+                //     sr.color = new Color(0.5f, 0, 0);
 
-                    // Disable AI
-                    if (GetComponent<Chase>() != null)
-                    {
-                        GetComponent<Chase>().speed = 0;
-                    }
+                //     // Disable AI
+                //     if (GetComponent<Chase>() != null)
+                //     {
+                //         GetComponent<Chase>().speed = 0;
+                //     }
 
-                    rb.simulated = false;
-                }
+                //     rb.simulated = false;
+                // }
             }
-        }
+        
         
     }
 
@@ -223,18 +222,19 @@ public class Enemy : MonoBehaviour
                     }
                 }
 
-                if (bossHealth <= 0 && health <= 0)
+                if (isBoss == false && health <= 0)
                 {
                     // Display enemy stuck dialogue
                     GetComponentInChildren<Dialogue>().DisplayDialogue(DialogueMaster.GetEnemyStuckLine());
                 }
-
-                int roll = Random.Range(0, 2);
-                Debug.Log("Random roll " + roll);
-                if (roll == 1)
+                else if (isBoss == true)
                 {
-                    // Display boss slowdown dialogue
-                    GetComponentInChildren<Dialogue>().DisplayDialogue(DialogueMaster.GetBossSlowLine());
+                    int roll = Random.Range(0, 2);
+                    if (roll == 1)
+                    {
+                        // Display boss slowdown dialogue
+                        GetComponentInChildren<Dialogue>().DisplayDialogue(DialogueMaster.GetBossSlowLine());
+                    }
                 }
             }
         }

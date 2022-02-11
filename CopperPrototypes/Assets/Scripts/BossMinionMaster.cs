@@ -7,27 +7,41 @@ public class BossMinionMaster : MonoBehaviour
 
     public GameObject[] phaseTwoEnemies;
 
-    public GameObject[] phaseThreeEnemies;
-
     public GameObject[] phaseTwoDoors;
 
+    public GameObject[] phaseTwoObjects;
+
+    public GameObject[] phaseThreeEnemies;
+
     public GameObject[] phaseThreeDoors;
+
+    public GameObject[] phaseThreeObjects;
 
     void Start()
     {
 
         //
-        // Hide all enemies
+        // Hide all associated enemies and objects
         //
 
+        // Phase 2 enemies and objects
         foreach (GameObject enemy in phaseTwoEnemies)
         {
             enemy.SetActive(false);
         }
+        foreach (GameObject obj in phaseTwoObjects)
+        {
+            obj.SetActive(false);
+        }
 
+        // Phase 3 enemies and objects
         foreach (GameObject enemy in phaseThreeEnemies)
         {
             enemy.SetActive(false);
+        }
+        foreach (GameObject obj in phaseThreeObjects)
+        {
+            obj.SetActive(false);
         }
     }
 
@@ -38,6 +52,11 @@ public class BossMinionMaster : MonoBehaviour
 
     public void InitiatePhaseTwo()
     {
+        foreach (GameObject obj in phaseTwoObjects)
+        {
+            obj.SetActive(true);
+        }
+
         foreach (GameObject door in phaseTwoDoors)
         {
             door.SetActive(false);
@@ -55,6 +74,11 @@ public class BossMinionMaster : MonoBehaviour
 
     public void InitiatePhaseThree()
     {
+        foreach (GameObject obj in phaseThreeObjects)
+        {
+            obj.SetActive(true);
+        }
+
         foreach (GameObject door in phaseThreeDoors)
         {
             door.SetActive(false);
