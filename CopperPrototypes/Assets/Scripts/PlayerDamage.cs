@@ -22,6 +22,8 @@ public class PlayerDamage : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         Physics2D.IgnoreLayerCollision(6, 8, false);
+
+        AIMaster.currentLevel = SceneManager.GetActiveScene().buildIndex;
     }
     
     void Update()

@@ -9,5 +9,5 @@ public static class AIMaster
 
     public static Scene currentScene = SceneManager.GetActiveScene();
 
-    public static int currentLevel = currentScene.buildIndex;
+    public static int currentLevel = 1;
 }
