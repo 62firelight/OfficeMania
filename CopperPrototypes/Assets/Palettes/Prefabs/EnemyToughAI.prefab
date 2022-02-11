@@ -63,7 +63,7 @@ Transform:
   m_GameObject: {fileID: 8331516302662365765}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.5469, y: 0.0838, z: -5}
-  m_LocalScale: {x: 0.1265182, y: 0.1849221, z: 0.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5014597265272774232}
   - {fileID: 6159357871550618383}
@@ -111,8 +111,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c1d1267c3c5cd429c87c75f873c60b4b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 7482667652216324306, guid: 58651285b0e249842a3cf1aec6cadbdd, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -243,7 +243,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 19.2, y: 10.8}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 19.2, y: 10.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -386,11 +386,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1780925174514537736, guid: 6f5523a88804b8a40baf6cabab2337c1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.4124
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1780925174514537736, guid: 6f5523a88804b8a40baf6cabab2337c1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.5582
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1780925174514537736, guid: 6f5523a88804b8a40baf6cabab2337c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -409,8 +409,20 @@ PrefabInstance:
       value: Dialog Text
       objectReference: {fileID: 0}
     - target: {fileID: 1780925174514537751, guid: 6f5523a88804b8a40baf6cabab2337c1, type: 3}
+      propertyPath: m_margin.w
+      value: 3.4333787
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780925174514537751, guid: 6f5523a88804b8a40baf6cabab2337c1, type: 3}
       propertyPath: m_margin.x
-      value: 2.3303943
+      value: -1.6732078
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780925174514537751, guid: 6f5523a88804b8a40baf6cabab2337c1, type: 3}
+      propertyPath: m_margin.y
+      value: 1.2673119
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780925174514537751, guid: 6f5523a88804b8a40baf6cabab2337c1, type: 3}
+      propertyPath: m_margin.z
+      value: -1.6054869
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f5523a88804b8a40baf6cabab2337c1, type: 3}
