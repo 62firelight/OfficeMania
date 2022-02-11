@@ -195,13 +195,22 @@ public class Enemy : MonoBehaviour
                     }
                     else
                     {
-                        GetComponent<Chase>().speed *= 0.9f;
+                        GetComponent<Chase>().speed *= 0.95f;
                     }
                 }
 
-                if (health <= 0)
+                if (bossHealth <= 0 && health <= 0)
                 {
+                    // Display enemy stuck dialogue
                     GetComponentInChildren<Dialogue>().DisplayDialogue(DialogueMaster.GetEnemyStuckLine());
+                }
+
+                int roll = Random.Range(0, 2);
+                Debug.Log("Random roll " + roll);
+                if (roll == 1)
+                {
+                    // Display boss slowdown dialogue
+                    GetComponentInChildren<Dialogue>().DisplayDialogue(DialogueMaster.GetBossSlowLine());
                 }
             }
         }
