@@ -101,7 +101,7 @@ public class RoomMaster : MonoBehaviour
                 Enemy enemy = enemies[i];
 
                 // If one enemy is conscious, then room can't be clear
-                if (enemy.health > 0)
+                if (enemy.bossHealth > 0 || enemy.health > 0)
                 {
                     enemiesClear = false;
                     break;
