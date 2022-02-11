@@ -216,7 +216,11 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
-
+        else
+        {
+            // Lower layer so other enemies can be seen over bodies
+            transform.Translate(0, 0, 1);
+        }
         
     }
 }
