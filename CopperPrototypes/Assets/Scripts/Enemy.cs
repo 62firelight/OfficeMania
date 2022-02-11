@@ -225,7 +225,7 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
-        else
+        else if (isBoss == false)
         {
             // Lower layer so other enemies can be seen over bodies
             transform.Translate(0, 0, 1);
