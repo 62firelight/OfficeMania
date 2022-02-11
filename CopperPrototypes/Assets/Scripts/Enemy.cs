@@ -102,6 +102,11 @@ public class Enemy : MonoBehaviour
                 {
                     bossPhases.InitiatePhaseTwo();
                 }
+                // Trigger
+                else if (bossHealth == 1)
+                {
+                    bossPhases.InitiatePhaseThree();
+                }
 
                 if (bossHealth <= 0)
                 {
