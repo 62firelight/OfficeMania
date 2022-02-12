@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerThrowing : MonoBehaviour
 {
 
+    public Transform lightObjectPoint;
+
     public Transform firePoint;
 
     public float force = 40f;
@@ -46,6 +48,8 @@ public class PlayerThrowing : MonoBehaviour
             float mag = Time.time - startTime;
             mag = Mathf.Clamp(mag, 0.5f, 1.5f);
             Debug.Log("Key held down for " + (Time.time - startTime).ToString("F2") + "s for " + force * mag + " force");
+
+            currentObject.gameObject.transform.position = transform.position;
 
             // Change the state of the player's currently held objects
             if (currentObject.GetComponent<Interactable>().isHeavy == true)
@@ -97,7 +101,7 @@ public class PlayerThrowing : MonoBehaviour
         }
         else
         {
-            obj.position = transform.position;
+            obj.position = lightObjectPoint.position;
 
             heldObject = obj.gameObject;
         }
