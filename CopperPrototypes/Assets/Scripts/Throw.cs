@@ -12,7 +12,13 @@ public class Throw : MonoBehaviour
 
     GameObject currentObject = null;
 
+    public Sprite normalSprite;
+
+    public Sprite carryingSprite;
+
     public GameObject player;
+
+    public Transform lightObjectPoint;
 
     public Transform firePoint;
 
@@ -21,6 +27,8 @@ public class Throw : MonoBehaviour
     public bool isElite = false;
 
     float delay;
+
+    private SpriteRenderer sr;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +46,9 @@ public class Throw : MonoBehaviour
                 chase.target = closestObject;
             }
         }
+
+        sr = GetComponent<SpriteRenderer>();
+        sr.sprite = normalSprite;
     }
 
     // Update is called once per frame
@@ -126,7 +137,9 @@ public class Throw : MonoBehaviour
             }
             else
             {
+                currentObject.transform.position = transform.position;
                 currentObject.GetComponent<Interactable>().EnemyThrow(transform, 30, gameObject);
+                sr.sprite = normalSprite;
             }
            
             mostRecentObject = currentObject;
@@ -172,13 +185,15 @@ public class Throw : MonoBehaviour
         }
         else
         {
-            item.position = transform.position;
+            item.position = lightObjectPoint.position;
         }
 
         item.rotation = transform.rotation;
         item.Translate(0, 0, -1);
 
         delay = 1;
+
+        sr.sprite = carryingSprite;
     }
 
     GameObject GetClosestObject(GameObject ignoredObject)

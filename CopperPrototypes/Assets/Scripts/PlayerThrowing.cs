@@ -61,7 +61,7 @@ public class PlayerThrowing : MonoBehaviour
             mag = Mathf.Clamp(mag, 0.5f, 1.5f);
             Debug.Log("Key held down for " + (Time.time - startTime).ToString("F2") + "s for " + force * mag + " force");
 
-            currentObject.gameObject.transform.position = transform.position;
+            
 
             // Change the state of the player's currently held objects
             if (currentObject.GetComponent<Interactable>().isHeavy == true)
@@ -73,6 +73,7 @@ public class PlayerThrowing : MonoBehaviour
             }
             else
             {
+                currentObject.gameObject.transform.position = transform.position;
                 heldObject = null;
             }
             
