@@ -24,8 +24,6 @@ public class RoomMaster : MonoBehaviour
 
     public bool bossBattle = false;
 
-    public bool firstRoom = false;
-
     public Transform bottomLeftCorner;
 
     public Transform topRightCorner;
@@ -89,34 +87,6 @@ public class RoomMaster : MonoBehaviour
             {
                 exitDoor.SetActive(false);
             }
-        }
-
-        if (firstRoom)
-        {
-            Transform objectDetector = transform.GetChild(2);
-
-            ObjectDetector objectDetectorComponent = objectDetector.gameObject.GetComponent<ObjectDetector>();
-
-            List<GameObject> objects = objectDetectorComponent.objects;
-
-            foreach (GameObject obj in objects)
-            {
-                Debug.Log(obj);
-            }
-
-            // Vector2 center = new Vector2((bottomLeftCorner.position.x + topRightCorner.position.x) / 2f, (bottomLeftCorner.position.y + topRightCorner.position.y) / 2f);
-            // Vector2 size = new Vector2((topRightCorner.position.x - bottomLeftCorner.position.x) / 2f, (topRightCorner.position.y - bottomLeftCorner.position.y) / 2f);
-
-            // Debug.Log("Center: " + center + "; Size: " + size);
-
-            // Collider2D[] results = Physics2D.OverlapBoxAll(center, size, 0);
-
-            // // Debug.Log(1 << 0 | 1 << 1);
-
-            // foreach (Collider2D result in results)
-            // {
-            //     Debug.Log(result);
-            // }
         }
         
     }
