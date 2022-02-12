@@ -71,6 +71,42 @@ public class Throw : MonoBehaviour
         // Throw an object if we are holding it for at least 2 seconds
         if (currentObject != null && delay <= 0)
         {
+            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, player.transform.position - transform.position);
+            Debug.DrawRay(transform.position, player.transform.position - transform.position);
+
+            bool playerSeen = false;
+            // int enemiesNearby = 0;
+            foreach (RaycastHit2D hit in hits)
+            {
+                // if (hit.collider != GetComponent<Collider2D>() && hit.collider != GetComponentInChildren<CircleCollider2D>() 
+                //     && hit.transform.gameObject.tag == "Enemy" && hit.transform.gameObject.name != "Vision")
+                // {
+                //     // Debug.Log(GetComponentInChildren<CircleCollider2D>());
+                //     // Debug.Log(hit.collider);
+                //     Debug.Log(hit.transform.gameObject.name);
+                //     playerSeen = false;
+                //     break;
+                // }
+
+                if (hit.collider != GetComponent<Collider2D>() && hit.transform.gameObject.tag == "Wall" && hit.transform.gameObject.layer != 7)
+                {
+                    playerSeen = false;
+                    break;
+                }
+
+                if (hit.collider != null && hit.transform.gameObject.tag == "Player")
+                {
+                    playerSeen = true;
+                    break;
+                }
+            }
+
+            if (!playerSeen)
+            {
+                delay = 1;
+                return;
+            }
+
             Interactable obj = currentObject.GetComponent<Interactable>();
 
             // If I'm an elite guard with a heavy object
