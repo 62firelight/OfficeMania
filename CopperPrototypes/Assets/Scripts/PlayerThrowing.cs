@@ -9,6 +9,8 @@ public class PlayerThrowing : MonoBehaviour
 
     public Sprite carryingSprite;
 
+    public Sprite heavySprite;
+
     public Transform lightObjectPoint;
 
     public Transform firePoint;
@@ -61,8 +63,6 @@ public class PlayerThrowing : MonoBehaviour
             mag = Mathf.Clamp(mag, 0.5f, 1.5f);
             Debug.Log("Key held down for " + (Time.time - startTime).ToString("F2") + "s for " + force * mag + " force");
 
-            
-
             // Change the state of the player's currently held objects
             if (currentObject.GetComponent<Interactable>().isHeavy == true)
             {
@@ -101,13 +101,12 @@ public class PlayerThrowing : MonoBehaviour
 
     public void PickUp(Transform obj)
     {
-        sr.sprite = carryingSprite;
-
         // Add object to player's inventory, then 
         // change object position to show that the player is holding it
         obj.parent = transform;
         if (obj.gameObject.GetComponent<Interactable>().isHeavy == true)
         {
+            sr.sprite = heavySprite;
             bluntObject = obj.gameObject;
             
             obj.localPosition = firePoint.localPosition;
@@ -117,6 +116,7 @@ public class PlayerThrowing : MonoBehaviour
         }
         else
         {
+            sr.sprite = carryingSprite;
             obj.position = lightObjectPoint.position;
 
             heldObject = obj.gameObject;

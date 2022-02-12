@@ -16,6 +16,8 @@ public class Throw : MonoBehaviour
 
     public Sprite carryingSprite;
 
+    public Sprite heavySprite;
+
     public GameObject player;
 
     public Transform lightObjectPoint;
@@ -139,13 +141,13 @@ public class Throw : MonoBehaviour
             {
                 currentObject.transform.position = transform.position;
                 currentObject.GetComponent<Interactable>().EnemyThrow(transform, 30, gameObject);
-                sr.sprite = normalSprite;
             }
            
             mostRecentObject = currentObject;
             currentObject = null;
 
             delay = 2;
+            sr.sprite = normalSprite;
 
             GameObject closestObject = GetClosestObject(mostRecentObject);
 
@@ -181,10 +183,12 @@ public class Throw : MonoBehaviour
 
         if (item.gameObject.GetComponent<Interactable>().isHeavy)
         {
+            sr.sprite = heavySprite;
             item.position = firePoint.position;
         }
         else
         {
+            sr.sprite = carryingSprite;
             item.position = lightObjectPoint.position;
         }
 
@@ -192,8 +196,6 @@ public class Throw : MonoBehaviour
         item.Translate(0, 0, -1);
 
         delay = 1;
-
-        sr.sprite = carryingSprite;
     }
 
     GameObject GetClosestObject(GameObject ignoredObject)
