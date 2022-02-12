@@ -48,7 +48,7 @@ public class Throw : MonoBehaviour
             delay -= Time.deltaTime;
         }
 
-        if (GetComponent<Enemy>().health <= 0)
+        if (GetComponent<Enemy>().health <= 0 || GetComponent<Chase>().seePlayer == false)
 		{
 			return;
 		}
