@@ -147,14 +147,40 @@ public class Throw : MonoBehaviour
 
     GameObject GetClosestObject(GameObject ignoredObject)
     {
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("Blunt");
+        int numberOfObjects = 0;
+
+        List<GameObject> detectedObjects = null;
+        if (chase.roomMaster != null)
+        {
+            RoomMaster roomMaster = chase.roomMaster.GetComponent<RoomMaster>();
+            
+            detectedObjects = roomMaster.GetDetectedObjects();
+            numberOfObjects = detectedObjects.Count;
+        }
+        
+        GameObject[] objects = null;
+        if (detectedObjects == null)
+        {
+            objects = GameObject.FindGameObjectsWithTag("Blunt");
+            numberOfObjects = objects.Length;
+        }
 
         GameObject closestObject = null;
         float closestDistance = Mathf.Infinity;
         float distance;
 
-        foreach (GameObject obj in objects)
+        for (int i = 0; i < numberOfObjects; i++)
         {
+            GameObject obj;
+            if (detectedObjects != null)
+            {
+                obj = detectedObjects[i];
+            }
+            else
+            {
+                obj = objects[i];
+            }
+
             if (obj == ignoredObject)
             {
                 continue;
