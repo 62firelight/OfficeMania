@@ -159,7 +159,7 @@ public class Throw : MonoBehaviour
         }
         
         GameObject[] objects = null;
-        if (detectedObjects == null)
+        if (detectedObjects == null || detectedObjects.Count <= 0)
         {
             objects = GameObject.FindGameObjectsWithTag("Blunt");
             numberOfObjects = objects.Length;
@@ -172,7 +172,7 @@ public class Throw : MonoBehaviour
         for (int i = 0; i < numberOfObjects; i++)
         {
             GameObject obj;
-            if (detectedObjects != null)
+            if (detectedObjects != null && detectedObjects.Count > 0)
             {
                 obj = detectedObjects[i];
             }
