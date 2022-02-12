@@ -23,6 +23,32 @@ public class Vision : MonoBehaviour
     {
         if (other.tag == "Player" && roomMaster.seePlayer == false)
         {
+            // Do a raycast to see if the player is hiding behind a wall
+            GameObject player = other.gameObject;
+            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, player.transform.position - transform.position);
+            Debug.DrawRay(transform.position, player.transform.position - transform.position);
+
+            bool playerSeen = false;
+            foreach (RaycastHit2D hit in hits)
+            {
+                if (hit.collider != GetComponent<Collider2D>() && hit.transform.gameObject.tag == "Wall" && hit.transform.gameObject.layer != 7)
+                {
+                    playerSeen = false;
+                    break;
+                }
+
+                if (hit.collider != null && hit.transform.gameObject.tag == "Player")
+                {
+                    playerSeen = true;
+                    break;
+                }
+            }
+
+            if (!playerSeen)
+            {
+                return;
+            }
+            
             roomMaster.SetSeePlayer(true);
 
             if (isBoss == false)
