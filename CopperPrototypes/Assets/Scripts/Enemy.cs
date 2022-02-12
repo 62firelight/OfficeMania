@@ -145,10 +145,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Blunt" || other.gameObject.tag == "Sharp")
         {
-            if (!(GetComponent<Chase>() == null) && SceneManager.GetActiveScene().name != "Level2")
-            {
-                GetComponent<Chase>().roomMaster.GetComponent<RoomMaster>().seePlayer = true;
-            }
+            GetComponent<Chase>().roomMaster.GetComponent<RoomMaster>().seePlayer = true;
         }
 
         Interactable obj = other.gameObject.GetComponent<Interactable>();
