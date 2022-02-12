@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerThrowing : MonoBehaviour
 {
 
+    public Sprite normalSprite;
+
+    public Sprite carryingSprite;
+
     public Transform lightObjectPoint;
 
     public Transform firePoint;
@@ -21,7 +25,15 @@ public class PlayerThrowing : MonoBehaviour
 
     public GameObject currentObject = null;
 
+    private SpriteRenderer sr;
+
     float startTime = 0f;
+
+    void Start()
+    {   
+        sr = GetComponent<SpriteRenderer>();
+        sr.sprite = normalSprite;
+    }
 
     // Update is called once per frame
     void Update()
@@ -68,6 +80,7 @@ public class PlayerThrowing : MonoBehaviour
             currentObject.GetComponent<Interactable>().Throw(firePoint, force * mag);
 
             currentObject = null;
+            sr.sprite = normalSprite;
         }
 
         // Right-click near a blunt object to pick it up
@@ -87,6 +100,8 @@ public class PlayerThrowing : MonoBehaviour
 
     public void PickUp(Transform obj)
     {
+        sr.sprite = carryingSprite;
+
         // Add object to player's inventory, then 
         // change object position to show that the player is holding it
         obj.parent = transform;

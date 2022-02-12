@@ -103034,6 +103034,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2672348637521643022, guid: 9d84248adb44d2243b89e24c3efe7daf, type: 3}
+      propertyPath: normalSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c3d192dfc26e01941bef88782d11904b, type: 3}
+    - target: {fileID: 2672348637521643022, guid: 9d84248adb44d2243b89e24c3efe7daf, type: 3}
+      propertyPath: carryingSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8eb74b8a1cdb14545a6bf3ba7b15e015, type: 3}
     - target: {fileID: 3782174989788927479, guid: 9d84248adb44d2243b89e24c3efe7daf, type: 3}
       propertyPath: playerMaxHealth
       value: 6
@@ -103089,7 +103097,7 @@ PrefabInstance:
     - target: {fileID: 5403261870387305027, guid: 9d84248adb44d2243b89e24c3efe7daf, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8eb74b8a1cdb14545a6bf3ba7b15e015, type: 3}
+      objectReference: {fileID: 21300000, guid: c3d192dfc26e01941bef88782d11904b, type: 3}
     - target: {fileID: 5403261870387305036, guid: 9d84248adb44d2243b89e24c3efe7daf, type: 3}
       propertyPath: m_Name
       value: Player
