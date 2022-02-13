@@ -71,6 +71,13 @@ public class Trajectory : MonoBehaviour
 
             float distance = 2f;
 
+            float mag = GetComponent<PlayerThrowing>().mag;
+            distance *= mag + 0.5f;
+            // if (mag > 1.0f)
+            // {
+            //     distance *= mag;
+            // }
+
             RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.up, distance);
             Debug.DrawRay(transform.position, transform.up);
 
