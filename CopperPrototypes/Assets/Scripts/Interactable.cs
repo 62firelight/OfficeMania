@@ -184,7 +184,7 @@ public class Interactable : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Enemy" && coll.sharedMaterial != null)
+        if (other.gameObject.tag == "Enemy")
         {
             DisablePhysics();
         }
