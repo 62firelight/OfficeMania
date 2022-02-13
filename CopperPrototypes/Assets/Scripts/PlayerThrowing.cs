@@ -27,6 +27,8 @@ public class PlayerThrowing : MonoBehaviour
 
     public GameObject currentObject = null;
 
+    public float mag;
+
     private SpriteRenderer sr;
 
     float startTime = 0f;
@@ -55,11 +57,17 @@ public class PlayerThrowing : MonoBehaviour
             startTime = Time.time;
         }
 
+        if (Input.GetButton("Fire1"))
+        {
+            mag = Time.time - startTime;
+            mag = Mathf.Clamp(mag, 0.5f, 1.5f);
+        }
+
         // Throw an object
         if (Input.GetButtonUp("Fire1") && currentObject != null)
         {
             // Calculate magnitude of throw force
-            float mag = Time.time - startTime;
+            mag = Time.time - startTime;
             mag = Mathf.Clamp(mag, 0.5f, 1.5f);
             Debug.Log("Key held down for " + (Time.time - startTime).ToString("F2") + "s for " + force * mag + " force");
 
