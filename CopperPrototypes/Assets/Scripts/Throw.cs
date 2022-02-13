@@ -10,7 +10,7 @@ public class Throw : MonoBehaviour
 
     GameObject target;
 
-    GameObject currentObject = null;
+    public GameObject currentObject = null;
 
     public Sprite normalSprite;
 
@@ -157,7 +157,7 @@ public class Throw : MonoBehaviour
             }
         }
 
-        if (target == null)
+        if (target == null || (target == player && currentObject == null))
         {
             GameObject closestObject = GetClosestObject(mostRecentObject);
 
@@ -169,13 +169,15 @@ public class Throw : MonoBehaviour
         }
 
         // Pick up object if it's close enough
-        float distance = Vector2.Distance(transform.position, target.transform.position);
-        if (distance < 1.5f && delay <= 0)
+        if (target.tag != "Player")
         {
-            Debug.Log(gameObject.name + " picks up " + chase.target);
-            EnemyPickUp(chase.target.transform);
+            float distance = Vector2.Distance(transform.position, target.transform.position);
+            if (distance < 1.5f && delay <= 0)
+            {
+                Debug.Log(gameObject.name + " picks up " + chase.target);
+                EnemyPickUp(chase.target.transform);
+            }
         }
-
     }
 
     void EnemyPickUp(Transform item)
