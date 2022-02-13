@@ -48,7 +48,7 @@ public class Interactable : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         // Disable physics if the object is moving at a slow enough speed
-        if (rb.velocity.magnitude <= 0.25f)
+        if (rb.velocity.magnitude <= 2f)
         {
             DisablePhysics();
         }
@@ -90,7 +90,7 @@ public class Interactable : MonoBehaviour
 
             if (percent > 25)
             {
-                coll.sharedMaterial.bounciness = 0.5f;
+                coll.sharedMaterial.bounciness = 0.9f;
             }
         }
 
@@ -148,7 +148,7 @@ public class Interactable : MonoBehaviour
 
         if (coll.sharedMaterial != null)
         {
-            coll.sharedMaterial.bounciness = 0.5f;
+            coll.sharedMaterial.bounciness = 0.9f;
         }
         thrownFlag = 0;
     }
@@ -184,9 +184,9 @@ public class Interactable : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Enemy")
-        {
-            DisablePhysics();
-        }
+        // if (other.gameObject.tag == "Enemy")
+        // {
+        //     DisablePhysics();
+        // }
     }
 }
