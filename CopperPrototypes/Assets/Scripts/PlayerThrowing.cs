@@ -13,7 +13,7 @@ public class PlayerThrowing : MonoBehaviour
 
     public Transform lightObjectPoint;
 
-    public Transform firePoint;
+    public Transform heavyObjectPoint;
 
     public float force = 40f;
 
@@ -78,7 +78,7 @@ public class PlayerThrowing : MonoBehaviour
             }
             
             // Throw object using calculated force
-            currentObject.GetComponent<Interactable>().Throw(firePoint, force * mag);
+            currentObject.GetComponent<Interactable>().Throw(heavyObjectPoint, force * mag);
 
             currentObject = null;
             sr.sprite = normalSprite;
@@ -109,7 +109,7 @@ public class PlayerThrowing : MonoBehaviour
             sr.sprite = heavySprite;
             bluntObject = obj.gameObject;
             
-            obj.localPosition = firePoint.localPosition;
+            obj.localPosition = heavyObjectPoint.localPosition;
 
             // Disable collision between player and heavy object while player is holding it
             Physics2D.IgnoreCollision(obj.GetChild(1).GetComponent<Collider2D>(), GetComponent<Collider2D>());

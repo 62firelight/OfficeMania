@@ -81,7 +81,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    public void Throw(Transform firePoint, float force)
+    public void Throw(Transform objectPoint, float force)
     {
         // Alter bounciness depending on charge 
         if (coll.sharedMaterial != null)
@@ -102,7 +102,7 @@ public class Interactable : MonoBehaviour
         EnablePhysics();
         pickedUp = false;
 
-        rb.AddForce(firePoint.up * force, ForceMode2D.Impulse);
+        rb.AddForce(objectPoint.up * force, ForceMode2D.Impulse);
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), coll);
         
         transform.Translate(0, 0, 1);
@@ -111,7 +111,7 @@ public class Interactable : MonoBehaviour
         AIMaster.takenObjects.Remove(gameObject);
     }
 
-    public void EnemyThrow(Transform firePoint, float force, GameObject enemy)
+    public void EnemyThrow(Transform objectPoint, float force, GameObject enemy)
     {
         thrownFlag = 2;
         damageable = true;
@@ -125,7 +125,7 @@ public class Interactable : MonoBehaviour
             Physics2D.IgnoreCollision(enemy.GetComponent<Collider2D>(), transform.GetChild(1).GetComponent<Collider2D>());
         }
 
-        rb.AddForce(firePoint.up * force, ForceMode2D.Impulse);
+        rb.AddForce(objectPoint.up * force, ForceMode2D.Impulse);
         
         transform.Translate(0, 0, 1);
         transform.parent = null;

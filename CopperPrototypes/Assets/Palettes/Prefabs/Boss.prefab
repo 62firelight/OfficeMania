@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 239791091}
   m_Layer: 0
-  m_Name: FirePoint
+  m_Name: HeavyObjectPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8331516302662365767}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6652925558665072557
 GameObject:
@@ -58,7 +58,7 @@ Transform:
   m_LocalScale: {x: 1.3333334, y: 1.3333334, z: 1.3333334}
   m_Children: []
   m_Father: {fileID: 8331516302662365767}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8331516302662365765
 GameObject:
@@ -99,8 +99,8 @@ Transform:
   m_Children:
   - {fileID: 5014597265272774232}
   - {fileID: 6159357871550618383}
-  - {fileID: 239791091}
   - {fileID: 2854883405003761536}
+  - {fileID: 239791091}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -239,7 +239,7 @@ MonoBehaviour:
   heavySprite: {fileID: 21300000, guid: cdddc18c045ac5e4d9f2649a0b392ac9, type: 3}
   player: {fileID: 0}
   lightObjectPoint: {fileID: 2854883405003761536}
-  firePoint: {fileID: 239791091}
+  heavyObjectPoint: {fileID: 239791091}
   mostRecentObject: {fileID: 0}
   isElite: 0
 --- !u!50 &8331516302662365760

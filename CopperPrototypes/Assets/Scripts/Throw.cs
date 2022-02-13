@@ -22,7 +22,7 @@ public class Throw : MonoBehaviour
 
     public Transform lightObjectPoint;
 
-    public Transform firePoint;
+    public Transform heavyObjectPoint;
 
     public GameObject mostRecentObject = null;
 
@@ -184,7 +184,7 @@ public class Throw : MonoBehaviour
         if (item.gameObject.GetComponent<Interactable>().isHeavy)
         {
             sr.sprite = heavySprite;
-            item.position = firePoint.position;
+            item.position = heavyObjectPoint.position;
         }
         else
         {
