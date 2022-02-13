@@ -82,7 +82,7 @@ public class Throw : MonoBehaviour
         }
 
         // Throw an object if we are holding it for at least 2 seconds
-        if (currentObject != null && delay <= 0)
+        if (currentObject != null && currentObject.transform.parent == transform && delay <= 0)
         {
             RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, player.transform.position - transform.position);
             Debug.DrawRay(transform.position, player.transform.position - transform.position);
@@ -159,6 +159,12 @@ public class Throw : MonoBehaviour
 
         if (target == null)
         {
+            GameObject closestObject = GetClosestObject(mostRecentObject);
+
+            if (closestObject != null)
+            {
+                chase.target = closestObject;
+            }
             return;
         }
 
