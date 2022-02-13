@@ -25,6 +25,12 @@ public class Interactable : MonoBehaviour
     // 2 - enemy
     public int thrownFlag = 0;
 
+    public AudioClip[] pickupSounds;
+
+    public AudioClip[] throwSounds;
+
+    public AudioClip[] hitSounds;
+
     private Transform promptObj;
 
     public Rigidbody2D rb;
@@ -101,6 +107,13 @@ public class Interactable : MonoBehaviour
 
         EnablePhysics();
         pickedUp = false;
+
+        if (throwSounds.Length > 0)
+        {
+            AudioClip throwSound = throwSounds[Random.Range(0, throwSounds.Length - 1)];
+
+            AudioSource.PlayClipAtPoint(throwSound, transform.position);
+        }
 
         rb.AddForce(objectPoint.up * force, ForceMode2D.Impulse);
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), coll);
@@ -184,6 +197,16 @@ public class Interactable : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Player")
+        {
+            if (hitSounds.Length > 0)
+            {
+                AudioClip hit = hitSounds[Random.Range(0, hitSounds.Length - 1)];
+
+                AudioSource.PlayClipAtPoint(hit, transform.position);
+            }
+        }
+
         if (other.gameObject.tag == "Enemy")
         {
             DisablePhysics();

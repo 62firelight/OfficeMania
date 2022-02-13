@@ -107,6 +107,11 @@ MonoBehaviour:
   damageable: 0
   knownVelocity: {x: 0, y: 0, z: 0}
   thrownFlag: 0
+  pickupSounds: []
+  hitSounds:
+  - {fileID: 8300000, guid: cdc4b929fb3fbe64cbac6fae17724d48, type: 3}
+  - {fileID: 8300000, guid: 68a137882957efe48b832b2aabe8ce32, type: 3}
+  - {fileID: 8300000, guid: d9bfa0363e80ade47b1b1f1c49e32557, type: 3}
   rb: {fileID: 0}
 --- !u!50 &6052832035635610480
 Rigidbody2D:
