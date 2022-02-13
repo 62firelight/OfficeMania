@@ -69,7 +69,7 @@ public class Trajectory : MonoBehaviour
 
             // Debug.Log(newVec);
 
-            float distance = 2.5f;
+            float distance = 2f;
 
             RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.up, distance);
             Debug.DrawRay(transform.position, transform.up);
