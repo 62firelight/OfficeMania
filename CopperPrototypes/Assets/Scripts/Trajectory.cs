@@ -88,7 +88,7 @@ public class Trajectory : MonoBehaviour
 
             foreach (RaycastHit2D hit in hits)
             {
-                if ((hit.transform.gameObject.tag == "Enemy" && hit.collider.name != "Vision") || hit.transform.gameObject.tag == "Wall")
+                if ((hit.transform.gameObject.tag == "Enemy" && hit.collider.name != "Vision") || (hit.transform.gameObject.tag == "Wall" && hit.transform.gameObject.layer != 7))
                 {
                     lr.SetPosition(1, hit.point);
                     break;
