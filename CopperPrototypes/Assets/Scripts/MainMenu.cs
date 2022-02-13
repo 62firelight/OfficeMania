@@ -13,8 +13,8 @@ public class MainMenu : MonoBehaviour {
     // This is the start button on the main menu
     public void StartGame() { 
         // This will take you to the starting scene
-        SceneManager.LoadScene("PrototypeLevel");
-
+        // SceneManager.LoadScene("PrototypeLevel");
+        SceneManager.LoadScene("Prologue");
     }
 
     // This is the controls button on the main menu
