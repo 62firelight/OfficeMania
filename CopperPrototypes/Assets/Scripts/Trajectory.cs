@@ -52,7 +52,7 @@ public class Trajectory : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && GetComponent<PlayerThrowing>().currentObject != null)
         {
             lr.enabled = true;
 
