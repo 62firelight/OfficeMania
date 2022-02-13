@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239791090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalPosition: {x: -0.138, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8331516302662365767}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2547821832823335894}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.035, y: -0.01, z: 0}
+  m_LocalPosition: {x: 0.816, y: 0.133, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8331516302662365767}
@@ -142,7 +142,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f81d6fb7cefea1344a3f018dbcbf6cc2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 06b5c607faa25ba48b4e876e8d606416, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -232,9 +232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ab3be8f47f44167a5dac7880567d36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalSprite: {fileID: 21300000, guid: f81d6fb7cefea1344a3f018dbcbf6cc2, type: 3}
-  carryingSprite: {fileID: 21300000, guid: 8ce50b53d2e5fed429d470e42fdf5234, type: 3}
-  heavySprite: {fileID: 21300000, guid: 40d61d1d493df1546a50bbf78eb3d008, type: 3}
+  normalSprite: {fileID: 21300000, guid: ff9d86e0a7acc884eb3d05d7cceb6d72, type: 3}
+  carryingSprite: {fileID: 21300000, guid: 06b5c607faa25ba48b4e876e8d606416, type: 3}
+  heavySprite: {fileID: 21300000, guid: 058638d957238fd42a7880173a5d6d8d, type: 3}
   player: {fileID: 0}
   lightObjectPoint: {fileID: 4747118463741045946}
   firePoint: {fileID: 239791091}
@@ -274,7 +274,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.104828835, y: -0.0069885254}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -285,7 +285,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.2236347, y: 0.27318764}
   m_EdgeRadius: 0
 --- !u!1 &8409940938928775307
 GameObject:
