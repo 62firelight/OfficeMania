@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &944290217
 Transform:
   m_ObjectHideFlags: 0
@@ -73,6 +73,7 @@ MonoBehaviour:
   flippedSprite: {fileID: 21300000, guid: 985417cfe871f463cb4da704de2e6bf5, type: 3}
   isInteractable: 0
   backwards: 1
+  tableFlipSound: {fileID: 0}
 --- !u!1 &1586664251
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8888606639842982960
 Transform:
   m_ObjectHideFlags: 0
@@ -420,7 +421,7 @@ Transform:
   m_GameObject: {fileID: 8888606640835144328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.0162115, y: 1.2124138, z: 0}
-  m_LocalScale: {x: 0.8224219, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.6, y: 0.375, z: 0.375}
   m_Children:
   - {fileID: 2141548796}
   - {fileID: 1586664252}
@@ -545,7 +546,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8888606641070385454
 Transform:
   m_ObjectHideFlags: 0
@@ -601,3 +602,4 @@ MonoBehaviour:
   flippedSprite: {fileID: 21300000, guid: 985417cfe871f463cb4da704de2e6bf5, type: 3}
   isInteractable: 0
   backwards: 0
+  tableFlipSound: {fileID: 0}

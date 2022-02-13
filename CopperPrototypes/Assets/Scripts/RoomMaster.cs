@@ -22,6 +22,8 @@ public class RoomMaster : MonoBehaviour
 
     public bool levelTwoBigBattle = false;
 
+    public bool bossBattle = false;
+
     public Transform bottomLeftCorner;
 
     public Transform topRightCorner;
@@ -86,6 +88,7 @@ public class RoomMaster : MonoBehaviour
                 exitDoor.SetActive(false);
             }
         }
+        
     }
 
     void Update()
@@ -101,7 +104,7 @@ public class RoomMaster : MonoBehaviour
                 Enemy enemy = enemies[i];
 
                 // If one enemy is conscious, then room can't be clear
-                if (enemy.health > 0)
+                if (enemy.health > 0 || (enemy.isBoss == true && enemy.bossHealth > 0))
                 {
                     enemiesClear = false;
                     break;
@@ -133,6 +136,7 @@ public class RoomMaster : MonoBehaviour
                     }
                 }
 
+                // For level 2, change level music back to normal out-of-combat music
                 if (seePlayer == true && SceneManager.GetActiveScene().name == "Level2")
                 {
                     GameObject levelMasterObj = GameObject.FindGameObjectWithTag("LevelMaster");
@@ -141,9 +145,13 @@ public class RoomMaster : MonoBehaviour
 
                     if (levelTwoBattle || levelTwoBigBattle) levelMaster.TriggerLightsOffMusicMid();
                 }
-            }
 
-            
+                // For the boss, load the main menu
+                if (bossBattle)
+                {
+                    SceneManager.LoadScene("MainMenu");
+                }
+            }
         }
     }
 
@@ -200,5 +208,16 @@ public class RoomMaster : MonoBehaviour
             }
             
         }
+    }
+
+    public List<GameObject> GetDetectedObjects()
+    {
+        Transform objectDetector = transform.GetChild(2);
+
+        ObjectDetector objectDetectorComponent = objectDetector.gameObject.GetComponent<ObjectDetector>();
+
+        List<GameObject> detectedObjects = objectDetectorComponent.objects;
+
+        return detectedObjects;
     }
 }

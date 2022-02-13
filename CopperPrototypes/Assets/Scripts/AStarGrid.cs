@@ -480,7 +480,16 @@ public class AStarGrid : MonoBehaviour {
 
 				//Check if the new node is on closed list (meaning, wheather
 				//it has been already examined)
-				if (closed.Contains(newNode))
+				if (closed.Count > 0 &&
+					closed.Contains(newNode))
+				{
+					continue;
+				}
+
+				//Check if the new node is on open list (meaning, wheather
+				//it has been already examined)
+				if (open.Count > 0 &&
+					open.Contains(newNode))
 				{
 					continue;
 				}

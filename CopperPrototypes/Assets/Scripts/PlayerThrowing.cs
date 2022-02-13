@@ -5,7 +5,15 @@ using UnityEngine;
 public class PlayerThrowing : MonoBehaviour
 {
 
-    public Transform firePoint;
+    public Sprite normalSprite;
+
+    public Sprite carryingSprite;
+
+    public Sprite heavySprite;
+
+    public Transform lightObjectPoint;
+
+    public Transform heavyObjectPoint;
 
     public float force = 40f;
 
@@ -19,7 +27,15 @@ public class PlayerThrowing : MonoBehaviour
 
     public GameObject currentObject = null;
 
+    private SpriteRenderer sr;
+
     float startTime = 0f;
+
+    void Start()
+    {   
+        sr = GetComponent<SpriteRenderer>();
+        sr.sprite = normalSprite;
+    }
 
     // Update is called once per frame
     void Update()
@@ -57,13 +73,15 @@ public class PlayerThrowing : MonoBehaviour
             }
             else
             {
+                currentObject.gameObject.transform.position = transform.position;
                 heldObject = null;
             }
             
             // Throw object using calculated force
-            currentObject.GetComponent<Interactable>().Throw(firePoint, force * mag);
+            currentObject.GetComponent<Interactable>().Throw(heavyObjectPoint, force * mag);
 
             currentObject = null;
+            sr.sprite = normalSprite;
         }
 
         // Right-click near a blunt object to pick it up
@@ -88,16 +106,18 @@ public class PlayerThrowing : MonoBehaviour
         obj.parent = transform;
         if (obj.gameObject.GetComponent<Interactable>().isHeavy == true)
         {
+            sr.sprite = heavySprite;
             bluntObject = obj.gameObject;
             
-            obj.localPosition = firePoint.localPosition;
+            obj.localPosition = heavyObjectPoint.localPosition;
 
             // Disable collision between player and heavy object while player is holding it
             Physics2D.IgnoreCollision(obj.GetChild(1).GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
         else
         {
-            obj.position = transform.position;
+            sr.sprite = carryingSprite;
+            obj.position = lightObjectPoint.position;
 
             heldObject = obj.gameObject;
         }

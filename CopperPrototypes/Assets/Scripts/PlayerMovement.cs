@@ -34,6 +34,12 @@ public class PlayerMovement : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
+        // Go to next scene whenever N is pushed
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
         if (GetComponent<PlayerThrowing>().bluntObject != null && GetComponent<PlayerThrowing>().bluntObject.GetComponent<Interactable>().isHeavy)
         {
             moveSpeed = 2.5f;
