@@ -298,6 +298,7 @@ MonoBehaviour:
   bluntObject: {fileID: 0}
   heldObject: {fileID: 0}
   currentObject: {fileID: 0}
+  mag: 0
 --- !u!114 &3782174989788927479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,9 +375,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.077890396, y: 0.2044639}
+  m_Offset: {x: -0.077890396, y: -0.010815859}
   serializedVersion: 2
-  m_Radius: 0.48052692
+  m_Radius: 0.69580674
 --- !u!114 &1481341172553676701
 MonoBehaviour:
   m_ObjectHideFlags: 0
