@@ -7,6 +7,7 @@ public class BossHealth : MonoBehaviour
 {
     int hearts;
     int maxHealth;
+    float baseHealth;
     float stagehealth;
     float bossMultipler;
     float bossHealth;
@@ -37,22 +38,34 @@ public class BossHealth : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        baseHealth = GameObject.Find("Boss").GetComponent<Enemy>().health;
+    }
+
     // Update is called once per frame
     void Update()
     {
         stagehealth = GameObject.Find("Boss").GetComponent<Enemy>().health;
         bossMultipler = GameObject.Find("Boss").GetComponent<Enemy>().bossHealth;
-        bossHealth = stagehealth * bossMultipler;
+        if(bossMultipler > 1) {
+            bossHealth = baseHealth * (bossMultipler-1) + stagehealth;
+            Debug.Log(baseHealth);
+        }else {
+            bossHealth = stagehealth * bossMultipler;
+        }
+
+
 
         for(int i = 0; i < heartDisplay.Length; i++) {
 
-            if(i < bossHealth/2) {
-                if(i + 0.5 == bossHealth/2) {
+            if(i < bossHealth/2f) {
+                if(i + 0.5 == bossHealth/2f) {
                     if (bossMultipler == 3)
                     {
                         heartDisplay[i].sprite = halfHeartGreen;
                     }
-                    else if (bossHealth == 2)
+                    else if (bossMultipler == 2)
                     {
                         heartDisplay[i].sprite = halfHeartYellow;
                     }
@@ -65,7 +78,7 @@ public class BossHealth : MonoBehaviour
                     {
                         heartDisplay[i].sprite = fullHeartGreen;
                     }
-                    else if (bossHealth == 2)
+                    else if (bossMultipler == 2)
                     {
                         heartDisplay[i].sprite = fullHeartYellow;
                     }

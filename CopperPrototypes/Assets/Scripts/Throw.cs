@@ -128,7 +128,7 @@ public class Throw : MonoBehaviour
                 // Delay the throw until we are close enough to the player
                 // (act as if we are blocking the player's thrown objects)
                 float distanceToPlayer = Vector2.Distance(transform.position, target.transform.position);
-                if (distanceToPlayer < 3f)
+                if (distanceToPlayer < 4.5f)
                 {
                     currentObject.GetComponent<Interactable>().EnemyThrow(transform, 30, gameObject);
                 }
@@ -249,6 +249,12 @@ public class Throw : MonoBehaviour
 
             Interactable objInteract = obj.GetComponent<Interactable>();
             PlayerThrowing playerThrowing = player.GetComponent<PlayerThrowing>();
+
+            // Ignore objects held by other enemies
+            if (AIMaster.takenObjects.Contains(obj))
+            {
+                continue;
+            }
 
             // Ignore player held objects
             if ((isElite == false && objInteract.isHeavy) || obj == playerThrowing.currentObject || obj == playerThrowing.heldObject)
