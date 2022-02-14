@@ -67,6 +67,13 @@ public class Enemy : MonoBehaviour
 
                 rb.simulated = false;
 
+                // Drop currently held object
+                if (GetComponent<Throw>() != null && GetComponent<Throw>().currentObject != null)
+                {
+                    GetComponent<Throw>().currentObject.GetComponent<Interactable>().Drop();
+                    GetComponent<Throw>().currentObject = null;
+                }
+
                 if (isBoss == true)
                 {
                     GetComponentInChildren<Dialogue>().DisplayDialogue("No... It can't be...");
