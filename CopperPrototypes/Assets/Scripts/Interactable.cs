@@ -100,8 +100,6 @@ public class Interactable : MonoBehaviour
             }
         }
 
-        Debug.Log("Object Bounciness: " + coll.bounciness);
-
         thrownFlag = 1;
         damageable = true;
 
