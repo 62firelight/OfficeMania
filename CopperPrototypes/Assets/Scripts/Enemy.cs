@@ -18,6 +18,8 @@ public class Enemy : MonoBehaviour
 
     public int bossHealth = 3;
 
+    public AudioClip[] gruntSounds;
+
     // Rigidbody2D component
     private Rigidbody2D rb;
 
@@ -179,6 +181,13 @@ public class Enemy : MonoBehaviour
                     gameObject.GetComponent<BarthaSzabolcs.Tutorial_SpriteFlash.ColoredFlash>().Flash(Color.white);
                     health--;
                 }
+            }
+
+            if (gruntSounds.Length > 0)
+            {
+                AudioClip grunt = gruntSounds[Random.Range(0, gruntSounds.Length - 1)];
+
+                AudioSource.PlayClipAtPoint(grunt, transform.position);
             }
             
 

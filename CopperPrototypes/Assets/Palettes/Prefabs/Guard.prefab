@@ -185,6 +185,10 @@ MonoBehaviour:
   knockbackTime: 0
   isBoss: 0
   bossHealth: 3
+  gruntSounds:
+  - {fileID: 8300000, guid: a341d34fe335f0e408d26efde3e00883, type: 3}
+  - {fileID: 8300000, guid: b1ce68c83689ffc4cb2adcd1bc5c6acf, type: 3}
+  - {fileID: 8300000, guid: 3a76678b5f1e26a4eb1469e53be73389, type: 3}
 --- !u!114 &3264640679040377156
 MonoBehaviour:
   m_ObjectHideFlags: 0

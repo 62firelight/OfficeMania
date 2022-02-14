@@ -10,7 +10,7 @@ public class Throw : MonoBehaviour
 
     GameObject target;
 
-    GameObject currentObject = null;
+    public GameObject currentObject = null;
 
     public Sprite normalSprite;
 
@@ -82,7 +82,7 @@ public class Throw : MonoBehaviour
         }
 
         // Throw an object if we are holding it for at least 2 seconds
-        if (currentObject != null && delay <= 0)
+        if (currentObject != null && currentObject.transform.parent == transform && delay <= 0)
         {
             RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, player.transform.position - transform.position);
             Debug.DrawRay(transform.position, player.transform.position - transform.position);
@@ -157,19 +157,27 @@ public class Throw : MonoBehaviour
             }
         }
 
-        if (target == null)
+        if (target == null || (target == player && currentObject == null))
         {
+            GameObject closestObject = GetClosestObject(mostRecentObject);
+
+            if (closestObject != null)
+            {
+                chase.target = closestObject;
+            }
             return;
         }
 
         // Pick up object if it's close enough
-        float distance = Vector2.Distance(transform.position, target.transform.position);
-        if (distance < 1.5f && delay <= 0)
+        if (target.tag != "Player")
         {
-            Debug.Log(gameObject.name + " picks up " + chase.target);
-            EnemyPickUp(chase.target.transform);
+            float distance = Vector2.Distance(transform.position, target.transform.position);
+            if (distance < 1.5f && delay <= 0)
+            {
+                Debug.Log(gameObject.name + " picks up " + chase.target);
+                EnemyPickUp(chase.target.transform);
+            }
         }
-
     }
 
     void EnemyPickUp(Transform item)
