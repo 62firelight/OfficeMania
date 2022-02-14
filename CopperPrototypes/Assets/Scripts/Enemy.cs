@@ -66,6 +66,11 @@ public class Enemy : MonoBehaviour
                 }
 
                 rb.simulated = false;
+
+                if (isBoss == true)
+                {
+                    GetComponentInChildren<Dialogue>().DisplayDialogue("No... It can't be...");
+                }
             }
             else if (health <= 0 && bossHealth > 0) 
             {
@@ -105,11 +110,13 @@ public class Enemy : MonoBehaviour
                 // Trigger phase two
                 if (bossHealth == 2)
                 {
+                    GetComponentInChildren<Dialogue>().DisplayDialogue("Guards! To me!");
                     bossPhases.InitiatePhaseTwo();
                 }
                 // Trigger phase three
                 else if (bossHealth == 1)
                 {
+                    GetComponentInChildren<Dialogue>().DisplayDialogue("HELP! SECURITY!");
                     bossPhases.InitiatePhaseThree();
                 }
 
