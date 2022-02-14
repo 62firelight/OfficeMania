@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: brown_nature_51
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 6755017540466310549, guid: 2a512c575824c4a0f9a415d3c0ab416b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7075472, g: 0.63250035, b: 0.130162, a: 1}
   m_Transform:
     e00: 1
     e01: 0
