@@ -220,7 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4491205792618057570}
   - component: {fileID: 4491205792618057569}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: FlippedCollisionBox
   m_TagString: Wall
   m_Icon: {fileID: 0}
