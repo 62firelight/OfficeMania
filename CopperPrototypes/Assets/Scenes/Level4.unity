@@ -493,6 +493,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3884534337545128172, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
+      propertyPath: m_Size.x
+      value: 30.325827
+      objectReference: {fileID: 0}
+    - target: {fileID: 3884534337545128172, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
+      propertyPath: m_Size.y
+      value: 13.163155
+      objectReference: {fileID: 0}
+    - target: {fileID: 3884534337545128172, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
+      propertyPath: m_Offset.x
+      value: -9.549462
+      objectReference: {fileID: 0}
+    - target: {fileID: 3884534337545128172, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
+      propertyPath: m_Offset.y
+      value: -26.43011
+      objectReference: {fileID: 0}
     - target: {fileID: 8197635414309395727, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
       propertyPath: DrawGridInEditor
       value: 0
