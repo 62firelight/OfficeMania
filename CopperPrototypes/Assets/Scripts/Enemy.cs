@@ -235,6 +235,7 @@ public class Enemy : MonoBehaviour
                 obj.pickedUp = true;
 
                 other.gameObject.GetComponent<SpriteRenderer>().color = new Color(0.4f, 0.4f, 0.4f, 1.0f);
+                other.transform.Translate(0, 0, 1);
 
                 if (GetComponent<Chase>() != null)
                 {

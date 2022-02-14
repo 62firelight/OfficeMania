@@ -116,7 +116,7 @@ public class Interactable : MonoBehaviour
         rb.AddForce(objectPoint.up * force, ForceMode2D.Impulse);
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), coll);
         
-        transform.Translate(0, 0, 1);
+        // transform.Translate(0, 0, 1);
         transform.parent = null;
 
         AIMaster.takenObjects.Remove(gameObject);
@@ -138,7 +138,7 @@ public class Interactable : MonoBehaviour
 
         rb.AddForce(objectPoint.up * force, ForceMode2D.Impulse);
         
-        transform.Translate(0, 0, 1);
+        // transform.Translate(0, 0, 1);
         transform.parent = null;
 
         AIMaster.takenObjects.Remove(gameObject);
@@ -148,7 +148,7 @@ public class Interactable : MonoBehaviour
     {
         pickedUp = false;
 
-        transform.Translate(0, 0, 1);
+        // transform.Translate(0, 0, 1);
         transform.parent = null;
 
         AIMaster.takenObjects.Remove(gameObject);

@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2420592724045682166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: -2}
   m_LocalScale: {x: 0.125, y: 0.125, z: 0.125}
   m_Children:
   - {fileID: 2420592722816493060}
@@ -107,6 +107,7 @@ MonoBehaviour:
   knownVelocity: {x: 0, y: 0, z: 0}
   thrownFlag: 0
   pickupSounds: []
+  throwSounds: []
   hitSounds:
   - {fileID: 8300000, guid: 8bbb7ee715eddd94f82c59b750ef7d8e, type: 3}
   - {fileID: 8300000, guid: cb718fd987eaf7b4ea81b57e0556cceb, type: 3}

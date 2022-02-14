@@ -11,9 +11,15 @@ public class PlayerThrowing : MonoBehaviour
 
     public Sprite heavySprite;
 
+    public Sprite aimSprite;
+
+    public Sprite throwSprite;
+
     public Transform lightObjectPoint;
 
     public Transform heavyObjectPoint;
+
+    public Transform aimPoint;
 
     public float force = 40f;
 
@@ -33,6 +39,8 @@ public class PlayerThrowing : MonoBehaviour
 
     float startTime = 0f;
 
+    float throwTime = 0f;
+
     void Start()
     {   
         sr = GetComponent<SpriteRenderer>();
@@ -42,6 +50,16 @@ public class PlayerThrowing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (throwTime > 0)
+        {
+            throwTime -= Time.deltaTime;
+
+            if (throwTime <= 0)
+            {
+                sr.sprite = normalSprite;
+            }
+        }
+
         // Determine currently held object
         if (bluntObject != null)
         {
@@ -55,6 +73,24 @@ public class PlayerThrowing : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             startTime = Time.time;
+
+            if (currentObject != null)
+            {
+                if (currentObject.GetComponent<Interactable>().isHeavy == false)
+                {
+                    sr.sprite = aimSprite;
+                    currentObject.transform.position = aimPoint.position;
+
+                    if (currentObject.tag == "Blunt")
+                    {
+                        currentObject.transform.Rotate(new Vector3(0, 0, -45));
+                    }
+                }
+                else
+                {
+                    currentObject.transform.Translate(0, -0.25f, -1);
+                }
+            }
         }
 
         if (Input.GetButton("Fire1"))
@@ -84,12 +120,24 @@ public class PlayerThrowing : MonoBehaviour
                 currentObject.gameObject.transform.position = transform.position;
                 heldObject = null;
             }
+
+            if (currentObject != null && currentObject.tag == "Blunt" && currentObject.GetComponent<Interactable>().isHeavy == false)
+            {
+                currentObject.transform.Rotate(new Vector3(0, 0, -90));
+            }
+            else if (currentObject != null && currentObject.GetComponent<Interactable>().isHeavy == true)
+            {
+                currentObject.transform.Translate(0, 0.25f, 1);
+            }
             
             // Throw object using calculated force
             currentObject.GetComponent<Interactable>().Throw(heavyObjectPoint, force * mag);
 
+            sr.sprite = throwSprite;
+            throwTime = 0.05f;
+
             currentObject = null;
-            sr.sprite = normalSprite;
+            // sr.sprite = normalSprite;
         }
 
         // Right-click near a blunt object to pick it up
@@ -136,7 +184,12 @@ public class PlayerThrowing : MonoBehaviour
             heldObject = obj.gameObject;
         }
         obj.rotation = transform.rotation;
-        obj.Translate(0, 0, -1);
+
+        if (obj.gameObject.tag == "Blunt" && obj.GetComponent<Interactable>().isHeavy == false)
+        {
+            obj.Rotate(new Vector3(0, 0, 90));
+        }
+        // obj.Translate(0, 0, -1);
     }
 
     /**void OnGUI()
