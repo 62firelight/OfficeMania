@@ -127,7 +127,7 @@ public class RoomMaster : MonoBehaviour
         {
             mainCamera.GetComponent<SmoothCameraFollow>().enabled = false;
             mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, camera.transform.position, 2.5f * Time.deltaTime);
-            mainCamera.GetComponent<Camera>().orthographicSize = Mathf.Lerp(mainCamera.GetComponent<Camera>().orthographicSize, camera.GetComponent<Camera>().orthographicSize, 2.25f * Time.deltaTime);
+            mainCamera.GetComponent<Camera>().orthographicSize = Mathf.Lerp(mainCamera.GetComponent<Camera>().orthographicSize, camera.GetComponent<Camera>().orthographicSize, 2.4f * Time.deltaTime);
         }
 
         if (cameraReset == true)
@@ -136,7 +136,7 @@ public class RoomMaster : MonoBehaviour
             Vector3 playerPosition = new Vector3(player.transform.position.x, player.transform.position.y, originalCamPosition.z);
 
             mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, playerPosition, 2.5f * Time.deltaTime);
-            mainCamera.GetComponent<Camera>().orthographicSize = Mathf.Lerp(mainCamera.GetComponent<Camera>().orthographicSize, originalSize, 2.25f * Time.deltaTime);
+            mainCamera.GetComponent<Camera>().orthographicSize = Mathf.Lerp(mainCamera.GetComponent<Camera>().orthographicSize, originalSize, 2.4f * Time.deltaTime);
 
             float sqrMag = Vector3.SqrMagnitude(playerPosition - mainCamera.transform.position);
             // Debug.Log("1: " + (sqrMag < 0.1f));
