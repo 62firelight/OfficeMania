@@ -234,6 +234,8 @@ public class Enemy : MonoBehaviour
                 other.gameObject.transform.parent = transform;
                 obj.pickedUp = true;
 
+                other.gameObject.GetComponent<SpriteRenderer>().color = new Color(0.4f, 0.4f, 0.4f, 1.0f);
+
                 if (GetComponent<Chase>() != null)
                 {
                     if (isBoss == false)
