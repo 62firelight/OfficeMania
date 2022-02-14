@@ -28,7 +28,19 @@ public class RoomMaster : MonoBehaviour
 
     public Transform topRightCorner;
 
+    public GameObject mainCamera;
+
+    public GameObject camera;
+
     private AStarGrid grid;
+
+    public bool cameraTransition;
+
+    public bool cameraReset;
+
+    private Vector3 originalCamPosition;
+
+    private float originalSize;
 
     void Awake()
     {
@@ -89,10 +101,46 @@ public class RoomMaster : MonoBehaviour
             }
         }
         
+        mainCamera = Camera.main.gameObject;
+        cameraTransition = false;
+        cameraReset = false;
+
+        originalCamPosition = mainCamera.transform.position;
+        originalSize = mainCamera.GetComponent<Camera>().orthographicSize;
     }
 
     void Update()
     {
+        if (cameraTransition == true && cameraReset == false)
+        {
+            mainCamera.GetComponent<SmoothCameraFollow>().enabled = false;
+            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, camera.transform.position, 2.5f * Time.deltaTime);
+            mainCamera.GetComponent<Camera>().orthographicSize = Mathf.Lerp(mainCamera.GetComponent<Camera>().orthographicSize, camera.GetComponent<Camera>().orthographicSize, 2.25f * Time.deltaTime);
+        }
+
+        if (cameraReset == true)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            Vector3 playerPosition = new Vector3(player.transform.position.x, player.transform.position.y, originalCamPosition.z);
+
+            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, playerPosition, 2.5f * Time.deltaTime);
+            mainCamera.GetComponent<Camera>().orthographicSize = Mathf.Lerp(mainCamera.GetComponent<Camera>().orthographicSize, originalSize, 2.25f * Time.deltaTime);
+
+            float sqrMag = Vector3.SqrMagnitude(playerPosition - mainCamera.transform.position);
+            // Debug.Log("1: " + (sqrMag < 0.1f));
+            // Debug.Log("2: " + (Mathf.Abs(mainCamera.GetComponent<Camera>().orthographicSize - originalSize) < 0.1f));
+
+            if (sqrMag < 0.1f && Mathf.Abs(mainCamera.GetComponent<Camera>().orthographicSize - originalSize) < 0.1f)
+            {
+                mainCamera.transform.position = playerPosition;
+                mainCamera.GetComponent<Camera>().orthographicSize = originalSize;
+
+                mainCamera.GetComponent<SmoothCameraFollow>().enabled = true;
+                cameraTransition = false;
+                cameraReset = false;
+            }
+        }
+
         if (aiEnabled && roomClear == false)
         {
             // Assume all enemies are clear unless we know otherwise
@@ -149,8 +197,10 @@ public class RoomMaster : MonoBehaviour
                 // For the boss, load the main menu
                 if (bossBattle)
                 {
-                    SceneManager.LoadScene("MainMenu");
+                    // SceneManager.LoadScene("MainMenu");
                 }
+
+                if (camera != null) cameraReset = true;
             }
         }
     }
@@ -177,6 +227,8 @@ public class RoomMaster : MonoBehaviour
                     exitDoor.SetActive(true);
                 }
             }
+
+            if (camera != null) cameraTransition = true;
         }
     }
 
