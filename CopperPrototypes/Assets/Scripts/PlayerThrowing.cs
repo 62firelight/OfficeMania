@@ -133,9 +133,16 @@ public class PlayerThrowing : MonoBehaviour
             // Throw object using calculated force
             currentObject.GetComponent<Interactable>().Throw(heavyObjectPoint, force * mag);
 
-            sr.sprite = throwSprite;
-            throwTime = 0.05f;
-
+            if (currentObject.GetComponent<Interactable>().isHeavy == false)
+            {
+                sr.sprite = throwSprite;
+                throwTime = 0.05f;
+            }
+            else
+            {
+                sr.sprite = normalSprite;
+            }
+            
             currentObject = null;
             // sr.sprite = normalSprite;
         }
