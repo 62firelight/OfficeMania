@@ -89,9 +89,14 @@ MonoBehaviour:
   levelTwoBattle: 0
   levelTwoBigBattle: 0
   bossBattle: 0
-  firstRoom: 0
   bottomLeftCorner: {fileID: 1148661910134625730}
   topRightCorner: {fileID: 681706766380168130}
+  mainCamera: {fileID: 0}
+  camera: {fileID: 0}
+  doorCloseSound: {fileID: 8300000, guid: a7f3171225b7ec044b7cbf87978672d8, type: 3}
+  doorOpenSound: {fileID: 8300000, guid: 8ef6e6be6bd2cbc43b8899f33acda8e1, type: 3}
+  cameraTransition: 0
+  cameraReset: 0
 --- !u!61 &37002470
 BoxCollider2D:
   m_ObjectHideFlags: 0

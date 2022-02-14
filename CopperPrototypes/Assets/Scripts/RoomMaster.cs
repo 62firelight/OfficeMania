@@ -32,6 +32,10 @@ public class RoomMaster : MonoBehaviour
 
     public GameObject camera;
 
+    public AudioClip doorCloseSound;
+
+    public AudioClip doorOpenSound;
+
     private AStarGrid grid;
 
     public bool cameraTransition;
@@ -215,6 +219,8 @@ public class RoomMaster : MonoBehaviour
                 }
 
                 if (camera != null) cameraReset = true;
+
+                if (doorOpenSound != null) AudioSource.PlayClipAtPoint(doorOpenSound, Camera.main.transform.position);
             }
         }
     }
@@ -223,6 +229,8 @@ public class RoomMaster : MonoBehaviour
     {
         if (roomClear == false && collision.tag == "Player")
         {
+            if (aiEnabled == false && doorCloseSound != null) AudioSource.PlayClipAtPoint(doorCloseSound, Camera.main.transform.position);
+
             aiEnabled = true;
 
             if (entryDoors != null && entryDoors.Length > 0)
@@ -272,7 +280,6 @@ public class RoomMaster : MonoBehaviour
             {
                 levelMaster.TriggerBattleMusic();
             }
-            
         }
     }
 
