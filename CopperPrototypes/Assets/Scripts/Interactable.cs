@@ -211,7 +211,10 @@ public class Interactable : MonoBehaviour
             {
                 AudioClip hit = hitSounds[Random.Range(0, hitSounds.Length - 1)];
 
-                AudioSource.PlayClipAtPoint(hit, transform.position);
+                if (isHeavy == false || (isHeavy == true && damageable == true))
+                {
+                    AudioSource.PlayClipAtPoint(hit, transform.position);
+                }
             }
         }
 
