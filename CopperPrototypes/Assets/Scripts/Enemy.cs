@@ -25,6 +25,8 @@ public class Enemy : MonoBehaviour
 
     private SpriteRenderer sr;
 
+    private bool bossMusicEnd = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,97 +54,118 @@ public class Enemy : MonoBehaviour
             }
         }
 
-            // If enemy has no health
-            if ((isBoss == false && health <= 0) || (isBoss == true && bossHealth <= 0))
+        if (isBoss == true && bossHealth <= 0 && bossMusicEnd == false)
+        {
+            // Get dynamic music component 
+            DynamicMusic music = GetComponent<DynamicMusic>();
+            if (music == null)
             {
-                // Darken sprite
-                sr.color = new Color(0.5f, 0, 0);
-
-                // Disable AI
-                if (GetComponent<Chase>() != null)
-                {
-                    GetComponent<Chase>().enabled = false;
-                    // GetComponent<Chase>().speed = 0;
-                }
-
-                rb.simulated = false;
-
-                // Drop currently held object
-                if (GetComponent<Throw>() != null && GetComponent<Throw>().currentObject != null)
-                {
-                    GetComponent<Throw>().currentObject.GetComponent<Interactable>().Drop();
-                    GetComponent<Throw>().currentObject = null;
-                }
-
-                if (isBoss == true)
-                {
-                    GetComponentInChildren<Dialogue>().DisplayDialogue("No... It can't be...");
-                }
+                Debug.Log("Could not find DynamicMusic component for " + gameObject.name + "!");
+                Time.timeScale = 0;
             }
-            else if (health <= 0 && bossHealth > 0) 
+
+            RoomMaster rm = GetComponent<Chase>().roomMaster.GetComponent<RoomMaster>();
+
+            // Change to music for next phase
+            if (rm.GetRoomClear() == true)
             {
-                // Handle boss phase transitions
-                bossHealth--;
-
-                if (bossHealth > 0)
-                {
-                    health = maxHealth;
-                }
-                
-                // Get dynamic music component 
-                DynamicMusic music = GetComponent<DynamicMusic>();
-                if (music == null)
-                {
-                    Debug.Log("Could not find DynamicMusic component for " + gameObject.name + "!");
-                    Time.timeScale = 0;
-                }
-
-                // Change to music for next phase
                 music.TriggerFadeOut();
-
-                // Handle enemy spawning for the different phases
-                GameObject bossMinionMaster = GameObject.FindGameObjectWithTag("BossMinionMaster");
-                if (bossMinionMaster == null)
-                {
-                    Debug.Log("Could not find BossMinionMaster for " + gameObject.name + "!");
-                    Time.timeScale = 0;
-                }
-                BossMinionMaster bossPhases = bossMinionMaster.GetComponent<BossMinionMaster>();
-                if (bossPhases == null)
-                {
-                    Debug.Log("Could not find BossMinionMaster component for " + gameObject.name + "!");
-                    Time.timeScale = 0;
-                }
-
-                // Trigger phase two
-                if (bossHealth == 2)
-                {
-                    GetComponentInChildren<Dialogue>().DisplayDialogue("Guards! To me!");
-                    bossPhases.InitiatePhaseTwo();
-                }
-                // Trigger phase three
-                else if (bossHealth == 1)
-                {
-                    GetComponentInChildren<Dialogue>().DisplayDialogue("HELP! SECURITY!");
-                    bossPhases.InitiatePhaseThree();
-                }
-
-                // if (bossHealth <= 0)
-                // {
-                //     // Darken sprite
-                //     sr.color = new Color(0.5f, 0, 0);
-
-                //     // Disable AI
-                //     if (GetComponent<Chase>() != null)
-                //     {
-                //         GetComponent<Chase>().speed = 0;
-                //     }
-
-                //     rb.simulated = false;
-                // }
+                bossMusicEnd = true;
             }
-        
-        
+        }
+
+        // If enemy has no health
+        if ((isBoss == false && health <= 0) || (isBoss == true && bossHealth <= 0))
+        {
+            // Darken sprite
+            sr.color = new Color(0.5f, 0, 0);
+
+            // Disable AI
+            if (GetComponent<Chase>() != null)
+            {
+                GetComponent<Chase>().enabled = false;
+                // GetComponent<Chase>().speed = 0;
+            }
+
+            rb.simulated = false;
+
+            // Drop currently held object
+            if (GetComponent<Throw>() != null && GetComponent<Throw>().currentObject != null)
+            {
+                GetComponent<Throw>().currentObject.GetComponent<Interactable>().Drop();
+                GetComponent<Throw>().currentObject = null;
+            }
+
+            if (isBoss == true)
+            {
+                GetComponentInChildren<Dialogue>().DisplayDialogue("No... It can't be...");
+            }
+        }
+        else if (health <= 0 && bossHealth > 0) 
+        {
+            // Handle boss phase transitions
+            bossHealth--;
+
+            if (bossHealth > 0)
+            {
+                health = maxHealth;
+            }
+            
+            // Get dynamic music component 
+            DynamicMusic music = GetComponent<DynamicMusic>();
+            if (music == null)
+            {
+                Debug.Log("Could not find DynamicMusic component for " + gameObject.name + "!");
+                Time.timeScale = 0;
+            }
+
+            // Change to music for next phase
+            if (bossHealth > 0)
+            {
+                music.TriggerFadeOut();
+            }
+
+            // Handle enemy spawning for the different phases
+            GameObject bossMinionMaster = GameObject.FindGameObjectWithTag("BossMinionMaster");
+            if (bossMinionMaster == null)
+            {
+                Debug.Log("Could not find BossMinionMaster for " + gameObject.name + "!");
+                Time.timeScale = 0;
+            }
+            BossMinionMaster bossPhases = bossMinionMaster.GetComponent<BossMinionMaster>();
+            if (bossPhases == null)
+            {
+                Debug.Log("Could not find BossMinionMaster component for " + gameObject.name + "!");
+                Time.timeScale = 0;
+            }
+
+            // Trigger phase two
+            if (bossHealth == 2)
+            {
+                GetComponentInChildren<Dialogue>().DisplayDialogue("Guards! To me!");
+                bossPhases.InitiatePhaseTwo();
+            }
+            // Trigger phase three
+            else if (bossHealth == 1)
+            {
+                GetComponentInChildren<Dialogue>().DisplayDialogue("HELP! SECURITY!");
+                bossPhases.InitiatePhaseThree();
+            }
+
+            // if (bossHealth <= 0)
+            // {
+            //     // Darken sprite
+            //     sr.color = new Color(0.5f, 0, 0);
+
+            //     // Disable AI
+            //     if (GetComponent<Chase>() != null)
+            //     {
+            //         GetComponent<Chase>().speed = 0;
+            //     }
+
+            //     rb.simulated = false;
+            // }
+        }
     }
 
     // Let the rigidbody take control and detect collisions.

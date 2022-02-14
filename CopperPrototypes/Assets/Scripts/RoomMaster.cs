@@ -42,6 +42,8 @@ public class RoomMaster : MonoBehaviour
 
     private float originalSize;
 
+    private float waitTime = 0f;
+
     void Awake()
     {
         grid = GetComponent<AStarGrid>();
@@ -111,6 +113,16 @@ public class RoomMaster : MonoBehaviour
 
     void Update()
     {
+        if (waitTime > 0)
+        {
+            waitTime -= Time.deltaTime;
+
+            if (waitTime <= 0)
+            {
+                SceneManager.LoadScene("Credits");
+            }
+        }
+
         if (cameraTransition == true && cameraReset == false)
         {
             mainCamera.GetComponent<SmoothCameraFollow>().enabled = false;
@@ -198,6 +210,8 @@ public class RoomMaster : MonoBehaviour
                 if (bossBattle)
                 {
                     // SceneManager.LoadScene("MainMenu");
+                    // SceneManager.LoadScene("Credits");
+                    waitTime = 5f;
                 }
 
                 if (camera != null) cameraReset = true;
@@ -271,5 +285,10 @@ public class RoomMaster : MonoBehaviour
         List<GameObject> detectedObjects = objectDetectorComponent.objects;
 
         return detectedObjects;
+    }
+
+    public bool GetRoomClear()
+    {
+        return roomClear;
     }
 }
