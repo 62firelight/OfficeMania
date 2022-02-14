@@ -23135,7 +23135,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -32016,12 +32016,12 @@ Tilemap:
   - m_RefCount: 120
     m_Data: {fileID: 11400000, guid: 60255d77094cf4f8c8a321795652744c, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 2d10db09c2bc740d5a26107674745a68, type: 3}
-  - m_RefCount: 1868
-    m_Data: {fileID: 4369203708505230771, guid: 5f54460b95b634288b773bbadaf04e0a, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 1868
+    m_Data: {fileID: 4369203708505230771, guid: 5f54460b95b634288b773bbadaf04e0a, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 2d10db09c2bc740d5a26107674745a68, type: 3}
   - m_RefCount: 225
     m_Data: {fileID: 5880292273296895059, guid: f53e71136d4f64001b5182567aa50f0f, type: 3}
   - m_RefCount: 826
@@ -85654,7 +85654,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 82518c7c188ed2c409a26836008a632a, type: 3}
     - target: {fileID: 3782174989788927479, guid: 9d84248adb44d2243b89e24c3efe7daf, type: 3}
       propertyPath: playerMaxHealth
-      value: 600
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5403261870387305025, guid: 9d84248adb44d2243b89e24c3efe7daf, type: 3}
       propertyPath: cam
@@ -88509,7 +88509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fullHeart: {fileID: 4606908045521496030, guid: b71931b76f135403d89f9529711397d7, type: 3}
   halfHeart: {fileID: -4195582761621981391, guid: b71931b76f135403d89f9529711397d7, type: 3}
-  emptyHeart: {fileID: 0}
+  emptyHeart: {fileID: 516283494600122218, guid: b71931b76f135403d89f9529711397d7, type: 3}
   heartDisplay: []
 --- !u!114 &2043439329
 MonoBehaviour:
