@@ -8,12 +8,16 @@ public class Credits : MonoBehaviour
 
     public GameObject skipButton;
 
+    public AudioSource music;
+
     void Start()
     {
         if (skipButton != null)
         {
             skipButton.SetActive(false);
         }
+
+        music.Play();
     }
 
     // Update is called once per frame
