@@ -139,8 +139,8 @@ public class RoomMaster : MonoBehaviour
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             Vector3 playerPosition = new Vector3(player.transform.position.x, player.transform.position.y, originalCamPosition.z);
 
-            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, playerPosition, 10f * Time.deltaTime);
-            mainCamera.GetComponent<Camera>().orthographicSize = Mathf.Lerp(mainCamera.GetComponent<Camera>().orthographicSize, originalSize, 10f * Time.deltaTime);
+            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, playerPosition, 20f * Time.deltaTime);
+            mainCamera.GetComponent<Camera>().orthographicSize = Mathf.Lerp(mainCamera.GetComponent<Camera>().orthographicSize, originalSize, 20f * Time.deltaTime);
 
             float sqrMag = Vector3.SqrMagnitude(playerPosition - mainCamera.transform.position);
             // Debug.Log("1: " + (sqrMag < 0.1f));
