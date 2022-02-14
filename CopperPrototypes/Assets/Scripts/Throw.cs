@@ -172,7 +172,7 @@ public class Throw : MonoBehaviour
         if (target.tag != "Player")
         {
             float distance = Vector2.Distance(transform.position, target.transform.position);
-            if (distance < 1.5f && delay <= 0)
+            if (distance < 2f && delay <= 0)
             {
                 Debug.Log(gameObject.name + " picks up " + chase.target);
                 EnemyPickUp(chase.target.transform);
