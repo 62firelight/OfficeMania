@@ -146,6 +146,16 @@ public class Interactable : MonoBehaviour
         AIMaster.takenObjects.Remove(gameObject);
     }
 
+    public void Drop()
+    {
+        pickedUp = false;
+
+        transform.Translate(0, 0, 1);
+        transform.parent = null;
+
+        AIMaster.takenObjects.Remove(gameObject);
+    }
+
     public void EnablePhysics()
     {
         rb.isKinematic = false;

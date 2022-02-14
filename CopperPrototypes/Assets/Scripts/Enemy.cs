@@ -66,6 +66,18 @@ public class Enemy : MonoBehaviour
                 }
 
                 rb.simulated = false;
+
+                // Drop currently held object
+                if (GetComponent<Throw>() != null && GetComponent<Throw>().currentObject != null)
+                {
+                    GetComponent<Throw>().currentObject.GetComponent<Interactable>().Drop();
+                    GetComponent<Throw>().currentObject = null;
+                }
+
+                if (isBoss == true)
+                {
+                    GetComponentInChildren<Dialogue>().DisplayDialogue("No... It can't be...");
+                }
             }
             else if (health <= 0 && bossHealth > 0) 
             {
@@ -105,11 +117,13 @@ public class Enemy : MonoBehaviour
                 // Trigger phase two
                 if (bossHealth == 2)
                 {
+                    GetComponentInChildren<Dialogue>().DisplayDialogue("Guards! To me!");
                     bossPhases.InitiatePhaseTwo();
                 }
                 // Trigger phase three
                 else if (bossHealth == 1)
                 {
+                    GetComponentInChildren<Dialogue>().DisplayDialogue("HELP! SECURITY!");
                     bossPhases.InitiatePhaseThree();
                 }
 
@@ -219,6 +233,8 @@ public class Enemy : MonoBehaviour
                 obj.DisablePhysics();
                 other.gameObject.transform.parent = transform;
                 obj.pickedUp = true;
+
+                other.gameObject.GetComponent<SpriteRenderer>().color = new Color(0.4f, 0.4f, 0.4f, 1.0f);
 
                 if (GetComponent<Chase>() != null)
                 {
