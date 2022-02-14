@@ -10,6 +10,8 @@ public class KeycardDoor : MonoBehaviour
 
     private TextMeshPro tmp;
 
+    public AudioClip unlockSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,9 +33,12 @@ public class KeycardDoor : MonoBehaviour
             if (playerKeycard.hasKeycard)
             {
                 Debug.Log("Unlocked");
-                transform.parent.gameObject.SetActive(false);
 
                 if (tmp != null) tmp.text = "Unlocked";
+
+                if (unlockSound != null) AudioSource.PlayClipAtPoint(unlockSound, transform.position);
+
+                transform.parent.gameObject.SetActive(false);
             }
             else
             {
