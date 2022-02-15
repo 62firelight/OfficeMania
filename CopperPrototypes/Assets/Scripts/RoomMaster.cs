@@ -44,6 +44,8 @@ public class RoomMaster : MonoBehaviour
 
     public bool cameraReset;
 
+    public GameObject secondEntryDoor;
+
     private Vector3 originalCamPosition;
 
     private float originalSize;
@@ -101,6 +103,8 @@ public class RoomMaster : MonoBehaviour
                 entryDoor.SetActive(false);
             }
         }
+
+        if (levelTwoBattle && secondEntryDoor != null) secondEntryDoor.SetActive(false);
         
         if (exitDoors != null && exitDoors.Length > 0)
         {
@@ -210,7 +214,15 @@ public class RoomMaster : MonoBehaviour
 
                     LevelMaster levelMaster = levelMasterObj.GetComponent<LevelMaster>();
 
-                    if (levelTwoBattle || levelTwoBigBattle) levelMaster.TriggerLightsOffMusicMid();
+                    if (levelTwoBattle || levelTwoBigBattle) 
+                    {
+                        levelMaster.TriggerLightsOffMusicMid();
+
+                        if (levelTwoBattle && secondEntryDoor != null)
+                        {
+                            secondEntryDoor.SetActive(false);
+                        }
+                    }
                 }
 
                 // For the boss, load the main menu
@@ -282,6 +294,8 @@ public class RoomMaster : MonoBehaviour
             else if (levelTwoBattle)
             {
                 levelMaster.TriggerBattleMusic();
+
+                if (secondEntryDoor != null) secondEntryDoor.SetActive(true);
             }
         }
 
