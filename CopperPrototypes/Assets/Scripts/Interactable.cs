@@ -31,6 +31,10 @@ public class Interactable : MonoBehaviour
 
     public AudioClip[] hitSounds;
 
+    public AudioClip[] wallHitSounds;
+
+    public AudioClip[] heavyBlockSounds;
+
     private Transform promptObj;
 
     public Rigidbody2D rb;
@@ -205,6 +209,29 @@ public class Interactable : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        // Play sound when objects hit a heavy object
+        if (isHeavy == true && (other.gameObject.tag == "Blunt" || other.gameObject.tag == "Sharp"))
+        {
+            if (heavyBlockSounds.Length > 0)
+            {
+                AudioClip heavyBlockSound = heavyBlockSounds[Random.Range(0, heavyBlockSounds.Length - 1)];
+
+                AudioSource.PlayClipAtPoint(heavyBlockSound, transform.position);
+            }
+        }
+
+        // Play sound when bounceable objects hit a wall
+        if (coll.sharedMaterial != null && other.gameObject.tag == "Wall")
+        {
+            if (hitSounds.Length > 0)
+            {
+                AudioClip wallHit = wallHitSounds[Random.Range(0, wallHitSounds.Length - 1)];
+
+                AudioSource.PlayClipAtPoint(wallHit, transform.position);
+            }
+        }
+
+        // Play sound when objects hit someone
         if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Player")
         {
             if (hitSounds.Length > 0)

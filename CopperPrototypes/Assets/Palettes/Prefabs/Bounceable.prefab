@@ -112,6 +112,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8bbb7ee715eddd94f82c59b750ef7d8e, type: 3}
   - {fileID: 8300000, guid: cb718fd987eaf7b4ea81b57e0556cceb, type: 3}
   - {fileID: 8300000, guid: de33cdbd1d7f7914ba108cf52f949718, type: 3}
+  wallHitSounds:
+  - {fileID: 8300000, guid: d00c72ec4a0be894e9114faf7999d520, type: 3}
+  - {fileID: 8300000, guid: 71d3baa4acff2a342baed66735c80e65, type: 3}
   rb: {fileID: 0}
 --- !u!50 &7345610909008789723
 Rigidbody2D:
