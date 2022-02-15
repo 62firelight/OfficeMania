@@ -113,6 +113,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4e73e6adbe69aaa49a3bec3cc5d78fc0, type: 3}
   - {fileID: 8300000, guid: f1e4dcc85b7d68b4db9e964e6045d0de, type: 3}
   hitSounds: []
+  wallHitSounds: []
+  heavyBlockSounds: []
   rb: {fileID: 0}
 --- !u!50 &1554437775
 Rigidbody2D:
@@ -329,19 +331,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4652087355083951439, guid: 804509c1addd39944829ca7a54f506bf, type: 3}
       propertyPath: m_Size.x
-      value: 12.220505
+      value: 19.763895
       objectReference: {fileID: 0}
     - target: {fileID: 4652087355083951439, guid: 804509c1addd39944829ca7a54f506bf, type: 3}
       propertyPath: m_Size.y
-      value: 22.029388
+      value: 26.891117
       objectReference: {fileID: 0}
     - target: {fileID: 4652087355083951439, guid: 804509c1addd39944829ca7a54f506bf, type: 3}
       propertyPath: m_Offset.x
-      value: 8.077515
+      value: 8.146934
       objectReference: {fileID: 0}
     - target: {fileID: 4652087355083951439, guid: 804509c1addd39944829ca7a54f506bf, type: 3}
       propertyPath: m_Offset.y
-      value: -0.30196762
+      value: -1.3789344
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 804509c1addd39944829ca7a54f506bf, type: 3}

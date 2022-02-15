@@ -483,31 +483,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'You''ve finally had enough of this wretched office job.
+  m_Text: 'Standing over the unconscious body of your boss, you feel a sense of relief.
 
 
-    After countless
-    100-hour weeks with little pay to show for it, it''s time to unleash all hell.
+    Whether
+    that feeling comes from the sense that you''ve done something right, or just
+    old-fashioned revenge, you do not know.
 
 
-    Your
-    boss is the main culprit. He''s no saint; expose his deeds, and his company will
-    come crumbling down.
-
-
-    It won''t be easy.
-
-
-    Every worker, every guard
-    -- everyone who''s ever been loyal to the boss are holding their positions, ready
-    to defend their livelihoods.
-
-
-    They don''t expect you to survive.
-
-
-    Prove
-    them wrong.'
+'
 --- !u!222 &1649725732
 CanvasRenderer:
   m_ObjectHideFlags: 0
