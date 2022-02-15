@@ -5,12 +5,11 @@ using UnityEngine.UI;
 
 public class BossHealth : MonoBehaviour
 {
-    int hearts;
-    int maxHealth;
-    float baseHealth;
+    float baseHealth = 0;
     float stagehealth;
     float bossMultipler;
     float bossHealth;
+    bool bossStatus;
 
     private Image heartPrefab;
     private Transform heartContainer;
@@ -29,23 +28,22 @@ public class BossHealth : MonoBehaviour
 
     public Image[] heartDisplay;
     // Start is called before the first frame update
-    void Awake()
+
+    void Start()
     {
-        // Finding the number of hearts to spawn
-        hearts = GameObject.Find("Boss").GetComponent<Enemy>().health / 2;
-        maxHealth = hearts * 2;
-
-
-    }
-
-    private void Start()
-    {
-        baseHealth = GameObject.Find("Boss").GetComponent<Enemy>().health;
     }
 
     // Update is called once per frame
     void Update()
     {
+        bossStatus = GameObject.Find("Boss").GetComponent<Enemy>().isBoss;
+
+        if(bossStatus == true && baseHealth == 0)
+        {
+            baseHealth = GameObject.Find("Boss").GetComponent<Enemy>().health;
+        }
+
+
         stagehealth = GameObject.Find("Boss").GetComponent<Enemy>().health;
         bossMultipler = GameObject.Find("Boss").GetComponent<Enemy>().bossHealth;
         if(bossMultipler > 1) {
