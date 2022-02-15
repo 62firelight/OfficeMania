@@ -269,11 +269,7 @@ public class RoomMaster : MonoBehaviour
 
     public void SetSeePlayer(bool status)
     {
-        seePlayer = status;
-
-        if (dialogueManager != null) dialogueManager.GetComponent<DialogueManager>().EndDialogue();
-
-        if (SceneManager.GetActiveScene().name == "Level2")
+        if (seePlayer == false && SceneManager.GetActiveScene().name == "Level2")
         {
             GameObject levelMasterObj = GameObject.FindGameObjectWithTag("LevelMaster");
 
@@ -288,6 +284,10 @@ public class RoomMaster : MonoBehaviour
                 levelMaster.TriggerBattleMusic();
             }
         }
+
+        seePlayer = status;
+
+        if (dialogueManager != null) dialogueManager.GetComponent<DialogueManager>().EndDialogue();
     }
 
     public List<GameObject> GetDetectedObjects()
