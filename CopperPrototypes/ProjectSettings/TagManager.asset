@@ -15,6 +15,7 @@ TagManager:
   - LevelMaster
   - BossMinionMaster
   - CreditsText
+  - BossHealth
   layers:
   - Default
   - TransparentFX
