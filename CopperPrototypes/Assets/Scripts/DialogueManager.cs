@@ -11,16 +11,22 @@ public class DialogueManager : MonoBehaviour
     public float typingSpeed;
 
     public float initialWaitTime = 1f;
+
+    public float defaultSentenceWaitTime = 1.5f;
     public float sentenceWaitTime = 0;
 
     public GameObject[] speakers;
     public GameObject currentSpeaker;
+
+    public Dictionary<int, int> speakerOverride;
 
     public int speakerIndex;
     public bool dialogueEnd = false;
 
     private void Start()
     {
+        if (sentences.Length <= 0) return;
+
         // Position text above speakers
         // textDisplay.alignment = TextAlignmentOptions.Midline;
         speakerIndex = 0;
@@ -30,7 +36,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (dialogueEnd == true)
+        if (dialogueEnd == true || sentences.Length <= 0)
         {
             return;
         }
@@ -78,7 +84,7 @@ public class DialogueManager : MonoBehaviour
             
         }
 
-        sentenceWaitTime = 2f;
+        sentenceWaitTime = defaultSentenceWaitTime;
     }
 
     public void NextSentence()
