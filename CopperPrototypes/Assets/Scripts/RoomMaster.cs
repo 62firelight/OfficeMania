@@ -130,7 +130,7 @@ public class RoomMaster : MonoBehaviour
 
             if (waitTime <= 0)
             {
-                SceneManager.LoadScene("Credits");
+                SceneManager.LoadScene("Epilogue");
             }
         }
 

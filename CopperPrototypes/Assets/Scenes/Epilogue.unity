@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 790200076}
   - component: {fileID: 790200077}
   m_Layer: 0
-  m_Name: Intro Music
+  m_Name: Epilogue Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,9 +164,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ac90905f61356b74c8b8b51f94fd2a6f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c25ca37f71e762e488ffaa738de80916, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -486,9 +486,21 @@ MonoBehaviour:
   m_Text: 'Standing over the unconscious body of your boss, you feel a sense of relief.
 
 
-    Whether
-    that feeling comes from the sense that you''ve done something right, or just
-    old-fashioned revenge, you do not know.
+    You
+    don''t know whether that feeling comes from the sense that you''ve done something
+    right, or from just good old-fashioned revenge.
+
+
+    What you do know, is that
+    it''s over.
+
+
+    For the first time in a long, long while, you are free.
+
+
+    You
+    step out into the streets -- the blazing orange rays of the sunset shining into
+    your face -- and walk aimlessly off into the distance...
 
 
 '
@@ -512,9 +524,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d0c8ea39cf8fd44830e7a17c2f31db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 14
+  speed: 4
   fadeSpeed: 0.3
   startFading: 0
+  nextSceneName: Credits
+  music: {fileID: 790200077}
 --- !u!1 &1747236792
 GameObject:
   m_ObjectHideFlags: 0

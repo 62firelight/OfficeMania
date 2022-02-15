@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 790200076}
   - component: {fileID: 790200077}
   m_Layer: 0
-  m_Name: Intro Music
+  m_Name: Prologue Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -531,6 +531,8 @@ MonoBehaviour:
   speed: 14
   fadeSpeed: 0.3
   startFading: 0
+  nextSceneName: Level1
+  music: {fileID: 790200077}
 --- !u!1 &1747236792
 GameObject:
   m_ObjectHideFlags: 0
