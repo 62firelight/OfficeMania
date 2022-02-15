@@ -25,6 +25,16 @@ public class Interactable : MonoBehaviour
     // 2 - enemy
     public int thrownFlag = 0;
 
+    public AudioClip[] pickupSounds;
+
+    public AudioClip[] throwSounds;
+
+    public AudioClip[] hitSounds;
+
+    public AudioClip[] wallHitSounds;
+
+    public AudioClip[] heavyBlockSounds;
+
     private Transform promptObj;
 
     public Rigidbody2D rb;
@@ -48,7 +58,7 @@ public class Interactable : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         // Disable physics if the object is moving at a slow enough speed
-        if (rb.velocity.magnitude <= 0.25f)
+        if (rb.velocity.magnitude <= 2f)
         {
             DisablePhysics();
         }
@@ -81,7 +91,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    public void Throw(Transform firePoint, float force)
+    public void Throw(Transform objectPoint, float force)
     {
         // Alter bounciness depending on charge 
         if (coll.sharedMaterial != null)
@@ -90,11 +100,9 @@ public class Interactable : MonoBehaviour
 
             if (percent > 25)
             {
-                coll.sharedMaterial.bounciness = 0.5f;
+                coll.sharedMaterial.bounciness = 0.9f;
             }
         }
-
-        Debug.Log("Object Bounciness: " + coll.bounciness);
 
         thrownFlag = 1;
         damageable = true;
@@ -102,16 +110,23 @@ public class Interactable : MonoBehaviour
         EnablePhysics();
         pickedUp = false;
 
-        rb.AddForce(firePoint.up * force, ForceMode2D.Impulse);
+        if (throwSounds.Length > 0)
+        {
+            AudioClip throwSound = throwSounds[Random.Range(0, throwSounds.Length - 1)];
+
+            AudioSource.PlayClipAtPoint(throwSound, transform.position);
+        }
+
+        rb.AddForce(objectPoint.up * force, ForceMode2D.Impulse);
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), coll);
         
-        transform.Translate(0, 0, 1);
+        // transform.Translate(0, 0, 1);
         transform.parent = null;
 
         AIMaster.takenObjects.Remove(gameObject);
     }
 
-    public void EnemyThrow(Transform firePoint, float force, GameObject enemy)
+    public void EnemyThrow(Transform objectPoint, float force, GameObject enemy)
     {
         thrownFlag = 2;
         damageable = true;
@@ -125,9 +140,19 @@ public class Interactable : MonoBehaviour
             Physics2D.IgnoreCollision(enemy.GetComponent<Collider2D>(), transform.GetChild(1).GetComponent<Collider2D>());
         }
 
-        rb.AddForce(firePoint.up * force, ForceMode2D.Impulse);
+        rb.AddForce(objectPoint.up * force, ForceMode2D.Impulse);
         
-        transform.Translate(0, 0, 1);
+        // transform.Translate(0, 0, 1);
+        transform.parent = null;
+
+        AIMaster.takenObjects.Remove(gameObject);
+    }
+
+    public void Drop()
+    {
+        pickedUp = false;
+
+        // transform.Translate(0, 0, 1);
         transform.parent = null;
 
         AIMaster.takenObjects.Remove(gameObject);
@@ -148,7 +173,7 @@ public class Interactable : MonoBehaviour
 
         if (coll.sharedMaterial != null)
         {
-            coll.sharedMaterial.bounciness = 0.5f;
+            coll.sharedMaterial.bounciness = 0.9f;
         }
         thrownFlag = 0;
     }
@@ -184,6 +209,42 @@ public class Interactable : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        // Play sound when objects hit a heavy object
+        if (isHeavy == true && (other.gameObject.tag == "Blunt" || other.gameObject.tag == "Sharp"))
+        {
+            if (heavyBlockSounds.Length > 0)
+            {
+                AudioClip heavyBlockSound = heavyBlockSounds[Random.Range(0, heavyBlockSounds.Length - 1)];
+
+                AudioSource.PlayClipAtPoint(heavyBlockSound, transform.position);
+            }
+        }
+
+        // Play sound when bounceable objects hit a wall
+        if (coll.sharedMaterial != null && other.gameObject.tag == "Wall")
+        {
+            if (hitSounds.Length > 0)
+            {
+                AudioClip wallHit = wallHitSounds[Random.Range(0, wallHitSounds.Length - 1)];
+
+                AudioSource.PlayClipAtPoint(wallHit, transform.position);
+            }
+        }
+
+        // Play sound when objects hit someone
+        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Player")
+        {
+            if (hitSounds.Length > 0)
+            {
+                AudioClip hit = hitSounds[Random.Range(0, hitSounds.Length - 1)];
+
+                if (isHeavy == false || (isHeavy == true && damageable == true))
+                {
+                    AudioSource.PlayClipAtPoint(hit, transform.position);
+                }
+            }
+        }
+
         if (other.gameObject.tag == "Enemy")
         {
             DisablePhysics();

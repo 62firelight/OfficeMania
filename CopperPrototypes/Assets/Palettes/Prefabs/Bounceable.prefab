@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2420592724045682166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: -2}
   m_LocalScale: {x: 0.125, y: 0.125, z: 0.125}
   m_Children:
   - {fileID: 2420592722816493060}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b168cf05c9af6dc42ac9a3b95737482f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6e0bb58bec9fd4344a7c579d5d59ee33, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,6 +106,15 @@ MonoBehaviour:
   damageable: 0
   knownVelocity: {x: 0, y: 0, z: 0}
   thrownFlag: 0
+  pickupSounds: []
+  throwSounds: []
+  hitSounds:
+  - {fileID: 8300000, guid: 8bbb7ee715eddd94f82c59b750ef7d8e, type: 3}
+  - {fileID: 8300000, guid: cb718fd987eaf7b4ea81b57e0556cceb, type: 3}
+  - {fileID: 8300000, guid: de33cdbd1d7f7914ba108cf52f949718, type: 3}
+  wallHitSounds:
+  - {fileID: 8300000, guid: d00c72ec4a0be894e9114faf7999d520, type: 3}
+  - {fileID: 8300000, guid: 71d3baa4acff2a342baed66735c80e65, type: 3}
   rb: {fileID: 0}
 --- !u!50 &7345610909008789723
 Rigidbody2D:
@@ -120,7 +129,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.5
+  m_LinearDrag: 1
   m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 52909e8095ea49047b62ec2ec1f43016, type: 2}

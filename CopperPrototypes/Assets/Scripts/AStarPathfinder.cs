@@ -49,6 +49,12 @@ public class AStarPathfinder : MonoBehaviour {
 		grid = gridObject.GetComponent<AStarGrid> ();
 		previousTargetPosition = transform.position;
 		timeLeftUntilPathUpdate = 0;
+
+		if (updateFrequency > 0)
+		{
+			timeLeftUntilPathUpdate = Random.Range(0.0f, 1.0f / updateFrequency);
+		}
+
 		timeKeeper = Time.time;
 	}
 
@@ -171,8 +177,9 @@ public class AStarPathfinder : MonoBehaviour {
 			Vector2 deltaPosition = nextPosition - transform.position;
 
 			//Udate remaining distance to travel
-			//transform.position = nextPosition;
-			GetComponent<Rigidbody2D>().MovePosition(GetComponent<Rigidbody2D>().position + deltaPosition * atSpeed * 10 * Time.fixedDeltaTime);
+			// transform.position = nextPosition;
+			// GetComponent<Rigidbody2D>().MovePosition(GetComponent<Rigidbody2D>().position + deltaPosition * Time.deltaTime);
+			GetComponent<Rigidbody2D>().MovePosition(nextPosition);
 
 			Vector2 currentPosition = new Vector2(transform.position.x, transform.position.y);
 			Vector2 moveDirection = targetPosition - currentPosition;

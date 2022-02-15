@@ -18,10 +18,14 @@ public class Enemy : MonoBehaviour
 
     public int bossHealth = 3;
 
+    public AudioClip[] gruntSounds;
+
     // Rigidbody2D component
     private Rigidbody2D rb;
 
     private SpriteRenderer sr;
+
+    private bool bossMusicEnd = false;
 
     // Start is called before the first frame update
     void Start()
@@ -50,56 +54,118 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        if (isBoss == false)
+        if (isBoss == true && bossHealth <= 0 && bossMusicEnd == false)
         {
-            // If enemy has no health
-            if (health <= 0)
+            // Get dynamic music component 
+            DynamicMusic music = GetComponent<DynamicMusic>();
+            if (music == null)
             {
-                // Darken sprite
-                sr.color = new Color(0.5f, 0, 0);
-
-                // Disable AI
-                if (GetComponent<Chase>() != null)
-                {
-                    GetComponent<Chase>().speed = 0;
-                }
-
-                rb.simulated = false;
+                Debug.Log("Could not find DynamicMusic component for " + gameObject.name + "!");
+                Time.timeScale = 0;
             }
-        }
-        else
-        {
-            if (health <= 0 && bossHealth > 0)
+
+            RoomMaster rm = GetComponent<Chase>().roomMaster.GetComponent<RoomMaster>();
+
+            // Change to music for next phase
+            if (rm.GetRoomClear() == true)
             {
-                bossHealth--;
-                health = maxHealth;
-
-                DynamicMusic music = GetComponent<DynamicMusic>();
-
-                if (music == null)
-                {
-                    Debug.Log("Could not find DynamicMusic component for " + gameObject.name + "!");
-                    Time.timeScale = 0;
-                }
-
                 music.TriggerFadeOut();
-
-                if (bossHealth <= 0)
-                {
-                    // Darken sprite
-                    sr.color = new Color(0.5f, 0, 0);
-
-                    // Disable AI
-                    if (GetComponent<Chase>() != null)
-                    {
-                        GetComponent<Chase>().speed = 0;
-                    }
-
-                    rb.simulated = false;
-                }
+                bossMusicEnd = true;
             }
         }
-        
+
+        // If enemy has no health
+        if ((isBoss == false && health <= 0) || (isBoss == true && bossHealth <= 0))
+        {
+            // Darken sprite
+            sr.color = new Color(0.5f, 0, 0);
+
+            // Disable AI
+            if (GetComponent<Chase>() != null)
+            {
+                GetComponent<Chase>().enabled = false;
+                // GetComponent<Chase>().speed = 0;
+            }
+
+            rb.simulated = false;
+
+            // Drop currently held object
+            if (GetComponent<Throw>() != null && GetComponent<Throw>().currentObject != null)
+            {
+                GetComponent<Throw>().currentObject.GetComponent<Interactable>().Drop();
+                GetComponent<Throw>().currentObject = null;
+            }
+
+            if (isBoss == true)
+            {
+                GetComponentInChildren<Dialogue>().DisplayDialogue("No... It can't be...");
+            }
+        }
+        else if (health <= 0 && bossHealth > 0) 
+        {
+            // Handle boss phase transitions
+            bossHealth--;
+
+            if (bossHealth > 0)
+            {
+                health = maxHealth;
+            }
+            
+            // Get dynamic music component 
+            DynamicMusic music = GetComponent<DynamicMusic>();
+            if (music == null)
+            {
+                Debug.Log("Could not find DynamicMusic component for " + gameObject.name + "!");
+                Time.timeScale = 0;
+            }
+
+            // Change to music for next phase
+            if (bossHealth > 0)
+            {
+                music.TriggerFadeOut();
+            }
+
+            // Handle enemy spawning for the different phases
+            GameObject bossMinionMaster = GameObject.FindGameObjectWithTag("BossMinionMaster");
+            if (bossMinionMaster == null)
+            {
+                Debug.Log("Could not find BossMinionMaster for " + gameObject.name + "!");
+                Time.timeScale = 0;
+            }
+            BossMinionMaster bossPhases = bossMinionMaster.GetComponent<BossMinionMaster>();
+            if (bossPhases == null)
+            {
+                Debug.Log("Could not find BossMinionMaster component for " + gameObject.name + "!");
+                Time.timeScale = 0;
+            }
+
+            // Trigger phase two
+            if (bossHealth == 2)
+            {
+                GetComponentInChildren<Dialogue>().DisplayDialogue("Guards! To me!");
+                bossPhases.InitiatePhaseTwo();
+            }
+            // Trigger phase three
+            else if (bossHealth == 1)
+            {
+                GetComponentInChildren<Dialogue>().DisplayDialogue("HELP! SECURITY!");
+                bossPhases.InitiatePhaseThree();
+            }
+
+            // if (bossHealth <= 0)
+            // {
+            //     // Darken sprite
+            //     sr.color = new Color(0.5f, 0, 0);
+
+            //     // Disable AI
+            //     if (GetComponent<Chase>() != null)
+            //     {
+            //         GetComponent<Chase>().speed = 0;
+            //     }
+
+            //     rb.simulated = false;
+            // }
+        }
     }
 
     // Let the rigidbody take control and detect collisions.
@@ -118,10 +184,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Blunt" || other.gameObject.tag == "Sharp")
         {
-            if (!(GetComponent<Chase>() == null) && SceneManager.GetActiveScene().name != "Level2")
-            {
-                GetComponent<Chase>().roomMaster.GetComponent<RoomMaster>().seePlayer = true;
-            }
+            GetComponent<Chase>().roomMaster.GetComponent<RoomMaster>().seePlayer = true;
         }
 
         Interactable obj = other.gameObject.GetComponent<Interactable>();
@@ -156,6 +219,13 @@ public class Enemy : MonoBehaviour
                     health--;
                 }
             }
+
+            if (gruntSounds.Length > 0)
+            {
+                AudioClip grunt = gruntSounds[Random.Range(0, gruntSounds.Length - 1)];
+
+                AudioSource.PlayClipAtPoint(grunt, transform.position);
+            }
             
 
             if (other.gameObject.tag == "Blunt")
@@ -187,6 +257,9 @@ public class Enemy : MonoBehaviour
                 other.gameObject.transform.parent = transform;
                 obj.pickedUp = true;
 
+                other.gameObject.GetComponent<SpriteRenderer>().color = new Color(0.4f, 0.4f, 0.4f, 1.0f);
+                other.transform.Translate(0, 0, 1);
+
                 if (GetComponent<Chase>() != null)
                 {
                     if (isBoss == false)
@@ -195,13 +268,23 @@ public class Enemy : MonoBehaviour
                     }
                     else
                     {
-                        GetComponent<Chase>().speed *= 0.9f;
+                        GetComponent<Chase>().speed *= 0.95f;
                     }
                 }
 
-                if (health <= 0)
+                if (isBoss == false && health <= 0)
                 {
+                    // Display enemy stuck dialogue
                     GetComponentInChildren<Dialogue>().DisplayDialogue(DialogueMaster.GetEnemyStuckLine());
+                }
+                else if (isBoss == true)
+                {
+                    int roll = Random.Range(0, 2);
+                    if (roll == 1)
+                    {
+                        // Display boss slowdown dialogue
+                        GetComponentInChildren<Dialogue>().DisplayDialogue(DialogueMaster.GetBossSlowLine());
+                    }
                 }
             }
         }
@@ -216,7 +299,11 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
-
+        else if (isBoss == false)
+        {
+            // Lower layer so other enemies can be seen over bodies
+            transform.Translate(0, 0, 1);
+        }
         
     }
 }

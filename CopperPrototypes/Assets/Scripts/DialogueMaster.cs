@@ -30,6 +30,12 @@ public static class DialogueMaster
         "I'm stuck!"
     };
 
+    public static List<string> bossSlowLines = new List<string>(){
+        "Stop slowing me down!",
+        "I'm too slow!",
+        "I feel sluggish..."
+    };
+
     public static string GetPlayerSeenLine()
     {
         int index = RandomIndex(0, playerSeenLines.Count - 1);
@@ -49,6 +55,13 @@ public static class DialogueMaster
         int index = RandomIndex(0, enemyStuckLines.Count - 1);
 
         return enemyStuckLines.ElementAt(index);
+    }
+
+    public static string GetBossSlowLine()
+    {
+        int index = RandomIndex(0, bossSlowLines.Count - 1);
+
+        return bossSlowLines.ElementAt(index);
     }
 
     public static int RandomIndex(int min, int max)

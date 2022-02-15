@@ -35,12 +35,24 @@ public class Trajectory : MonoBehaviour
         edgePoints = new Vector2[numLinePoints];
 
         playerMovement = GetComponent<PlayerMovement>();
+
+        float alpha = 1.0f;
+        Gradient gradient = new Gradient();
+        // gradient.SetKeys(
+        //     new GradientColorKey[] { new GradientColorKey(Color.green, 0.0f), new GradientColorKey(Color.red, 1.0f) },
+        //     new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
+        // );
+        gradient.SetKeys(
+            new GradientColorKey[] { new GradientColorKey(Color.white, 0.0f), new GradientColorKey(Color.white, 1.0f) },
+            new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(0.0f, 1.0f) }
+        );
+        lr.colorGradient = gradient;
     }
 
     // Update is called once per frame
     protected void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && GetComponent<PlayerThrowing>().currentObject != null)
         {
             lr.enabled = true;
 
@@ -57,18 +69,41 @@ public class Trajectory : MonoBehaviour
 
             // Debug.Log(newVec);
 
-            RaycastHit2D hit = Physics2D.Raycast(transform.GetChild(0).position, transform.GetChild(0).up, Mathf.Infinity, 1 << 6);
-            Debug.DrawRay(transform.GetChild(0).position, transform.GetChild(0).up * 10f);
-            lr.SetPosition(0, transform.GetChild(0).position);
-            lr.SetPosition(1, hit.point);
-            if (hit != null)
-            {
-                Vector2 reflectedRay = Vector2.Reflect(transform.GetChild(0).up * 10f, hit.normal);
-                // Debug.DrawRay(hit.point, reflectedRay);
+            float distance = 2f;
 
-                lr.SetPosition(2, reflectedRay);
-                // Debug.Log(hit.transform.gameObject);
+            float mag = GetComponent<PlayerThrowing>().mag;
+            distance *= mag + 0.5f;
+            // if (mag > 1.0f)
+            // {
+            //     distance *= mag;
+            // }
+
+            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.up, distance);
+            Debug.DrawRay(transform.position, transform.up);
+
+            Vector3 initialPos = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
+
+            lr.SetPosition(0, initialPos);
+            lr.SetPosition(1, initialPos + (transform.up * distance));
+
+            foreach (RaycastHit2D hit in hits)
+            {
+                if ((hit.transform.gameObject.tag == "Enemy" && hit.collider.name != "Vision") || (hit.transform.gameObject.tag == "Wall" && hit.transform.gameObject.layer != 7))
+                {
+                    lr.SetPosition(1, hit.point);
+                    break;
+                }
             }
+            // lr.SetPosition(0, transform.GetChild(0).position);
+            // lr.SetPosition(1, hit.point);
+            // if (hit != null)
+            // {
+            //     Vector2 reflectedRay = Vector2.Reflect(transform.GetChild(0).up * 10f, hit.normal);
+            //     // Debug.DrawRay(hit.point, reflectedRay);
+
+            //     lr.SetPosition(2, reflectedRay);
+            //     // Debug.Log(hit.transform.gameObject);
+            // }
 
             // // Get the number of line points
             // int numLinePoints = lr.positionCount;

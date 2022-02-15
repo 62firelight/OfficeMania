@@ -10,17 +10,27 @@ public class Throw : MonoBehaviour
 
     GameObject target;
 
-    GameObject currentObject = null;
+    public GameObject currentObject = null;
+
+    public Sprite normalSprite;
+
+    public Sprite carryingSprite;
+
+    public Sprite heavySprite;
 
     public GameObject player;
 
-    public Transform firePoint;
+    public Transform lightObjectPoint;
+
+    public Transform heavyObjectPoint;
 
     public GameObject mostRecentObject = null;
 
     public bool isElite = false;
 
     float delay;
+
+    private SpriteRenderer sr;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +48,9 @@ public class Throw : MonoBehaviour
                 chase.target = closestObject;
             }
         }
+
+        sr = GetComponent<SpriteRenderer>();
+        sr.sprite = normalSprite;
     }
 
     // Update is called once per frame
@@ -48,7 +61,7 @@ public class Throw : MonoBehaviour
             delay -= Time.deltaTime;
         }
 
-        if (GetComponent<Enemy>().health <= 0)
+        if (GetComponent<Enemy>().health <= 0 || GetComponent<Chase>().seePlayer == false)
 		{
 			return;
 		}
@@ -69,8 +82,44 @@ public class Throw : MonoBehaviour
         }
 
         // Throw an object if we are holding it for at least 2 seconds
-        if (currentObject != null && delay <= 0)
+        if (currentObject != null && currentObject.transform.parent == transform && delay <= 0)
         {
+            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, player.transform.position - transform.position);
+            Debug.DrawRay(transform.position, player.transform.position - transform.position);
+
+            bool playerSeen = false;
+            // int enemiesNearby = 0;
+            foreach (RaycastHit2D hit in hits)
+            {
+                // if (hit.collider != GetComponent<Collider2D>() && hit.collider != GetComponentInChildren<CircleCollider2D>() 
+                //     && hit.transform.gameObject.tag == "Enemy" && hit.transform.gameObject.name != "Vision")
+                // {
+                //     // Debug.Log(GetComponentInChildren<CircleCollider2D>());
+                //     // Debug.Log(hit.collider);
+                //     Debug.Log(hit.transform.gameObject.name);
+                //     playerSeen = false;
+                //     break;
+                // }
+
+                if (hit.collider != GetComponent<Collider2D>() && hit.transform.gameObject.tag == "Wall" && hit.transform.gameObject.layer != 7)
+                {
+                    playerSeen = false;
+                    break;
+                }
+
+                if (hit.collider != null && hit.transform.gameObject.tag == "Player")
+                {
+                    playerSeen = true;
+                    break;
+                }
+            }
+
+            if (!playerSeen)
+            {
+                delay = 1;
+                return;
+            }
+
             Interactable obj = currentObject.GetComponent<Interactable>();
 
             // If I'm an elite guard with a heavy object
@@ -79,7 +128,7 @@ public class Throw : MonoBehaviour
                 // Delay the throw until we are close enough to the player
                 // (act as if we are blocking the player's thrown objects)
                 float distanceToPlayer = Vector2.Distance(transform.position, target.transform.position);
-                if (distanceToPlayer < 3f)
+                if (distanceToPlayer < 4.5f)
                 {
                     currentObject.GetComponent<Interactable>().EnemyThrow(transform, 30, gameObject);
                 }
@@ -90,6 +139,7 @@ public class Throw : MonoBehaviour
             }
             else
             {
+                currentObject.transform.position = transform.position;
                 currentObject.GetComponent<Interactable>().EnemyThrow(transform, 30, gameObject);
             }
            
@@ -97,6 +147,7 @@ public class Throw : MonoBehaviour
             currentObject = null;
 
             delay = 2;
+            sr.sprite = normalSprite;
 
             GameObject closestObject = GetClosestObject(mostRecentObject);
 
@@ -106,19 +157,27 @@ public class Throw : MonoBehaviour
             }
         }
 
-        if (target == null)
+        if (target == null || (target == player && currentObject == null))
         {
+            GameObject closestObject = GetClosestObject(mostRecentObject);
+
+            if (closestObject != null)
+            {
+                chase.target = closestObject;
+            }
             return;
         }
 
         // Pick up object if it's close enough
-        float distance = Vector2.Distance(transform.position, target.transform.position);
-        if (distance < 1f && delay <= 0)
+        if (target.tag != "Player")
         {
-            Debug.Log(gameObject.name + " picks up " + chase.target);
-            EnemyPickUp(chase.target.transform);
+            float distance = Vector2.Distance(transform.position, target.transform.position);
+            if (distance < 2f && delay <= 0)
+            {
+                Debug.Log(gameObject.name + " picks up " + chase.target);
+                EnemyPickUp(chase.target.transform);
+            }
         }
-
     }
 
     void EnemyPickUp(Transform item)
@@ -132,11 +191,13 @@ public class Throw : MonoBehaviour
 
         if (item.gameObject.GetComponent<Interactable>().isHeavy)
         {
-            item.position = firePoint.position;
+            sr.sprite = heavySprite;
+            item.position = heavyObjectPoint.position;
         }
         else
         {
-            item.position = transform.position;
+            sr.sprite = carryingSprite;
+            item.position = lightObjectPoint.position;
         }
 
         item.rotation = transform.rotation;
@@ -147,14 +208,40 @@ public class Throw : MonoBehaviour
 
     GameObject GetClosestObject(GameObject ignoredObject)
     {
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("Blunt");
+        int numberOfObjects = 0;
+
+        List<GameObject> detectedObjects = null;
+        if (chase.roomMaster != null)
+        {
+            RoomMaster roomMaster = chase.roomMaster.GetComponent<RoomMaster>();
+            
+            detectedObjects = roomMaster.GetDetectedObjects();
+            numberOfObjects = detectedObjects.Count;
+        }
+        
+        GameObject[] objects = null;
+        if (detectedObjects == null || detectedObjects.Count <= 0)
+        {
+            objects = GameObject.FindGameObjectsWithTag("Blunt");
+            numberOfObjects = objects.Length;
+        }
 
         GameObject closestObject = null;
         float closestDistance = Mathf.Infinity;
         float distance;
 
-        foreach (GameObject obj in objects)
+        for (int i = 0; i < numberOfObjects; i++)
         {
+            GameObject obj;
+            if (detectedObjects != null && detectedObjects.Count > 0)
+            {
+                obj = detectedObjects[i];
+            }
+            else
+            {
+                obj = objects[i];
+            }
+
             if (obj == ignoredObject)
             {
                 continue;
@@ -162,6 +249,12 @@ public class Throw : MonoBehaviour
 
             Interactable objInteract = obj.GetComponent<Interactable>();
             PlayerThrowing playerThrowing = player.GetComponent<PlayerThrowing>();
+
+            // Ignore objects held by other enemies
+            if (AIMaster.takenObjects.Contains(obj))
+            {
+                continue;
+            }
 
             // Ignore player held objects
             if ((isElite == false && objInteract.isHeavy) || obj == playerThrowing.currentObject || obj == playerThrowing.heldObject)

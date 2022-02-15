@@ -49,7 +49,7 @@ public class Chase : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate() {
+	void Update() {
 		if (roomMaster == null)
         {
 			Debug.Log("RoomMaster has not been set! AI may not function properly");
@@ -59,6 +59,14 @@ public class Chase : MonoBehaviour {
 		enabled = roomMaster.GetComponent<RoomMaster>().aiEnabled;
 		seePlayer = roomMaster.GetComponent<RoomMaster>().seePlayer;
 
+		// if (GetComponent<Enemy>().health <= 0)
+		// {
+		// 	return;
+		// }
+	}
+
+	void FixedUpdate()
+	{
 		if (GetComponent<Enemy>().health <= 0)
 		{
 			return;

@@ -13,6 +13,9 @@ TagManager:
   - RotationConstraint
   - ScaleConstraint
   - LevelMaster
+  - BossMinionMaster
+  - CreditsText
+  - BossHealth
   layers:
   - Default
   - TransparentFX
@@ -23,7 +26,7 @@ TagManager:
   - Player
   - Tables
   - Enemies
-  - 
+  - Walls
   - 
   - 
   - 
