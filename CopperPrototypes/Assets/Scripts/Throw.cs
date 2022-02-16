@@ -130,10 +130,9 @@ public class Throw : MonoBehaviour
             {
                 delay = 1.5f;
 
-                sr.sprite = carryingSprite;
-
                 if (currentObject.GetComponent<Interactable>().isHeavy == false)
                 {
+                    sr.sprite = carryingSprite;
                     currentObject.transform.position = lightObjectPoint.transform.position;
                 }
                 else
