@@ -107,7 +107,8 @@ MonoBehaviour:
   damageable: 0
   knownVelocity: {x: 0, y: 0, z: 0}
   thrownFlag: 0
-  pickupSounds: []
+  pickupSounds:
+  - {fileID: 8300000, guid: 92236d3ba4f830c4aa5f8244eab7cc94, type: 3}
   throwSounds:
   - {fileID: 8300000, guid: 20ac11b0f9676d64f9aa2301c4e18dfe, type: 3}
   - {fileID: 8300000, guid: 4e73e6adbe69aaa49a3bec3cc5d78fc0, type: 3}

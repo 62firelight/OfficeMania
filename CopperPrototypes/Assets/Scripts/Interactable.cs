@@ -198,6 +198,13 @@ public class Interactable : MonoBehaviour
         promptObj.gameObject.SetActive(false);
         player.gameObject.GetComponent<PlayerThrowing>().PickUp(transform);
         AIMaster.takenObjects.Add(gameObject);
+
+        if (pickupSounds.Length > 0)
+        {
+            AudioClip pickupSound = pickupSounds[Random.Range(0, pickupSounds.Length - 1)];
+
+            AudioSource.PlayClipAtPoint(pickupSound, transform.position);
+        }
     }
 
     public void RegisterEnemyPickUp()
