@@ -46,6 +46,10 @@ public class RoomMaster : MonoBehaviour
 
     public GameObject secondEntryDoor;
 
+    public GameObject arrow;
+
+    public GameObject file;
+
     private Vector3 originalCamPosition;
 
     private float originalSize;
@@ -92,6 +96,12 @@ public class RoomMaster : MonoBehaviour
         }
 
         if (dialogueManager != null) dialogueManager.GetComponent<DialogueManager>().enabled = false;
+
+        if (bossBattle == true)
+        {
+            file.SetActive(false);
+            arrow.SetActive(false);
+        }
     }
 
     void Start()
@@ -124,15 +134,15 @@ public class RoomMaster : MonoBehaviour
 
     void Update()
     {
-        if (waitTime > 0)
-        {
-            waitTime -= Time.deltaTime;
+        // if (waitTime > 0)
+        // {
+        //     waitTime -= Time.deltaTime;
 
-            if (waitTime <= 0)
-            {
-                SceneManager.LoadScene("Epilogue");
-            }
-        }
+        //     if (waitTime <= 0)
+        //     {
+        //         SceneManager.LoadScene("Epilogue");
+        //     }
+        // }
 
         if (cameraTransition == true && cameraReset == false)
         {
@@ -231,9 +241,12 @@ public class RoomMaster : MonoBehaviour
                     // SceneManager.LoadScene("MainMenu");
                     // SceneManager.LoadScene("Credits");
                     waitTime = 5f;
+
+                    file.SetActive(true);
+                    arrow.SetActive(true);
                 }
 
-                if (camera != null) cameraReset = true;
+                if (camera != null && bossBattle == false) cameraReset = true;
 
                 if (doorOpenSound != null) AudioSource.PlayClipAtPoint(doorOpenSound, Camera.main.transform.position);
             }
