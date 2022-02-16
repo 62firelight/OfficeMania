@@ -66,7 +66,6 @@ public class Throw : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(aimHeavy);
         if (delay >= 0)
         {
             delay -= Time.deltaTime;

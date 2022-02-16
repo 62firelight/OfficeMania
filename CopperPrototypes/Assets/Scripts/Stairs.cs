@@ -21,6 +21,9 @@ public class Stairs : MonoBehaviour
             int currentLevel = AIMaster.currentLevel;
             //Debug.Log(currentLevel);
             StartCoroutine(LoadLevel(currentLevel));
+
+            // Disable player movement
+            collision.gameObject.GetComponent<PlayerMovement>().enabled = false;
         }
     }
 
@@ -28,7 +31,14 @@ public class Stairs : MonoBehaviour
 
         transition.SetTrigger("Start");
 
-        yield return new WaitForSeconds(transitionTime);
+        // yield return new WaitForSeconds(transitionTime);
+
+        // Wait for fade out to complete
+        while (transition.gameObject.GetComponentInChildren<CanvasGroup>().alpha < 1)
+        {
+            // Debug.Log(transition.gameObject.GetComponentInChildren<CanvasGroup>().alpha);
+            yield return null;
+        }
 
         SceneManager.LoadScene(levelIndex);
     }
