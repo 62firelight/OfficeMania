@@ -107,7 +107,16 @@ MonoBehaviour:
   knownVelocity: {x: 0, y: 0, z: 0}
   thrownFlag: 0
   pickupSounds: []
-  throwSounds: []
+  throwSounds:
+  - {fileID: 8300000, guid: 2960493e8c1ab424db84ebcf7bbb3aee, type: 3}
+  - {fileID: 8300000, guid: aac5d797a8114484ba0153458df02b74, type: 3}
+  - {fileID: 8300000, guid: 328a7b04731c68842ad03bb269b01038, type: 3}
+  - {fileID: 8300000, guid: 164fc5bb3dcfacb4aab7712b3d5385a9, type: 3}
+  - {fileID: 8300000, guid: 71357498526e04f468e2aee56c37b31b, type: 3}
+  - {fileID: 8300000, guid: 18e798a622cd69d4e856bf92563d7656, type: 3}
+  - {fileID: 8300000, guid: 8f604d7f3018f124a8b6d5ea90a967af, type: 3}
+  - {fileID: 8300000, guid: 095d7e60ce977174cbbeede6b01e8051, type: 3}
+  - {fileID: 8300000, guid: 4961e75c26c44a845bb708871718ce7d, type: 3}
   hitSounds:
   - {fileID: 8300000, guid: 8bbb7ee715eddd94f82c59b750ef7d8e, type: 3}
   - {fileID: 8300000, guid: cb718fd987eaf7b4ea81b57e0556cceb, type: 3}
@@ -115,6 +124,7 @@ MonoBehaviour:
   wallHitSounds:
   - {fileID: 8300000, guid: d00c72ec4a0be894e9114faf7999d520, type: 3}
   - {fileID: 8300000, guid: 71d3baa4acff2a342baed66735c80e65, type: 3}
+  heavyBlockSounds: []
   rb: {fileID: 0}
 --- !u!50 &7345610909008789723
 Rigidbody2D:

@@ -108,7 +108,16 @@ MonoBehaviour:
   knownVelocity: {x: 0, y: 0, z: 0}
   thrownFlag: 0
   pickupSounds: []
-  throwSounds: []
+  throwSounds:
+  - {fileID: 8300000, guid: 2960493e8c1ab424db84ebcf7bbb3aee, type: 3}
+  - {fileID: 8300000, guid: aac5d797a8114484ba0153458df02b74, type: 3}
+  - {fileID: 8300000, guid: 328a7b04731c68842ad03bb269b01038, type: 3}
+  - {fileID: 8300000, guid: 164fc5bb3dcfacb4aab7712b3d5385a9, type: 3}
+  - {fileID: 8300000, guid: 71357498526e04f468e2aee56c37b31b, type: 3}
+  - {fileID: 8300000, guid: 18e798a622cd69d4e856bf92563d7656, type: 3}
+  - {fileID: 8300000, guid: 8f604d7f3018f124a8b6d5ea90a967af, type: 3}
+  - {fileID: 8300000, guid: 095d7e60ce977174cbbeede6b01e8051, type: 3}
+  - {fileID: 8300000, guid: 4961e75c26c44a845bb708871718ce7d, type: 3}
   hitSounds:
   - {fileID: 8300000, guid: cdc4b929fb3fbe64cbac6fae17724d48, type: 3}
   - {fileID: 8300000, guid: 68a137882957efe48b832b2aabe8ce32, type: 3}
