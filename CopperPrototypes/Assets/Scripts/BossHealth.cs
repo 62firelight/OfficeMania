@@ -29,7 +29,6 @@ public class BossHealth : MonoBehaviour
     public Sprite emptyHeart;
 
     public Image[] heartDisplay;
-    // Start is called before the first frame update
 
     // Update is called once per frame
     void Update()
