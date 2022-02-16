@@ -38,6 +38,8 @@ public class Throw : MonoBehaviour
 
     private SpriteRenderer sr;
 
+    private bool aimBlunt = false;
+
     private bool aimHeavy = false;
 
     // Start is called before the first frame update
@@ -96,6 +98,12 @@ public class Throw : MonoBehaviour
             {
                 sr.sprite = aimSprite;
                 currentObject.transform.position = aimPoint.transform.position;
+
+                if (aimBlunt == false && currentObject.tag == "Blunt")
+                {
+                    currentObject.transform.Rotate(new Vector3(0, 0, -45));
+                    aimBlunt = true;
+                }
             }
             // else if (aimHeavy == false)
             // {
@@ -175,8 +183,11 @@ public class Throw : MonoBehaviour
             }
             else
             {
+                currentObject.transform.Rotate(new Vector3(0, 0, -90));
+
                 currentObject.transform.position = transform.position;
                 currentObject.GetComponent<Interactable>().EnemyThrow(transform, 30, gameObject);
+                aimBlunt = false;
             }
            
             mostRecentObject = currentObject;
@@ -240,6 +251,11 @@ public class Throw : MonoBehaviour
         item.Translate(0, 0, -1);
 
         if (item.gameObject.GetComponent<Interactable>().isHeavy == false) delay = 2;
+
+        if (item.gameObject.tag == "Blunt" && item.GetComponent<Interactable>().isHeavy == false)
+        {
+            item.Rotate(new Vector3(0, 0, 90));
+        }
     }
 
     GameObject GetClosestObject(GameObject ignoredObject)
