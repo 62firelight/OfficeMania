@@ -12,6 +12,8 @@ public class PlayerDamage : MonoBehaviour
 
     public float invulnerableCooldown = 0f;
 
+    public AudioClip punchedSound;
+
     private Rigidbody2D rb;
 
     void Start()
@@ -57,6 +59,8 @@ public class PlayerDamage : MonoBehaviour
         if (other.gameObject.tag == "Enemy" && GetComponent<PlayerThrowing>().bluntObject == null)
         {
             RegisterDamage(other);
+
+            if (punchedSound != null) AudioSource.PlayClipAtPoint(punchedSound, transform.position);
         }
 
         // Check if the player collided with a thrown object

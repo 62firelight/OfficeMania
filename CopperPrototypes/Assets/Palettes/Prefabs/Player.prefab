@@ -348,6 +348,7 @@ MonoBehaviour:
   playerMaxHealth: 3
   playerHealth: 0
   invulnerableCooldown: 0
+  punchedSound: {fileID: 8300000, guid: 091673f3df7719746b42ad6ce9654a0e, type: 3}
 --- !u!114 &8169684749161302266
 MonoBehaviour:
   m_ObjectHideFlags: 0
