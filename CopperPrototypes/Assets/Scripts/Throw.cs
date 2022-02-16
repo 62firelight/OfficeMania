@@ -105,11 +105,16 @@ public class Throw : MonoBehaviour
                     aimBlunt = true;
                 }
             }
-            // else if (aimHeavy == false)
-            // {
-            //     currentObject.transform.Translate(0, -0.25f, 1);
-            //     aimHeavy = true;
-            // }
+            else if (aimHeavy == false)
+            {
+                float distanceToPlayer = Vector2.Distance(transform.position, target.transform.position);
+
+                if (distanceToPlayer < 6f)
+                {
+                    currentObject.transform.Translate(0, -0.25f, -1);
+                    aimHeavy = true;
+                }
+            }
         }
 
         // Throw an object if we are holding it for at least 2 seconds
@@ -173,6 +178,7 @@ public class Throw : MonoBehaviour
                 float distanceToPlayer = Vector2.Distance(transform.position, target.transform.position);
                 if (distanceToPlayer < 4.5f)
                 {
+                    currentObject.transform.Translate(0, 0.25f, 1);
                     currentObject.GetComponent<Interactable>().EnemyThrow(transform, 30, gameObject);
                     aimHeavy = false;
                 }
@@ -248,11 +254,22 @@ public class Throw : MonoBehaviour
         }
 
         item.rotation = transform.rotation;
-        item.Translate(0, 0, -1);
+        //item.Translate(0, 0, -1);
 
-        if (item.gameObject.GetComponent<Interactable>().isHeavy == false) delay = 2;
+        //if (item.gameObject.GetComponent<Interactable>().isHeavy == false)
+        delay = 2;
 
-        if (item.gameObject.tag == "Blunt" && item.GetComponent<Interactable>().isHeavy == false)
+        if (item.gameObject.GetComponent<Interactable>().isHeavy == true)
+        {
+            float distanceToPlayer = Vector2.Distance(transform.position, target.transform.position);
+
+            if (distanceToPlayer < 2f)
+            {
+                delay = 0;
+            }
+        }
+
+            if (item.gameObject.tag == "Blunt" && item.GetComponent<Interactable>().isHeavy == false)
         {
             item.Rotate(new Vector3(0, 0, 90));
         }
