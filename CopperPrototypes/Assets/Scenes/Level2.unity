@@ -86386,6 +86386,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: LockedDoor (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3127124776558250755, guid: ded2c61846bde4d338f2ed38f0899e21, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0846913
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127124776558250755, guid: ded2c61846bde4d338f2ed38f0899e21, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.14877251
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127124776558250755, guid: ded2c61846bde4d338f2ed38f0899e21, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.12641335
+      objectReference: {fileID: 0}
     - target: {fileID: 6287123633292869293, guid: ded2c61846bde4d338f2ed38f0899e21, type: 3}
       propertyPath: m_Enabled
       value: 1
