@@ -18,11 +18,17 @@ public class Throw : MonoBehaviour
 
     public Sprite heavySprite;
 
+    public Sprite aimSprite;
+
+    public Sprite throwSprite;
+
     public GameObject player;
 
     public Transform lightObjectPoint;
 
     public Transform heavyObjectPoint;
+
+    public Transform aimPoint;
 
     public GameObject mostRecentObject = null;
 
@@ -81,6 +87,12 @@ public class Throw : MonoBehaviour
             chase.target = GetClosestObject(mostRecentObject);
         }
 
+        if (currentObject != null && currentObject.transform.parent == transform && delay < 1 && currentObject.GetComponent<Interactable>().isHeavy == false)
+        {
+            sr.sprite = aimSprite;
+            currentObject.transform.position = aimPoint.transform.position;
+        }
+
         // Throw an object if we are holding it for at least 2 seconds
         if (currentObject != null && currentObject.transform.parent == transform && delay <= 0)
         {
@@ -116,7 +128,20 @@ public class Throw : MonoBehaviour
 
             if (!playerSeen)
             {
-                delay = 1;
+                delay = 1.5f;
+
+                sr.sprite = carryingSprite;
+
+                if (currentObject.GetComponent<Interactable>().isHeavy == false)
+                {
+                    currentObject.transform.position = lightObjectPoint.transform.position;
+                }
+                else
+                {
+                    currentObject.transform.position = heavyObjectPoint.transform.position;
+                }
+                
+
                 return;
             }
 
@@ -203,7 +228,7 @@ public class Throw : MonoBehaviour
         item.rotation = transform.rotation;
         item.Translate(0, 0, -1);
 
-        delay = 1;
+        if (item.gameObject.GetComponent<Interactable>().isHeavy == false) delay = 2;
     }
 
     GameObject GetClosestObject(GameObject ignoredObject)
