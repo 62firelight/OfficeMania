@@ -184,7 +184,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Blunt" || other.gameObject.tag == "Sharp")
         {
-            GetComponent<Chase>().roomMaster.GetComponent<RoomMaster>().seePlayer = true;
+            GetComponent<Chase>().roomMaster.GetComponent<RoomMaster>().SetSeePlayer(true);
         }
 
         Interactable obj = other.gameObject.GetComponent<Interactable>();

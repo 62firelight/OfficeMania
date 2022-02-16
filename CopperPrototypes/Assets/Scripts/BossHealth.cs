@@ -44,7 +44,7 @@ public class BossHealth : MonoBehaviour
         bossMultipler = GameObject.Find("Boss").GetComponent<Enemy>().bossHealth;
         if(bossMultipler > 1) {
             bossHealth = baseHealth * (bossMultipler-1) + stagehealth;
-            Debug.Log(baseHealth);
+            // Debug.Log(baseHealth);
         }else {
             bossHealth = stagehealth * bossMultipler;
         }

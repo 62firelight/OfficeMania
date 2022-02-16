@@ -14,6 +14,10 @@ public class TypeWriter: MonoBehaviour
 
     public bool startFading = false;
 
+    public string nextSceneName = "Level1";
+
+    public AudioSource music;
+
     private Text txt;
 
 	private string story;
@@ -43,16 +47,18 @@ public class TypeWriter: MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            SceneManager.LoadScene("PrototypeLevel");
+            SceneManager.LoadScene(nextSceneName);
         }
         
         if (startFading)
         {
             txt.color -= new Color(0, 0, 0, fadeSpeed * Time.deltaTime);
 
+            if (music != null) music.volume -= fadeSpeed * Time.deltaTime;
+
             if (txt.color.a < 0)
             {
-                SceneManager.LoadScene("PrototypeLevel");
+                SceneManager.LoadScene(nextSceneName);
             }
         }
         transform.Translate(Vector3.up * speed * Time.deltaTime);

@@ -39,4 +39,14 @@ public class Dialogue : MonoBehaviour
         tmp.text = text;
         showTime = defaultShowTime;
     }
+
+    public void ModifyDialogue(string text)
+    {
+        tmp.text = text;
+    }
+
+    public string GetDialogue()
+    {
+        return tmp.text;
+    }
 }

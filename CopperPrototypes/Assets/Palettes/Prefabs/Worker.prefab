@@ -321,11 +321,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1780925174514537736, guid: 6f5523a88804b8a40baf6cabab2337c1, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1780925174514537736, guid: 6f5523a88804b8a40baf6cabab2337c1, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 5
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 1780925174514537736, guid: 6f5523a88804b8a40baf6cabab2337c1, type: 3}
       propertyPath: m_LocalScale.x
@@ -373,7 +373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1780925174514537736, guid: 6f5523a88804b8a40baf6cabab2337c1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 0.21
       objectReference: {fileID: 0}
     - target: {fileID: 1780925174514537736, guid: 6f5523a88804b8a40baf6cabab2337c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -396,17 +396,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9163949716547407039, guid: 5fa2453bc0af9a348894afc0dd618c8e, type: 2}
     - target: {fileID: 1780925174514537751, guid: 6f5523a88804b8a40baf6cabab2337c1, type: 3}
+      propertyPath: m_fontSize
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780925174514537751, guid: 6f5523a88804b8a40baf6cabab2337c1, type: 3}
       propertyPath: m_margin.w
       value: 3.1094947
       objectReference: {fileID: 0}
     - target: {fileID: 1780925174514537751, guid: 6f5523a88804b8a40baf6cabab2337c1, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 5fa2453bc0af9a348894afc0dd618c8e, type: 2}
+      propertyPath: m_fontSizeBase
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1780925174514537751, guid: 6f5523a88804b8a40baf6cabab2337c1, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 9163949716547407039, guid: 5fa2453bc0af9a348894afc0dd618c8e, type: 2}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f5523a88804b8a40baf6cabab2337c1, type: 3}
 --- !u!224 &1446044495 stripped

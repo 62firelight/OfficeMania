@@ -18,11 +18,17 @@ public class Throw : MonoBehaviour
 
     public Sprite heavySprite;
 
+    public Sprite aimSprite;
+
+    public Sprite throwSprite;
+
     public GameObject player;
 
     public Transform lightObjectPoint;
 
     public Transform heavyObjectPoint;
+
+    public Transform aimPoint;
 
     public GameObject mostRecentObject = null;
 
@@ -31,6 +37,10 @@ public class Throw : MonoBehaviour
     float delay;
 
     private SpriteRenderer sr;
+
+    private bool aimBlunt = false;
+
+    private bool aimHeavy = false;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +66,7 @@ public class Throw : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(aimHeavy);
         if (delay >= 0)
         {
             delay -= Time.deltaTime;
@@ -79,6 +90,26 @@ public class Throw : MonoBehaviour
             AIMaster.takenObjects.Contains(chase.target) == true)
         {
             chase.target = GetClosestObject(mostRecentObject);
+        }
+
+        if (currentObject != null && currentObject.transform.parent == transform && delay < 1)
+        {
+            if (currentObject != null && currentObject.GetComponent<Interactable>().isHeavy == false)
+            {
+                sr.sprite = aimSprite;
+                currentObject.transform.position = aimPoint.transform.position;
+
+                if (aimBlunt == false && currentObject.tag == "Blunt")
+                {
+                    currentObject.transform.Rotate(new Vector3(0, 0, -45));
+                    aimBlunt = true;
+                }
+            }
+            // else if (aimHeavy == false)
+            // {
+            //     currentObject.transform.Translate(0, -0.25f, 1);
+            //     aimHeavy = true;
+            // }
         }
 
         // Throw an object if we are holding it for at least 2 seconds
@@ -116,7 +147,18 @@ public class Throw : MonoBehaviour
 
             if (!playerSeen)
             {
-                delay = 1;
+                delay = 1.5f;
+
+                if (currentObject.GetComponent<Interactable>().isHeavy == false)
+                {
+                    sr.sprite = carryingSprite;
+                    currentObject.transform.position = lightObjectPoint.transform.position;
+                }
+                else
+                {
+                    currentObject.transform.position = heavyObjectPoint.transform.position;
+                }
+
                 return;
             }
 
@@ -125,12 +167,14 @@ public class Throw : MonoBehaviour
             // If I'm an elite guard with a heavy object
             if (obj.isHeavy == true && isElite == true)
             {
+
                 // Delay the throw until we are close enough to the player
                 // (act as if we are blocking the player's thrown objects)
                 float distanceToPlayer = Vector2.Distance(transform.position, target.transform.position);
                 if (distanceToPlayer < 4.5f)
                 {
                     currentObject.GetComponent<Interactable>().EnemyThrow(transform, 30, gameObject);
+                    aimHeavy = false;
                 }
                 else
                 {
@@ -139,8 +183,11 @@ public class Throw : MonoBehaviour
             }
             else
             {
+                currentObject.transform.Rotate(new Vector3(0, 0, -90));
+
                 currentObject.transform.position = transform.position;
                 currentObject.GetComponent<Interactable>().EnemyThrow(transform, 30, gameObject);
+                aimBlunt = false;
             }
            
             mostRecentObject = currentObject;
@@ -203,7 +250,12 @@ public class Throw : MonoBehaviour
         item.rotation = transform.rotation;
         item.Translate(0, 0, -1);
 
-        delay = 1;
+        if (item.gameObject.GetComponent<Interactable>().isHeavy == false) delay = 2;
+
+        if (item.gameObject.tag == "Blunt" && item.GetComponent<Interactable>().isHeavy == false)
+        {
+            item.Rotate(new Vector3(0, 0, 90));
+        }
     }
 
     GameObject GetClosestObject(GameObject ignoredObject)

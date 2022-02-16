@@ -32,6 +32,8 @@ public class RoomMaster : MonoBehaviour
 
     public GameObject camera;
 
+    public GameObject dialogueManager;
+
     public AudioClip doorCloseSound;
 
     public AudioClip doorOpenSound;
@@ -41,6 +43,8 @@ public class RoomMaster : MonoBehaviour
     public bool cameraTransition;
 
     public bool cameraReset;
+
+    public GameObject secondEntryDoor;
 
     private Vector3 originalCamPosition;
 
@@ -86,7 +90,8 @@ public class RoomMaster : MonoBehaviour
                 }
             }
         }
-        
+
+        if (dialogueManager != null) dialogueManager.GetComponent<DialogueManager>().enabled = false;
     }
 
     void Start()
@@ -98,6 +103,8 @@ public class RoomMaster : MonoBehaviour
                 entryDoor.SetActive(false);
             }
         }
+
+        if (levelTwoBattle && secondEntryDoor != null) secondEntryDoor.SetActive(false);
         
         if (exitDoors != null && exitDoors.Length > 0)
         {
@@ -123,7 +130,7 @@ public class RoomMaster : MonoBehaviour
 
             if (waitTime <= 0)
             {
-                SceneManager.LoadScene("Credits");
+                SceneManager.LoadScene("Epilogue");
             }
         }
 
@@ -207,7 +214,15 @@ public class RoomMaster : MonoBehaviour
 
                     LevelMaster levelMaster = levelMasterObj.GetComponent<LevelMaster>();
 
-                    if (levelTwoBattle || levelTwoBigBattle) levelMaster.TriggerLightsOffMusicMid();
+                    if (levelTwoBattle || levelTwoBigBattle) 
+                    {
+                        levelMaster.TriggerLightsOffMusicMid();
+
+                        if (levelTwoBattle && secondEntryDoor != null)
+                        {
+                            secondEntryDoor.SetActive(false);
+                        }
+                    }
                 }
 
                 // For the boss, load the main menu
@@ -251,6 +266,8 @@ public class RoomMaster : MonoBehaviour
             }
 
             if (camera != null) cameraTransition = true;
+
+            if (dialogueManager != null) dialogueManager.GetComponent<DialogueManager>().enabled = true;
         }
     }
 
@@ -264,9 +281,7 @@ public class RoomMaster : MonoBehaviour
 
     public void SetSeePlayer(bool status)
     {
-        seePlayer = status;
-
-        if (SceneManager.GetActiveScene().name == "Level2")
+        if (seePlayer == false && SceneManager.GetActiveScene().name == "Level2")
         {
             GameObject levelMasterObj = GameObject.FindGameObjectWithTag("LevelMaster");
 
@@ -279,8 +294,14 @@ public class RoomMaster : MonoBehaviour
             else if (levelTwoBattle)
             {
                 levelMaster.TriggerBattleMusic();
+
+                if (secondEntryDoor != null) secondEntryDoor.SetActive(true);
             }
         }
+
+        seePlayer = status;
+
+        if (dialogueManager != null) dialogueManager.GetComponent<DialogueManager>().EndDialogue();
     }
 
     public List<GameObject> GetDetectedObjects()

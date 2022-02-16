@@ -60,6 +60,36 @@ Transform:
   m_Father: {fileID: 8331516302662365767}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5670112665012248602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5495343938181596354}
+  m_Layer: 0
+  m_Name: AimPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5495343938181596354
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5670112665012248602}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.915, y: -0.417, z: -0.790483}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8331516302662365767}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8331516302662365765
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,6 +129,7 @@ Transform:
   - {fileID: 6159357871550618383}
   - {fileID: 9015049932538505920}
   - {fileID: 239791091}
+  - {fileID: 5495343938181596354}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -236,12 +267,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ab3be8f47f44167a5dac7880567d36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentObject: {fileID: 0}
   normalSprite: {fileID: 21300000, guid: f81d6fb7cefea1344a3f018dbcbf6cc2, type: 3}
   carryingSprite: {fileID: 21300000, guid: 8ce50b53d2e5fed429d470e42fdf5234, type: 3}
   heavySprite: {fileID: 0}
+  aimSprite: {fileID: 21300000, guid: 5f5ca0313f638f34d999c7e522f6dac0, type: 3}
+  throwSprite: {fileID: 0}
   player: {fileID: 0}
   lightObjectPoint: {fileID: 9015049932538505920}
   heavyObjectPoint: {fileID: 239791091}
+  aimPoint: {fileID: 5495343938181596354}
   mostRecentObject: {fileID: 0}
   isElite: 0
 --- !u!50 &8331516302662365760
