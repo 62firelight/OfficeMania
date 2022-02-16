@@ -87632,21 +87632,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs
       objectReference: {fileID: 0}
-    - target: {fileID: 5567859660224235129, guid: 58b49fb9247704c5a8a1b976b35f2957, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 7accdea68f08e4bcda1ae0dafbf95c69, type: 3}
     - target: {fileID: 7339304385486529943, guid: 58b49fb9247704c5a8a1b976b35f2957, type: 3}
       propertyPath: m_RootOrder
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339304385486529943, guid: 58b49fb9247704c5a8a1b976b35f2957, type: 3}
-      propertyPath: m_LocalScale.x
-      value: -0.17816977
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339304385486529943, guid: 58b49fb9247704c5a8a1b976b35f2957, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.33646128
       objectReference: {fileID: 0}
     - target: {fileID: 7339304385486529943, guid: 58b49fb9247704c5a8a1b976b35f2957, type: 3}
       propertyPath: m_LocalPosition.x
