@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1700263721319867816, guid: 34fdfc4f79e1b6849aa13fdf10b1264a, type: 3}
+      propertyPath: m_Size.x
+      value: 9.904686
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700263721319867816, guid: 34fdfc4f79e1b6849aa13fdf10b1264a, type: 3}
+      propertyPath: m_Size.y
+      value: 8.353252
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700263721319867816, guid: 34fdfc4f79e1b6849aa13fdf10b1264a, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.1339035
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700263721319867816, guid: 34fdfc4f79e1b6849aa13fdf10b1264a, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.12249279
+      objectReference: {fileID: 0}
     - target: {fileID: 1700263721999079005, guid: 34fdfc4f79e1b6849aa13fdf10b1264a, type: 3}
       propertyPath: m_Name
       value: Cabinet
