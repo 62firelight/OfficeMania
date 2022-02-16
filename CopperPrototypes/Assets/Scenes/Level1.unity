@@ -6462,6 +6462,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.6886792
       objectReference: {fileID: 0}
+    - target: {fileID: 7232727865494445340, guid: 82b381869316f4be0b08274f430015d9, type: 3}
+      propertyPath: m_Text
+      value: Restart Level
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82b381869316f4be0b08274f430015d9, type: 3}
 --- !u!224 &834891534 stripped
