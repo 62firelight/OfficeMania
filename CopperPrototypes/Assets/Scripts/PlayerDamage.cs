@@ -54,7 +54,7 @@ public class PlayerDamage : MonoBehaviour
         }
 
         // Check if the player collided with an enemy
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy" && GetComponent<PlayerThrowing>().bluntObject == null)
         {
             RegisterDamage(other);
         }
