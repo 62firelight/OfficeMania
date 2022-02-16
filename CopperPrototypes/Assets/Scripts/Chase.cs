@@ -30,6 +30,8 @@ public class Chase : MonoBehaviour {
 
 	public GameObject roomMaster = null;
 
+	public float initialDelay = 0f;
+
 	// Chasing game object must have a AStarPathfinder component - 
 	// this is a reference to that component, which will get initialised
 	// in the Start() method
@@ -59,6 +61,12 @@ public class Chase : MonoBehaviour {
 		enabled = roomMaster.GetComponent<RoomMaster>().aiEnabled;
 		seePlayer = roomMaster.GetComponent<RoomMaster>().seePlayer;
 
+		if (enabled && initialDelay > 0)
+		{
+			initialDelay -= Time.deltaTime;
+			pathfinder.ResetTimeKeeper();
+		}
+
 		// if (GetComponent<Enemy>().health <= 0)
 		// {
 		// 	return;
@@ -67,6 +75,11 @@ public class Chase : MonoBehaviour {
 
 	void FixedUpdate()
 	{
+		if (initialDelay > 0)
+		{
+			return;
+		}
+
 		if (GetComponent<Enemy>().health <= 0)
 		{
 			return;

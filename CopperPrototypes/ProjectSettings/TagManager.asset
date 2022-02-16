@@ -16,6 +16,7 @@ TagManager:
   - BossMinionMaster
   - CreditsText
   - BossHealth
+  - KeyUnlocked
   layers:
   - Default
   - TransparentFX

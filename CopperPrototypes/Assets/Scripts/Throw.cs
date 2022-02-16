@@ -94,22 +94,60 @@ public class Throw : MonoBehaviour
 
         if (currentObject != null && currentObject.transform.parent == transform && delay < 1)
         {
-            if (currentObject != null && currentObject.GetComponent<Interactable>().isHeavy == false)
+            if (currentObject.GetComponent<Interactable>().isHeavy == false)
             {
-                sr.sprite = aimSprite;
-                currentObject.transform.position = aimPoint.transform.position;
+                RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, player.transform.position - transform.position);
+                Debug.DrawRay(transform.position, player.transform.position - transform.position);
 
-                if (aimBlunt == false && currentObject.tag == "Blunt")
+                bool playerSeen = false;
+                // int enemiesNearby = 0;
+                foreach (RaycastHit2D hit in hits)
                 {
-                    currentObject.transform.Rotate(new Vector3(0, 0, -45));
-                    aimBlunt = true;
+                    // if (hit.collider != GetComponent<Collider2D>() && hit.collider != GetComponentInChildren<CircleCollider2D>() 
+                    //     && hit.transform.gameObject.tag == "Enemy" && hit.transform.gameObject.name != "Vision")
+                    // {
+                    //     // Debug.Log(GetComponentInChildren<CircleCollider2D>());
+                    //     // Debug.Log(hit.collider);
+                    //     Debug.Log(hit.transform.gameObject.name);
+                    //     playerSeen = false;
+                    //     break;
+                    // }
+
+                    if (hit.collider != GetComponent<Collider2D>() && hit.transform.gameObject.tag == "Wall" && hit.transform.gameObject.layer != 7)
+                    {
+                        playerSeen = false;
+                        break;
+                    }
+
+                    if (hit.collider != null && hit.transform.gameObject.tag == "Player")
+                    {
+                        playerSeen = true;
+                        break;
+                    }
+                }
+
+                if (playerSeen == true)
+                {
+                    sr.sprite = aimSprite;
+                    currentObject.transform.position = aimPoint.transform.position;
+
+                    if (aimBlunt == false && currentObject.tag == "Blunt")
+                    {
+                        currentObject.transform.Rotate(new Vector3(0, 0, -45));
+                        aimBlunt = true;
+                    }
                 }
             }
-            // else if (aimHeavy == false)
-            // {
-            //     currentObject.transform.Translate(0, -0.25f, 1);
-            //     aimHeavy = true;
-            // }
+            else if (aimHeavy == false)
+            {
+                float distanceToPlayer = Vector2.Distance(transform.position, target.transform.position);
+
+                if (distanceToPlayer < 6f)
+                {
+                    currentObject.transform.Translate(0, -0.25f, -1);
+                    aimHeavy = true;
+                }
+            }
         }
 
         // Throw an object if we are holding it for at least 2 seconds
@@ -173,6 +211,7 @@ public class Throw : MonoBehaviour
                 float distanceToPlayer = Vector2.Distance(transform.position, target.transform.position);
                 if (distanceToPlayer < 4.5f)
                 {
+                    currentObject.transform.Translate(0, 0.25f, 1);
                     currentObject.GetComponent<Interactable>().EnemyThrow(transform, 30, gameObject);
                     aimHeavy = false;
                 }
@@ -248,11 +287,22 @@ public class Throw : MonoBehaviour
         }
 
         item.rotation = transform.rotation;
-        item.Translate(0, 0, -1);
+        //item.Translate(0, 0, -1);
 
-        if (item.gameObject.GetComponent<Interactable>().isHeavy == false) delay = 2;
+        //if (item.gameObject.GetComponent<Interactable>().isHeavy == false)
+        delay = 2;
 
-        if (item.gameObject.tag == "Blunt" && item.GetComponent<Interactable>().isHeavy == false)
+        if (item.gameObject.GetComponent<Interactable>().isHeavy == true)
+        {
+            float distanceToPlayer = Vector2.Distance(transform.position, target.transform.position);
+
+            if (distanceToPlayer < 2f)
+            {
+                delay = 0;
+            }
+        }
+
+            if (item.gameObject.tag == "Blunt" && item.GetComponent<Interactable>().isHeavy == false)
         {
             item.Rotate(new Vector3(0, 0, 90));
         }

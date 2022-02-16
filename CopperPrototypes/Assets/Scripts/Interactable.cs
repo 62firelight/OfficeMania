@@ -148,11 +148,12 @@ public class Interactable : MonoBehaviour
         AIMaster.takenObjects.Remove(gameObject);
     }
 
-    public void Drop()
+    public void Drop(Transform parent)
     {
         pickedUp = false;
 
         // transform.Translate(0, 0, 1);
+        transform.position = parent.transform.position;
         transform.parent = null;
 
         AIMaster.takenObjects.Remove(gameObject);

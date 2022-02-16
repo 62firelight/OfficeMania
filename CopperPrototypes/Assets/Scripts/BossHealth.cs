@@ -14,6 +14,8 @@ public class BossHealth : MonoBehaviour
     private Image heartPrefab;
     private Transform heartContainer;
 
+    public GameObject bossHealthObj;
+
     public Sprite fullHeartGreen;
     public Sprite halfHeartGreen;
 
@@ -27,11 +29,15 @@ public class BossHealth : MonoBehaviour
     public Sprite emptyHeart;
 
     public Image[] heartDisplay;
-    // Start is called before the first frame update
 
     // Update is called once per frame
     void Update()
     {
+        if (GameObject.Find("Boss").GetComponent<Chase>().initialDelay <= 0)
+        {
+            bossHealthObj.SetActive(true);
+        }
+
         bossStatus = GameObject.Find("Boss").GetComponent<Enemy>().isBoss;
 
         if(bossStatus == true && baseHealth == 0)
