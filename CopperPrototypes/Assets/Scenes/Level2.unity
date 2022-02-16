@@ -86743,7 +86743,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.019989014, y: -36.29001}
+  m_AnchoredPosition: {x: -0.019958496, y: -36.29001}
   m_SizeDelta: {x: 800, y: 450.2588}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1475622483
@@ -86754,9 +86754,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475622481}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &1475622484
 MonoBehaviour:
@@ -87653,6 +87653,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 749e0bf9ca6ed433d833c113b43ee013, type: 3}
+    - target: {fileID: 6203257602705732936, guid: 58b49fb9247704c5a8a1b976b35f2957, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 2043439333}
     - target: {fileID: 7339304385486529943, guid: 58b49fb9247704c5a8a1b976b35f2957, type: 3}
       propertyPath: m_RootOrder
       value: 7
