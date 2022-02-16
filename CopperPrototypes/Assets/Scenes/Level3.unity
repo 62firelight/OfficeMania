@@ -148,11 +148,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5140817}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -187.8, z: -2530.8555}
+  m_LocalPosition: {x: 0, y: -187.80003, z: -2530.8555}
   m_LocalScale: {x: 23.272175, y: 23.272175, z: 23.272175}
   m_Children: []
-  m_Father: {fileID: 1898175770}
-  m_RootOrder: 2
+  m_Father: {fileID: 1490752616}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5140819
 SpriteRenderer:
@@ -9611,7 +9611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1490752616
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9624,6 +9624,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1627386417}
+  - {fileID: 5140818}
   m_Father: {fileID: 1898175770}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10600,7 +10601,6 @@ RectTransform:
   m_Children:
   - {fileID: 911316886}
   - {fileID: 1490752616}
-  - {fileID: 5140818}
   - {fileID: 989782163}
   m_Father: {fileID: 0}
   m_RootOrder: 11
@@ -10622,6 +10622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0499a0533a3845948fcabb3bbc8d710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossHealthObj: {fileID: 1490752615}
   fullHeartGreen: {fileID: 5293168543833273296, guid: 7d7f9b95cdc774d3a994b84fa20bf456, type: 3}
   halfHeartGreen: {fileID: 3282230852861034243, guid: 7d7f9b95cdc774d3a994b84fa20bf456, type: 3}
   fullHeartYellow: {fileID: 1691798661999297167, guid: 7d7f9b95cdc774d3a994b84fa20bf456, type: 3}
