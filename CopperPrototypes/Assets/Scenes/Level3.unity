@@ -8624,6 +8624,10 @@ PrefabInstance:
       propertyPath: seePlayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1172907430912255948, guid: feb192c8660cf4548b295909f13d9cb5, type: 3}
+      propertyPath: initialDelay
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1827321387692742602, guid: feb192c8660cf4548b295909f13d9cb5, type: 3}
       propertyPath: musicPhases.Array.size
       value: 5
