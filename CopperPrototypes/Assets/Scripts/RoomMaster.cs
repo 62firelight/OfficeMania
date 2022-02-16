@@ -209,7 +209,7 @@ public class RoomMaster : MonoBehaviour
                     }
                 }
 
-                if (entryDoors != null && entryDoors.Length > 0)
+                if (entryDoors != null && entryDoors.Length > 0 && bossBattle == false)
                 {
                     foreach (GameObject entryDoor in entryDoors)
                     {
