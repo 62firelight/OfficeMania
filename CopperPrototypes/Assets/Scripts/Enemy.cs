@@ -92,7 +92,7 @@ public class Enemy : MonoBehaviour
             // Drop currently held object
             if (GetComponent<Throw>() != null && GetComponent<Throw>().currentObject != null)
             {
-                GetComponent<Throw>().currentObject.GetComponent<Interactable>().Drop();
+                GetComponent<Throw>().currentObject.GetComponent<Interactable>().Drop(transform);
                 GetComponent<Throw>().currentObject = null;
             }
 

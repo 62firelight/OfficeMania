@@ -148,11 +148,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5140817}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -187.8, z: -2530.8555}
+  m_LocalPosition: {x: 0, y: -187.80003, z: -2530.8555}
   m_LocalScale: {x: 23.272175, y: 23.272175, z: 23.272175}
   m_Children: []
-  m_Father: {fileID: 1898175770}
-  m_RootOrder: 2
+  m_Father: {fileID: 1490752616}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5140819
 SpriteRenderer:
@@ -1007,29 +1007,19 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -16, y: -30, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 3deade24ff5084ed783da4fa1d323a68, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 16
     m_Data: {fileID: 11400000, guid: 2626b0fef0ce240da8c93b09f4245281, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 1
-    m_Data: {fileID: 4369203708505230771, guid: 5f54460b95b634288b773bbadaf04e0a, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 16
     m_Data: {fileID: 4649259360709732292, guid: f53e71136d4f64001b5182567aa50f0f, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 17
+  - m_RefCount: 16
     m_Data:
       e00: 1
       e01: 0
@@ -1048,7 +1038,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 17
+  - m_RefCount: 16
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -15650,11 +15640,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1898175770}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -13.270447, y: 18.514038}
+  m_AnchoredPosition: {x: -13.270508, y: 18.514038}
   m_SizeDelta: {x: 1600, y: 900.5176}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &613139534
@@ -16847,6 +16837,10 @@ PrefabInstance:
       propertyPath: seePlayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1172907430912255948, guid: feb192c8660cf4548b295909f13d9cb5, type: 3}
+      propertyPath: initialDelay
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1827321387692742602, guid: feb192c8660cf4548b295909f13d9cb5, type: 3}
       propertyPath: musicPhases.Array.size
       value: 5
@@ -17830,7 +17824,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1490752616
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17843,6 +17837,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1627386417}
+  - {fileID: 5140818}
   m_Father: {fileID: 1898175770}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18820,9 +18815,8 @@ RectTransform:
   m_Children:
   - {fileID: 911316886}
   - {fileID: 1490752616}
-  - {fileID: 5140818}
-  - {fileID: 989782163}
   - {fileID: 613139533}
+  - {fileID: 989782163}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18843,6 +18837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0499a0533a3845948fcabb3bbc8d710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossHealthObj: {fileID: 1490752615}
   fullHeartGreen: {fileID: 5293168543833273296, guid: 7d7f9b95cdc774d3a994b84fa20bf456, type: 3}
   halfHeartGreen: {fileID: 3282230852861034243, guid: 7d7f9b95cdc774d3a994b84fa20bf456, type: 3}
   fullHeartYellow: {fileID: 1691798661999297167, guid: 7d7f9b95cdc774d3a994b84fa20bf456, type: 3}
