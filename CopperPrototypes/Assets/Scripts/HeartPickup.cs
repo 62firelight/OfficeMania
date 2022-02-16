@@ -6,6 +6,8 @@ public class HeartPickup : MonoBehaviour
 {
     private PlayerDamage playerDamage;
 
+    public AudioClip pickupSound;
+
     private void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -25,6 +27,8 @@ public class HeartPickup : MonoBehaviour
         // Heal the player for half heart
         if (other.tag == "Player" && playerDamage.playerHealth < playerDamage.playerMaxHealth)
         {
+            if (pickupSound != null) AudioSource.PlayClipAtPoint(pickupSound, transform.position);
+
             playerDamage.playerHealth++;
 
             // Heal an extra half heart

@@ -8,6 +8,8 @@ public class Keycard : MonoBehaviour
 
     public GameObject keyDisplay;
 
+    public AudioClip pickupSound;
+
     void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -31,6 +33,8 @@ public class Keycard : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            if (pickupSound != null) AudioSource.PlayClipAtPoint(pickupSound, transform.position);
+
             playerKeycard.SetHasKeycard(true);
 
             keyDisplay.SetActive(true);
