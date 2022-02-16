@@ -69,10 +69,11 @@ public class AStarPathfinder : MonoBehaviour {
 	 * param: target - game object to travel towards
 	 * param: atSpeed - speed at which to travel (in units/s)
 	 */
-	public void GoTowards(GameObject target, float atSpeed) {
+	public int GoTowards(GameObject target, float atSpeed) {
 		if (target != null) {
-			GoTowards (target.transform.position, atSpeed);
+			return GoTowards (target.transform.position, atSpeed);
 		}
+		return 1;
 	}
 
 	/* Moves game object at certain speed by changing its transform postion to follow
@@ -81,11 +82,11 @@ public class AStarPathfinder : MonoBehaviour {
 	 * param: targetPosition - position to travel towards
 	 * param: atSpeed - speed at which to travel (in units/s)
 	 */
-	public void  GoTowards(Vector2 targetPosition, float atSpeed) {
+	public int GoTowards(Vector2 targetPosition, float atSpeed) {
 
 		if (grid == null) {
 			Debug.LogError ("Pathfinding grid object is missing AStarGrid component!");
-			return;
+			return 1;
 		}
 
 
@@ -113,7 +114,7 @@ public class AStarPathfinder : MonoBehaviour {
 		timeKeeper = Time.time;
 
 		if (moves == null) {
-			return;
+			return 1;
 		}
 
 #if UNITY_EDITOR
@@ -191,6 +192,7 @@ public class AStarPathfinder : MonoBehaviour {
 				break;
 			}
 		}
+		return 0;
 	}
 
 #if UNITY_EDITOR
