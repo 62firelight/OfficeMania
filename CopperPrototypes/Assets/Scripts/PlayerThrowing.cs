@@ -152,7 +152,7 @@ public class PlayerThrowing : MonoBehaviour
         {
             if (heldObject != null)
             {
-                heldObject.GetComponent<Interactable>().Drop();
+                heldObject.GetComponent<Interactable>().Drop(transform);
                 heldObject = null;
             }
 
