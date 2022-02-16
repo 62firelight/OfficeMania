@@ -38,6 +38,8 @@ public class Throw : MonoBehaviour
 
     private SpriteRenderer sr;
 
+    private bool aimHeavy = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +64,7 @@ public class Throw : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(aimHeavy);
         if (delay >= 0)
         {
             delay -= Time.deltaTime;
@@ -87,10 +90,18 @@ public class Throw : MonoBehaviour
             chase.target = GetClosestObject(mostRecentObject);
         }
 
-        if (currentObject != null && currentObject.transform.parent == transform && delay < 1 && currentObject.GetComponent<Interactable>().isHeavy == false)
+        if (currentObject != null && currentObject.transform.parent == transform && delay < 1)
         {
-            sr.sprite = aimSprite;
-            currentObject.transform.position = aimPoint.transform.position;
+            if (currentObject != null && currentObject.GetComponent<Interactable>().isHeavy == false)
+            {
+                sr.sprite = aimSprite;
+                currentObject.transform.position = aimPoint.transform.position;
+            }
+            // else if (aimHeavy == false)
+            // {
+            //     currentObject.transform.Translate(0, -0.25f, 1);
+            //     aimHeavy = true;
+            // }
         }
 
         // Throw an object if we are holding it for at least 2 seconds
@@ -139,7 +150,6 @@ public class Throw : MonoBehaviour
                 {
                     currentObject.transform.position = heavyObjectPoint.transform.position;
                 }
-                
 
                 return;
             }
@@ -149,12 +159,14 @@ public class Throw : MonoBehaviour
             // If I'm an elite guard with a heavy object
             if (obj.isHeavy == true && isElite == true)
             {
+
                 // Delay the throw until we are close enough to the player
                 // (act as if we are blocking the player's thrown objects)
                 float distanceToPlayer = Vector2.Distance(transform.position, target.transform.position);
                 if (distanceToPlayer < 4.5f)
                 {
                     currentObject.GetComponent<Interactable>().EnemyThrow(transform, 30, gameObject);
+                    aimHeavy = false;
                 }
                 else
                 {
