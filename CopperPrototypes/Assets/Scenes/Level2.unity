@@ -665,7 +665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9182815721293286142, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
       propertyPath: sentences.Array.size
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9182815721293286142, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
       propertyPath: speakers.Array.data[0]
@@ -702,6 +702,26 @@ PrefabInstance:
     - target: {fileID: 9182815721293286142, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
       propertyPath: sentences.Array.data[4]
       value: ...Never mind.
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182815721293286142, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
+      propertyPath: sentences.Array.data[5]
+      value: So... anyone heard about the missing girl?
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182815721293286142, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
+      propertyPath: sentences.Array.data[6]
+      value: What? Shelliane?
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182815721293286142, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
+      propertyPath: sentences.Array.data[7]
+      value: '*ahem* It''s Cheyenne.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182815721293286142, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
+      propertyPath: sentences.Array.data[8]
+      value: All of you, please shut up.
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182815721293286142, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
+      propertyPath: sentences.Array.data[9]
+      value: Geez, just making small talk.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
@@ -89146,7 +89166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9182815721293286142, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
       propertyPath: sentences.Array.data[1]
-      value: Yup.
+      value: Yup. Easy peasy.
       objectReference: {fileID: 0}
     - target: {fileID: 9182815721293286142, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
       propertyPath: sentences.Array.data[2]
@@ -89154,11 +89174,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9182815721293286142, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
       propertyPath: sentences.Array.data[3]
-      value: 'Some cabinets. '
+      value: Some cabinets. And chairs.
       objectReference: {fileID: 0}
     - target: {fileID: 9182815721293286142, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
       propertyPath: sentences.Array.data[4]
-      value: Genius. I bet his noodle arms can't lift those.
+      value: Genius. His noodle arms surely can't lift those.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
