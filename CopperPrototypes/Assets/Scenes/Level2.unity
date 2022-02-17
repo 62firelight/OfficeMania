@@ -35299,7 +35299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9182815721293286142, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
       propertyPath: sentences.Array.size
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9182815721293286142, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
       propertyPath: speakers.Array.data[0]
@@ -35343,7 +35343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9182815721293286142, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
       propertyPath: sentences.Array.data[7]
-      value: Guess it's time to hunker down...
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
@@ -86225,7 +86225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9182815721293286142, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
       propertyPath: sentences.Array.data[1]
-      value: No idea.
+      value: HR is always like this.
       objectReference: {fileID: 0}
     - target: {fileID: 9182815721293286142, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
       propertyPath: sentences.Array.data[2]
@@ -86233,15 +86233,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9182815721293286142, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
       propertyPath: sentences.Array.data[3]
-      value: It could be the ex-employee.
+      value: Probably the ex-employee.
       objectReference: {fileID: 0}
     - target: {fileID: 9182815721293286142, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
       propertyPath: sentences.Array.data[4]
-      value: Who is he?
+      value: The guy who quit yesterday?
       objectReference: {fileID: 0}
     - target: {fileID: 9182815721293286142, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
       propertyPath: sentences.Array.data[5]
-      value: No idea. Boss wants him dead.
+      value: No idea. Boss wants him "disposed of."
       objectReference: {fileID: 0}
     - target: {fileID: 9182815721293286142, guid: d1873d58b7d6343f186b43345bc1c9e7, type: 3}
       propertyPath: sentences.Array.data[6]
