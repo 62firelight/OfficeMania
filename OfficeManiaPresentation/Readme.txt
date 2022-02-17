@@ -22,13 +22,14 @@ In case a level becomes unbeatable, a level can be restarted from the pause menu
 There is no level select in the game, but the player can skip to the next level by pushing N. It is up to the player as to whether they want to abuse this.
 
 Tips
-•Try to always stay on the move. Aggression is often the best way to win fights.
-* Enemies will rotate their arms backwards whenever they are about to throw an object. 
-•Health pickups can generally be found in optional areas, but keep in mind that you will need to clear those areas to get the health and progress.
-•The boss fight has two health pickups that spawn whenever enemies come in.
+• Try to always stay on the move. Aggression is often the best way to win fights.
+• Enemies will rotate their arms backwards whenever they are about to throw an object. 
+• Enemies can hurt you if you bump into them. Be careful whenever you pick up objects that are close to them!
+• Health pickups can generally be found in optional areas, but keep in mind that you will need to clear those areas to get the health and progress.
+• The boss fight has two health pickups that spawn whenever enemies come in.
 
 Known Issues 
-• Heavy objects can be thrown through walls (and potentially go out of bounds)
+• Heavy objects can be thrown through walls (and potentially go out of bounds). This isn't exactly gamebreaking, but it does deprive you of one heavy object.
 • AI can freeze up when trying to get to an object outside of their assigned area
 • Bumping into objects that seemingly move slow can still hit and damage you
 • Enemies who hold heavy objects can sometimes push players into walls if they are next to one
