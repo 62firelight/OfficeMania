@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1291378533344765084}
   - component: {fileID: 1780925174514537748}
   - component: {fileID: 4900003139896776163}
+  - component: {fileID: 9170049726614018453}
   m_Layer: 0
   m_Name: Dialog Text
   m_TagString: Untagged
@@ -238,3 +239,14 @@ RotationConstraint:
   m_IsContraintActive: 0
   m_IsLocked: 1
   m_Sources: []
+--- !u!210 &9170049726614018453
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780925174514537737}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2
