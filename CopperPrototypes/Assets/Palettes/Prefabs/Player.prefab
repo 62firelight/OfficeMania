@@ -328,7 +328,7 @@ MonoBehaviour:
   aimPoint: {fileID: 8023425829858102723}
   force: 20
   nearestObject: {fileID: 0}
-  nearestSharp: {fileID: 0}
+  nearestHeavy: {fileID: 0}
   bluntObject: {fileID: 0}
   heldObject: {fileID: 0}
   currentObject: {fileID: 0}
@@ -476,7 +476,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.10256386
+        value: 0.19970131
         inSlope: 0
         outSlope: 0
         tangentMode: 0

@@ -43,8 +43,8 @@ public class Trajectory : MonoBehaviour
         //     new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
         // );
         gradient.SetKeys(
-            new GradientColorKey[] { new GradientColorKey(Color.white, 0.0f), new GradientColorKey(Color.white, 1.0f) },
-            new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(0.0f, 1.0f) }
+            new GradientColorKey[] { new GradientColorKey(Color.white, 0.75f), new GradientColorKey(Color.white, 1.0f) },
+            new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.75f), new GradientAlphaKey(0.0f, 1.0f) }
         );
         lr.colorGradient = gradient;
     }
