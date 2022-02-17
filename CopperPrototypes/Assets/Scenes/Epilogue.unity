@@ -484,11 +484,12 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Standing over the unconscious body of your boss, you feel a sense of relief.\n\nYou
-    don't know if that sensation stems from a sense that you've done something right
+    don't know if that sensation stems from a sense that you've done something right,
     or just plain old revenge. \n\nBut what you do know, is that it's over.\n\nFor
     the first time in a long, long while, you are free.\n\nYou step out into the
-    streets, with the blazing orange rays of the sunset shining into your face. You
-    look down at the file in your hand and smile while walking off into the distance...\n\n"
+    streets, with the blazing orange rays of the sun shining into your face. You
+    look down at the file in your hand and smile. \n\nWith the evidence in your hands,
+    you walk aimlessly off into the distance...\n\n"
 --- !u!222 &1649725732
 CanvasRenderer:
   m_ObjectHideFlags: 0
