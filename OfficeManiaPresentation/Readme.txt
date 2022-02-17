@@ -1,16 +1,84 @@
 OFFICE MANIA 
 
 By:
-•	Luke Tang
-•	Cameron Bradley
-•	Yashree Sharma
+• Luke Tang
+• Cameron Bradley
+• Yashree Sharma
 
-Office Mania is a lighthearted top-down shooter game in which you play as an office worker who is tired of being overworked and underpaid at your company. Finally deciding enough is enough you decide to go a rampage to expose the boss and his company for all their wrong doings. 
+Office Mania is a lighthearted top-down shooter where you play as an office worker who is tired of being overworked and underpaid at your company. Finally deciding enough is enough, you decide to go on a rampage to expose the boss and his company for all their wrong doings. You have no guns of your own, but you can pick up and throw objects at enemies -- the entire office is your playground!
 
 Controls
-•	Use WASD to move the player 
-•	Use the mouse the look around
-•	Right click button of the mouse to throw objects
+• WASD moves the player 
+• Use the mouse to look around
+* Walk over objects to pick them up
+• Left-click to throw objects (if an object is being held)
+• Hold left-click to charge up a throw so objects can be thrown further
+• Right-click the mouse when near heavy objects to pick them up (though any currently held object will be dropped)
+* ESC pauses the game
+
+Notes
+In case a level becomes unbeatable, a level can be restarted from the pause menu by clicking "Restart Level" or by pushing R when in-game.
+
+There is no level select in the game, but the player can skip to the next level by pushing N. It is up to the player as to whether they want to abuse this.
+
+Tips
+•Try to always stay on the move. Aggression is often the best way to win fights.
+* Enemies will rotate their arms backwards whenever they are about to throw an object. 
+•Health pickups can generally be found in optional areas, but keep in mind that you will need to clear those areas to get the health and progress.
+•The boss fight has two health pickups that spawn whenever enemies come in.
 
 Known Issues 
--	Heavy objects can sometimes be thrown through the wall 
+• Heavy objects can be thrown through walls (and potentially go out of bounds)
+• AI can freeze up when trying to get to an object outside of their assigned area
+• Bumping into objects that seemingly move slow can still hit and damage you
+• Enemies who hold heavy objects can sometimes push players into walls if they are next to one
+
+Credits
+
+Music
+Main Menu Theme (Spring Spring - The Royal Office of Coroner Changes its Name in Light of Recent Events)
+https://opengameart.org/content/the-royal-office-of-coroner-changes-its-name-in-light-of-recent-events
+
+Prologue Theme (Joth - Mandatory Overtime)
+https://opengameart.org/content/mandatory-overtime
+
+Level 1 Theme (Monplaisir – Bass)
+https://youtu.be/E7uKKTUhFAc
+
+Level 2 Theme (Thrifter Records - Confusions)
+https://www.youtube.com/watch?v=atE9ijb9HKg
+
+Boss Theme (Punch Deck - By Force)
+https://www.youtube.com/watch?v=7Dao1PKatq8
+
+Epilogue Theme (Joth - Near and Far)
+https://opengameart.org/content/near-and-far
+
+Credits Theme (Nihilore – You Are)
+https://youtu.be/7c_eK5SLPu8
+
+Sound Effects
+
+100 CC0 metal and wood SFX
+https://opengameart.org/content/100-cc0-metal-and-wood-sfx
+
+37 hits/punches by Independent.nu
+https://opengameart.org/content/37-hitspunches
+
+Swishes sound pack by artisticdude
+https://opengameart.org/content/swishes-sound-pack
+
+Impact by qubodup
+https://opengameart.org/content/impact
+
+Male Grunt/Yelling sounds by HaelDB
+https://opengameart.org/content/male-gruntyelling-sounds
+
+Door open, door close by Iwan Gabovitch
+https://opengameart.org/content/door-open-door-close
+
+54 Casino sound effects (cards, dice, chips) by Kenney
+https://opengameart.org/content/54-casino-sound-effects-cards-dice-chips
+
+8-bit Sound Effect Pack
+https://opengameart.org/content/8-bit-sound-effect-pack
