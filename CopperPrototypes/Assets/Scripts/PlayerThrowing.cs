@@ -54,7 +54,7 @@ public class PlayerThrowing : MonoBehaviour
         {
             throwTime -= Time.deltaTime;
 
-            if (throwTime <= 0)
+            if (throwTime <= 0 && sr.sprite != carryingSprite)
             {
                 sr.sprite = normalSprite;
             }
