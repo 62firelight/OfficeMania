@@ -66,7 +66,7 @@ public class Interactable : MonoBehaviour
         // If the player is near a heavy object
         if (isHeavy == true && pickedUp == false)
         {
-            Interactable obj = player.gameObject.GetComponent<PlayerThrowing>().nearestObject;
+            Interactable obj = player.gameObject.GetComponent<PlayerThrowing>().nearestHeavy;
             
             if (this == obj && player.gameObject.GetComponent<PlayerThrowing>().bluntObject == null)
             {
@@ -181,7 +181,7 @@ public class Interactable : MonoBehaviour
 
     void CreatePrompt()
     {
-        promptObj = Instantiate(prompt, transform.position + new Vector3(0, 0.65f, -9), Quaternion.identity);
+        promptObj = Instantiate(prompt, transform.position + new Vector3(0, 0.65f, -1), Quaternion.identity);
         promptObj.parent = transform;
         promptObj.gameObject.SetActive(false);
     }

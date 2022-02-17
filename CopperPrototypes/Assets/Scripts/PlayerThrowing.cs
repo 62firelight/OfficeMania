@@ -25,7 +25,7 @@ public class PlayerThrowing : MonoBehaviour
 
     public Interactable nearestObject;
 
-    public Interactable nearestSharp;
+    public Interactable nearestHeavy;
 
     public GameObject bluntObject = null;
 
@@ -147,8 +147,8 @@ public class PlayerThrowing : MonoBehaviour
             // sr.sprite = normalSprite;
         }
 
-        // Right-click near a blunt object to pick it up
-        if (Input.GetButtonDown("Fire2") && nearestObject != null && nearestObject.gameObject.tag == "Blunt" && AIMaster.takenObjects.Contains(nearestObject.gameObject) == false) 
+        // Right-click near a heavy object to pick it up
+        if (Input.GetButtonDown("Fire2") && nearestHeavy != null && nearestHeavy.gameObject.tag == "Blunt" && AIMaster.takenObjects.Contains(nearestHeavy.gameObject) == false) 
         {
             if (heldObject != null)
             {
@@ -156,7 +156,7 @@ public class PlayerThrowing : MonoBehaviour
                 heldObject = null;
             }
 
-            nearestObject.RegisterPickUp();
+            nearestHeavy.RegisterPickUp();
         }
 
         if (nearestObject != null && bluntObject == null && currentObject == null && nearestObject.thrownFlag != 2 && nearestObject.damageable == false)// && nearestObject.rb.isKinematic == true && nearestObject.pickedUp == false)

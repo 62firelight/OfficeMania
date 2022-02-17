@@ -5,11 +5,30 @@ using UnityEngine;
 public class InteractTrigger : MonoBehaviour
 {
 
+    private Interactable parent;
+
+    void Start()
+    {
+        parent = GetComponentInParent<Interactable>();
+
+        if (parent == null)
+        {
+            Debug.Log("ERROR: Parent of " + gameObject.name + " was null!");
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<PlayerThrowing>().nearestObject = GetComponentInParent<Interactable>();
+            if (parent.isHeavy == false)
+            {
+                other.GetComponent<PlayerThrowing>().nearestObject = parent;
+            }
+            else
+            {
+                other.GetComponent<PlayerThrowing>().nearestHeavy = parent;
+            }
         }
     }
 
@@ -19,7 +38,12 @@ public class InteractTrigger : MonoBehaviour
         {
             if (other.GetComponent<PlayerThrowing>().nearestObject == null)
             {
-                other.GetComponent<PlayerThrowing>().nearestObject = GetComponentInParent<Interactable>();
+                other.GetComponent<PlayerThrowing>().nearestObject = parent;
+            }
+
+            if (parent.isHeavy == true && other.GetComponent<PlayerThrowing>().nearestHeavy == null)
+            {
+                other.GetComponent<PlayerThrowing>().nearestHeavy = parent;
             }
         }
     }
@@ -28,7 +52,14 @@ public class InteractTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<PlayerThrowing>().nearestObject = null;
+            if (parent.isHeavy == false)
+            {
+                other.GetComponent<PlayerThrowing>().nearestObject = null;
+            }
+            else 
+            {
+                other.GetComponent<PlayerThrowing>().nearestHeavy = null;
+            }
         }
     }
 }
