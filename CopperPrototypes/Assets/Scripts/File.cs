@@ -8,6 +8,8 @@ public class File : MonoBehaviour
 
     public Animator transition;
 
+    public AudioClip pickupSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,8 @@ public class File : MonoBehaviour
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         if (collision.tag == "Player")
         {
+            if (pickupSound != null) AudioSource.PlayClipAtPoint(pickupSound, transform.position);
+
             // SceneManager.LoadScene("MainMenu");
             AIMaster.currentLevel++;
 
@@ -36,6 +40,8 @@ public class File : MonoBehaviour
             collision.gameObject.GetComponent<PlayerMovement>().enabled = false;
 
             GetComponent<SpriteRenderer>().enabled = false;
+
+            
         }
     }
     

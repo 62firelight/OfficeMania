@@ -123,3 +123,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: 4627c1d3c799c0f49959b8881afa37a9, type: 3}

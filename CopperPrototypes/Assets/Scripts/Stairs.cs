@@ -9,11 +9,15 @@ public class Stairs : MonoBehaviour
 
     public float transitionTime = 1f;
 
+    public AudioClip levelFinishSound;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         if (collision.tag == "Player")
         {
+            if (levelFinishSound != null) AudioSource.PlayClipAtPoint(levelFinishSound, transform.position);
+
             // SceneManager.LoadScene("MainMenu");
 
             AIMaster.currentLevel++;

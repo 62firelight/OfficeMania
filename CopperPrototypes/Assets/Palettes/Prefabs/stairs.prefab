@@ -120,6 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 0}
   transitionTime: 1
+  levelFinishSound: {fileID: 8300000, guid: 8f205f0f16e0ccf4abbf1e0139dc5a6a, type: 3}
 --- !u!61 &9056440246716254638
 BoxCollider2D:
   m_ObjectHideFlags: 0
