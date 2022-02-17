@@ -134,15 +134,16 @@ public class RoomMaster : MonoBehaviour
 
     void Update()
     {
-        // if (waitTime > 0)
-        // {
-        //     waitTime -= Time.deltaTime;
+        if (waitTime > 0)
+        {
+            waitTime -= Time.deltaTime;
 
-        //     if (waitTime <= 0)
-        //     {
-        //         SceneManager.LoadScene("Epilogue");
-        //     }
-        // }
+            if (waitTime <= 0)
+            {
+                file.SetActive(true);
+                arrow.SetActive(true);
+            }
+        }
 
         if (cameraTransition == true && cameraReset == false)
         {
@@ -241,9 +242,6 @@ public class RoomMaster : MonoBehaviour
                     // SceneManager.LoadScene("MainMenu");
                     // SceneManager.LoadScene("Credits");
                     waitTime = 5f;
-
-                    file.SetActive(true);
-                    arrow.SetActive(true);
                 }
 
                 if (camera != null && bossBattle == false) cameraReset = true;
