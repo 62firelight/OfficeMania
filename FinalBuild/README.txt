@@ -17,13 +17,13 @@ Controls
 * ESC pauses the game
 
 Notes
-In case a level becomes unbeatable, a level can be restarted from the pause menu by clicking "Restart Level" or by pushing R when in-game.
+In case a level becomes unbeatable, a level can be restarted by pushing R when in-game or from the pause menu by clicking "Restart Level."
 
 There is no level select in the game, but the player can skip to the next level by pushing N. It is up to the player as to whether they want to abuse this.
 
 Tips
 • Try to always stay on the move. Aggression is often the best way to win fights.
-• Enemies will rotate their arms backwards whenever they are about to throw an object. 
+• Enemies will rotate their arms backwards whenever they are about to throw an object, unless they pick up a heavy object close to you.
 • Enemies can hurt you if you bump into them. Be careful whenever you pick up objects that are close to them!
 • Sometimes, it may be better to wait for enemies to throw objects at you. 
 • Health pickups can generally be found in optional areas, but keep in mind that you will need to clear those areas to get the health and progress.
@@ -68,7 +68,7 @@ https://www.youtube.com/watch?v=atE9ijb9HKg
 Boss Theme (Punch Deck - By Force)
 https://www.youtube.com/watch?v=7Dao1PKatq8
 
-Epilogue Theme (Joth - Near and Far)
+Ending Theme (Joth - Near and Far)
 https://opengameart.org/content/near-and-far
 
 Credits Theme (Nihilore – You Are)
