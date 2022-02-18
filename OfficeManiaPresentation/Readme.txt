@@ -33,7 +33,7 @@ Known Issues
 • Heavy objects can be thrown through walls (and potentially go out of bounds). This isn't exactly gamebreaking, but it does deprive you of one heavy object
 • Throwing objects into rooms and successfully hitting enemies may cause the player to be locked out. To avoid this, walk into the room first before throwing objects
 • AI can freeze up when trying to get to an object outside of their assigned area
-• Bumping into objects that seemingly move slow can still hit and damage you
+• Bumping into objects that seemingly move slow can still hit and damage you sometimes
 • Enemies who hold heavy objects can sometimes push players into walls if they are next to one
 • The sound effect for whenever heavy objects hit someone may trigger whenever the player picks up a heavy object
 
