@@ -25,14 +25,17 @@ Tips
 • Try to always stay on the move. Aggression is often the best way to win fights.
 • Enemies will rotate their arms backwards whenever they are about to throw an object. 
 • Enemies can hurt you if you bump into them. Be careful whenever you pick up objects that are close to them!
+• Sometimes, it may be better to wait for enemies to throw objects at you. 
 • Health pickups can generally be found in optional areas, but keep in mind that you will need to clear those areas to get the health and progress.
 • The boss fight has two health pickups that spawn whenever enemies come in. More sharp objects can also be found near the health pickups.
 
 Known Issues 
-• Heavy objects can be thrown through walls (and potentially go out of bounds). This isn't exactly gamebreaking, but it does deprive you of one heavy object.
+• Heavy objects can be thrown through walls (and potentially go out of bounds). This isn't exactly gamebreaking, but it does deprive you of one heavy object
+• Throwing objects into rooms and successfully hitting enemies may cause the player to be locked out. To avoid this, walk into the room first before throwing objects
 • AI can freeze up when trying to get to an object outside of their assigned area
 • Bumping into objects that seemingly move slow can still hit and damage you
 • Enemies who hold heavy objects can sometimes push players into walls if they are next to one
+• The sound effect for whenever heavy objects hit someone may trigger whenever the player picks up a heavy object
 
 Credits
 
