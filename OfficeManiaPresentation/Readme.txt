@@ -5,7 +5,7 @@ By:
 • Cameron Bradley
 • Yashree Sharma
 
-Office Mania is a lighthearted top-down shooter where you play as an office worker who is tired of being overworked and underpaid at your company. Finally deciding enough is enough, you decide to go on a rampage to expose the boss and his company for all their wrong doings. You have no guns of your own, but you can pick up and throw objects at enemies -- the entire office is your playground!
+Office Mania is a lighthearted top-down shooter inspired by the Daredevil TV show where you play as an office worker who is tired of being overworked and underpaid at your company. Finally deciding enough is enough, you decide to go on a rampage to expose the boss and his company for all their wrong doings. You have no guns of your own, but you can pick up and throw objects at enemies -- the entire office is your playground!
 
 Controls
 • WASD moves the player 
@@ -26,7 +26,7 @@ Tips
 • Enemies will rotate their arms backwards whenever they are about to throw an object. 
 • Enemies can hurt you if you bump into them. Be careful whenever you pick up objects that are close to them!
 • Health pickups can generally be found in optional areas, but keep in mind that you will need to clear those areas to get the health and progress.
-• The boss fight has two health pickups that spawn whenever enemies come in.
+• The boss fight has two health pickups that spawn whenever enemies come in. More sharp objects can also be found near the health pickups.
 
 Known Issues 
 • Heavy objects can be thrown through walls (and potentially go out of bounds). This isn't exactly gamebreaking, but it does deprive you of one heavy object.
@@ -36,7 +36,19 @@ Known Issues
 
 Credits
 
+Tilemaps
+
+Tiled Terrains
+https://opengameart.org/content/tiled-terrains 
+
+Basic Apartment Building Tiles
+https://imgur.com/a/aiAZX
+
+Roguelike Modern City
+https://www.kenney.nl/assets/roguelike-modern-city
+
 Music
+
 Main Menu Theme (Spring Spring - The Royal Office of Coroner Changes its Name in Light of Recent Events)
 https://opengameart.org/content/the-royal-office-of-coroner-changes-its-name-in-light-of-recent-events
 

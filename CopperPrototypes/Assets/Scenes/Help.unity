@@ -148,16 +148,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 450990757}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5223999, y: 1.5223999, z: 1.5223999}
   m_Children: []
-  m_Father: {fileID: 1546618359}
-  m_RootOrder: 0
+  m_Father: {fileID: 1201448124}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.0454, y: -31.3822}
+  m_AnchoredPosition: {x: 21.382717, y: -47.776264}
   m_SizeDelta: {x: 313.697, y: 248.2425}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &450990759
@@ -182,10 +182,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 12
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -194,9 +194,11 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Try to get to the top floor to defeat the boss and expose the company!\n\nUse
-    the mouse to look around the office and use the keys WASD to move around. \n\nAttack
-    a employee by picking up objects and throwing them by using the right click button
-    of your mouse."
+    the keys WASD to move around, and use the mouse to look around.\n\nPick up light
+    objects by walking over them. Pick up heavy objects by pressing Right-click when
+    near them. \n\nWhen an object is held, Left-click to throw objects. Hold and
+    release Left-click to throw objects further.\n\nPress R to reload a level and
+    press N to skip to the next level in case you cannot progress."
 --- !u!222 &450990760
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -481,6 +483,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1546618359}
+  - {fileID: 450990758}
   m_Father: {fileID: 1041234579}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -563,7 +566,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.0071716, y: -116}
+  m_AnchoredPosition: {x: -1.0071716, y: -185.3}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1368765136
@@ -688,14 +691,13 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5224, y: 1.5224, z: 1.5224}
-  m_Children:
-  - {fileID: 450990758}
+  m_Children: []
   m_Father: {fileID: 1201448124}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 12.4}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1546618360
@@ -720,8 +722,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Instructions
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5fa2453bc0af9a348894afc0dd618c8e, type: 2}
+  m_sharedMaterial: {fileID: 9163949716547407039, guid: 5fa2453bc0af9a348894afc0dd618c8e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -781,7 +783,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 40.515305, y: -102.878235, z: 0, w: 83.92444}
+  m_margin: {x: 26.710518, y: -102.878235, z: -22.496735, w: 83.92444}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -832,7 +834,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0, g: 0.13333334, b: 0.10980392, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
