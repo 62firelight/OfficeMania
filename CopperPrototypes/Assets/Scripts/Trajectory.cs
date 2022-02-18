@@ -72,7 +72,7 @@ public class Trajectory : MonoBehaviour
             float distance = 2f;
 
             float mag = GetComponent<PlayerThrowing>().mag;
-            distance *= mag + 0.5f;
+            distance *= mag;
             // if (mag > 1.0f)
             // {
             //     distance *= mag;

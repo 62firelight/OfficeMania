@@ -291,6 +291,11 @@ public class Throw : MonoBehaviour
         //if (item.gameObject.GetComponent<Interactable>().isHeavy == false)
         delay = 2;
 
+        if (player.GetComponent<PlayerThrowing>().bluntObject != null)
+        {
+            delay = 1.25f;
+        }
+
         if (item.gameObject.GetComponent<Interactable>().isHeavy == true)
         {
             float distanceToPlayer = Vector2.Distance(transform.position, target.transform.position);
@@ -301,7 +306,7 @@ public class Throw : MonoBehaviour
             }
         }
 
-            if (item.gameObject.tag == "Blunt" && item.GetComponent<Interactable>().isHeavy == false)
+        if (item.gameObject.tag == "Blunt" && item.GetComponent<Interactable>().isHeavy == false)
         {
             item.Rotate(new Vector3(0, 0, 90));
         }
