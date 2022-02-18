@@ -30,6 +30,7 @@ Tips
 • The boss fight has two health pickups that spawn whenever enemies come in. More sharp objects can also be found near the health pickups.
 
 Known Issues 
+• The intro text and/or the outro text will sometimes not play (e.g., it might just "Y" at the beginning). Refreshing the page can fix this.
 • Heavy objects can be thrown through walls (and potentially go out of bounds). This isn't exactly gamebreaking, but it does deprive you of one heavy object
 • Throwing objects into rooms and successfully hitting enemies may cause the player to be locked out. To avoid this, walk into the room first before throwing objects
 • AI can freeze up when trying to get to an object outside of their assigned area
