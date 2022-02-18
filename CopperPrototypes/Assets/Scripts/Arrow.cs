@@ -25,6 +25,9 @@ public class Arrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (target.GetComponent<Interactable>() != null && target.GetComponent<Interactable>().pickedUp == true)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

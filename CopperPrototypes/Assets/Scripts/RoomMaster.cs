@@ -18,6 +18,8 @@ public class RoomMaster : MonoBehaviour
 
     public bool seePlayer = false;
 
+    public bool isTutorial = false;
+
     public bool levelTwoBattle = false;
 
     public bool levelTwoBigBattle = false;
