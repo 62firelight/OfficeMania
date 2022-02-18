@@ -24,32 +24,39 @@ public class WalkAway : MonoBehaviour
 
     void Update()
     {
-        if (dialogueManager.index >= 3)
+        if (tutorialRoom.GetRoomClear() == true)
+        {
+            canWalkAway = false;
+
+            GetComponent<SpriteRenderer>().enabled = true;
+            // GetComponent<Collider2D>().isTrigger = false;
+        }
+        else if (dialogueManager.index >= 3)
         {
             GetComponent<SpriteRenderer>().enabled = false;
-            GetComponent<Collider2D>().isTrigger = true;
+            // GetComponent<Collider2D>().isTrigger = true;
 
             canWalkAway = true;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        if (collision.tag == "Player" && canWalkAway == true)
+        if (collision.gameObject.tag == "Player" && canWalkAway == true)
         {
             if (levelFinishSound != null) AudioSource.PlayClipAtPoint(levelFinishSound, transform.position);
 
-            SceneManager.LoadScene("MainMenu");
+            // SceneManager.LoadScene("WalkAway");
 
             // AIMaster.currentLevel++;
 
-            // int currentLevel = AIMaster.currentLevel;
+            int walkAwayLevel = 9;
             // //Debug.Log(currentLevel);
-            // StartCoroutine(LoadLevel(currentLevel));
+            StartCoroutine(LoadLevel(walkAwayLevel));
 
             // // Disable player movement
-            // collision.gameObject.GetComponent<PlayerMovement>().enabled = false;
+            collision.gameObject.GetComponent<PlayerMovement>().enabled = false;
         }
     }
 

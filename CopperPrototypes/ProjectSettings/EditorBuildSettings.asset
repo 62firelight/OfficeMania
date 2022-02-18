@@ -32,8 +32,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 23c5a34957bbd4624828af2881e4011e
+  - enabled: 1
+    path: Assets/Scenes/WalkAway.unity
+    guid: 11e6fd9464767d140afd71c0299b8c9d
   - enabled: 0
-    path: Assets/Scenes/Prototypes/OLD_Level3.unity
+    path: 
     guid: 1e72ba4e42553804e90c252fc4773037
   - enabled: 0
     path: Assets/Scenes/Prototypes/LevelDesign1.unity
